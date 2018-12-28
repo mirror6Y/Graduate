@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- 由stage工具自动生成 -->
+<mapper namespace="mybatis.mybatis.graduate.UnitMapper">
+    <!-- 单位信息 -->
+    <resultMap id="unit" type="com.thunisoft.graduate.common.model.Unit">
+        <!-- 组织机构代码 -->
+        <id property="id" column="C_ID" jdbcType="VARCHAR"/>
+        <!-- 单位名称 -->
+        <result property="name" column="C_NAME" jdbcType="VARCHAR"/>
+        <!-- 通讯地址 -->
+        <result property="address" column="C_ADDRESS" jdbcType="VARCHAR"/>
+        <!-- 邮编 -->
+        <result property="zipCode" column="C_ZIPCODE" jdbcType="VARCHAR"/>
+        <!-- 单位所在地 -->
+        <result property="location" column="C_LOCATION" jdbcType="VARCHAR"/>
+        <!-- 联系人 -->
+        <result property="contact" column="C_CONTACT" jdbcType="VARCHAR"/>
+        <!-- 联系方式 -->
+        <result property="contactTel" column="C_CONTACTTEL" jdbcType="VARCHAR"/>
+    </resultMap>
+    <delete id="deleteUnitById">
+        delete
+        from T_UNIT
+        where C_ID = #{id}
+    </delete>
+    <insert id="addUnit" parameterType="com.thunisoft.graduate.common.model.Unit">
+        insert into T_UNIT (C_ID, C_NAME, C_ADDRESS, C_ZIPCODE, C_LOCATION, C_CONTACT, C_CONTACTTEL)
+        values (#{id, jdbcType=VARCHAR},
+                #{name, jdbcType=VARCHAR},
+                #{address, jdbcType=VARCHAR},
+                #{zipCode, jdbcType=VARCHAR},
+                #{location, jdbcType=VARCHAR},
+                #{contact, jdbcType=VARCHAR},
+                #{contactTel, jdbcType=VARCHAR})
+    </insert>
+    <update id="updateUnit" parameterType="com.thunisoft.graduate.common.model.Unit">
+        update T_UNIT
+        set C_NAME       = #{name, jdbcType=VARCHAR},
+            C_ADDRESS    = #{address, jdbcType=VARCHAR},
+            C_ZIPCODE    = #{zipCode, jdbcType=VARCHAR},
+            C_LOCATION   = #{location, jdbcType=VARCHAR},
+            C_CONTACT    = #{contact, jdbcType=VARCHAR},
+            C_CONTACTTEL = #{contactTel, jdbcType=VARCHAR}
+        where C_ID = #{id}
+    </update>
+    <select id="getUnitById" parameterType="java.lang.String" resultMap="unit">
+        select C_ID, C_NAME, C_ADDRESS, C_ZIPCODE, C_LOCATION, C_CONTACT, C_CONTACTTEL
+        from T_UNIT
+        where C_ID = #{id}
+    </select>
+    <select id="getUnits" resultMap="unit">
+        select C_ID, C_NAME, C_ADDRESS, C_ZIPCODE, C_LOCATION, C_CONTACT, C_CONTACTTEL
+        from T_UNIT
+    </select>
+    <select id="getUnitsCount" resultType="int">
+        select count(*)
+        from T_UNIT
+    </select>
+</mapper>

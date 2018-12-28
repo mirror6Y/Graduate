@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- 由stage工具自动生成 -->
+<mapper namespace="mybatis.mybatis.graduate.TeacherMapper">
+    <!-- 教师信息 -->
+    <resultMap id="teacher" type="com.thunisoft.graduate.common.model.Teacher">
+        <!-- 工号 -->
+        <id property="id" column="N_ID" jdbcType="VARCHAR"/>
+        <!-- 密码 -->
+        <result property="password" column="C_PASSWORD" jdbcType="VARCHAR"/>
+        <!-- 姓名 -->
+        <result property="name" column="C_NAME" jdbcType="VARCHAR"/>
+        <!-- 性别 -->
+        <result property="gender" column="N_GENDER" jdbcType="INTEGER"/>
+        <!-- 院系 -->
+        <result property="college" column="C_COLLEGE" jdbcType="VARCHAR"/>
+        <!-- 办公室 -->
+        <result property="office" column="C_OFFICE" jdbcType="VARCHAR"/>
+        <!-- 联系方式 -->
+        <result property="tel" column="C_TEL" jdbcType="VARCHAR"/>
+        <!-- 权限 -->
+        <result property="permission" column="C_PERMISSION" jdbcType="VARCHAR"/>
+    </resultMap>
+    <delete id="deleteTeacherById">
+        delete
+        from T_TEACHER
+        where N_ID = #{id}
+    </delete>
+    <insert id="addTeacher" parameterType="com.thunisoft.graduate.common.model.Teacher">
+        insert into T_TEACHER (N_ID, C_PASSWORD, C_NAME, N_GENDER, C_COLLEGE, C_OFFICE, C_TEL, C_PERMISSION)
+        values (#{id, jdbcType=VARCHAR},
+                #{password, jdbcType=VARCHAR},
+                #{name, jdbcType=VARCHAR},
+                #{gender, jdbcType=INTEGER},
+                #{college, jdbcType=VARCHAR},
+                #{office, jdbcType=VARCHAR},
+                #{tel, jdbcType=VARCHAR},
+                #{permission, jdbcType=VARCHAR})
+    </insert>
+    <update id="updateTeacher" parameterType="com.thunisoft.graduate.common.model.Teacher">
+        update T_TEACHER
+        set C_PASSWORD   = #{password, jdbcType=VARCHAR},
+            C_NAME       = #{name, jdbcType=VARCHAR},
+            N_GENDER     = #{gender, jdbcType=INTEGER},
+            C_COLLEGE    = #{college, jdbcType=VARCHAR},
+            C_OFFICE     = #{office, jdbcType=VARCHAR},
+            C_TEL        = #{tel, jdbcType=VARCHAR},
+            C_PERMISSION = #{permission, jdbcType=VARCHAR}
+        where N_ID = #{id}
+    </update>
+    <select id="getTeacherById" parameterType="java.lang.String" resultMap="teacher">
+        select N_ID,
+               C_PASSWORD,
+               C_NAME,
+               N_GENDER,
+               C_COLLEGE,
+               C_OFFICE,
+               C_TEL,
+               C_PERMISSION
+        from T_TEACHER
+        where N_ID = #{id}
+    </select>
+    <select id="getTeachers" resultMap="teacher">
+        select N_ID,
+               C_PASSWORD,
+               C_NAME,
+               N_GENDER,
+               C_COLLEGE,
+               C_OFFICE,
+               C_TEL,
+               C_PERMISSION
+        from T_TEACHER
+    </select>
+    <select id="getTeachersCount" resultType="int">
+        select count(*)
+        from T_TEACHER
+    </select>
+</mapper>
