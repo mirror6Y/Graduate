@@ -1,7 +1,8 @@
 #根据不同环境选用不同的配置
 spring:
+  #数据源
   datasource:
     driver-class-name: com.mysql.cj.jdbc.Driver
-    url: jdbc:mysql://localhost:3306/springmvc?serverTimezone=GMT%2B8&amp;useSSL=false
+    url: jdbc:mysql://172.18.48.147:3306/city_graduate?serverTimezone=GMT%2B8&amp&useSSL=false
     username: root
     password: mirror6

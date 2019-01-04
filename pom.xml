@@ -32,6 +32,7 @@
         <dependency>
             <groupId>mysql</groupId>
             <artifactId>mysql-connector-java</artifactId>
+            <version>8.0.13</version>
             <scope>runtime</scope>
         </dependency>
         <dependency>
@@ -57,6 +58,14 @@
             <artifactId>mybatis</artifactId>
             <version>3.4.6</version>
         </dependency>
+
+        <!-- 分页插件 -->
+        <dependency>
+            <groupId>com.github.pagehelper</groupId>
+            <artifactId>pagehelper-spring-boot-starter</artifactId>
+            <version>1.2.10</version>
+        </dependency>
+
 
     </dependencies>
 
