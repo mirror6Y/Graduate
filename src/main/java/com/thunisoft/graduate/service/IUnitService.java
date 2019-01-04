@@ -5,6 +5,7 @@
 package com.thunisoft.graduate.service;
 
 import com.thunisoft.graduate.common.model.Unit;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 

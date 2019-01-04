@@ -7,6 +7,7 @@ package com.thunisoft.graduate.service.impl;
 import com.thunisoft.graduate.common.model.Protocol;
 import com.thunisoft.graduate.dao.IProtocolDao;
 import com.thunisoft.graduate.service.IProtocolService;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 
@@ -21,6 +22,7 @@ import java.util.List;
  * @author liuye
  * @version 1.0
  */
+@Service
 public class ProtocolServiceImpl implements IProtocolService {
     /**
      * 三方协议 数据访问对象

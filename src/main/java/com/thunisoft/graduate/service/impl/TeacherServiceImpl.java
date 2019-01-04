@@ -7,6 +7,7 @@ package com.thunisoft.graduate.service.impl;
 import com.thunisoft.graduate.common.model.Teacher;
 import com.thunisoft.graduate.dao.ITeacherDao;
 import com.thunisoft.graduate.service.ITeacherService;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 
@@ -20,6 +21,7 @@ import java.util.List;
  * @author 由stage工具自动生成
  * @author liuye
  */
+@Service
 public class TeacherServiceImpl implements ITeacherService {
     /**
      * 教师信息 数据访问对象

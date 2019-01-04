@@ -7,6 +7,7 @@ package com.thunisoft.graduate.service.impl;
 import com.thunisoft.graduate.common.model.Graduate;
 import com.thunisoft.graduate.dao.IGraduateDao;
 import com.thunisoft.graduate.service.IGraduateService;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 
@@ -20,6 +21,7 @@ import java.util.List;
  * @author 由stage工具自动生成
  * @author liuye
  */
+@Service
 public class GraduateServiceImpl implements IGraduateService {
     /**
      * 毕业生信息 数据访问对象
