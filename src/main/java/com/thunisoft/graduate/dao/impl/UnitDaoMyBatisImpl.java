@@ -8,6 +8,7 @@ import com.thunisoft.graduate.common.model.Unit;
 import com.thunisoft.graduate.dao.IUnitDao;
 import mybatis.graduate.UnitMapper;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Repository;
 
 import java.util.List;
 import java.util.UUID;
@@ -22,6 +23,7 @@ import java.util.UUID;
  * @author 由stage工具自动生成
  * @author liuye
  */
+@Repository
 public class UnitDaoMyBatisImpl implements IUnitDao {
     @Autowired
     private UnitMapper unitMapper;

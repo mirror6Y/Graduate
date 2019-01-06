@@ -8,6 +8,7 @@ import com.thunisoft.graduate.common.model.Protocol;
 import com.thunisoft.graduate.dao.IProtocolDao;
 import mybatis.graduate.ProtocolMapper;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Repository;
 
 import java.util.List;
 import java.util.UUID;
@@ -23,6 +24,7 @@ import java.util.UUID;
  * @author liuye
  * @version 1.0
  */
+@Repository
 public class ProtocolDaoMyBatisImpl implements IProtocolDao {
 
     @Autowired

@@ -24,7 +24,7 @@ import java.util.UUID;
  * @author liuye
  * @version 1.0
  */
-
+@Repository
 public class GraduateDaoMyBatisImpl implements IGraduateDao {
 
     @Autowired
