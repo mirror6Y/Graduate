@@ -4,10 +4,7 @@
  */
 package com.thunisoft.graduate.common.model;
 
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 
 import java.io.Serializable;
 
@@ -64,4 +61,16 @@ public class Teacher implements Serializable {
      */
     private String permission;
 
+    /*
+     *添加教师信息
+     */
+    public Teacher(String id, String name, Integer gender, String college, String office, String tel, String permission) {
+        this.id = id;
+        this.name = name;
+        this.gender = gender;
+        this.college = college;
+        this.office = office;
+        this.tel = tel;
+        this.permission = permission;
+    }
 }

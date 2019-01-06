@@ -30,5 +30,17 @@ public class TeacherController {
         return Constants.C_SUCCESS;
     }
 
+    public static void main(String[] args) {
+        TeacherController t = new TeacherController();
+        Teacher teacher = new Teacher("201213", "蓝忘机", 1, "计算机工程学院", "1918", "18341114025", null);
+        try
+        {
+            t.addTeacher(teacher);
+        } catch (Exception e)
+        {
+            e.printStackTrace();
+        }
+    }
+
 
 }
