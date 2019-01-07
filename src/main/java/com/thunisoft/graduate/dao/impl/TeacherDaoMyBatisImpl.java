@@ -30,13 +30,12 @@ public class TeacherDaoMyBatisImpl implements ITeacherDao {
     private TeacherMapper teacherMapper;
 
     @Override
-    public Teacher getTeacherById(String id) {
+    public Teacher getTeacherById(Integer id) {
         return teacherMapper.getTeacherById(id);
     }
 
     @Override
     public void addTeacher(Teacher teacher) {
-
         teacherMapper.addTeacher(teacher);
     }
 
@@ -46,7 +45,7 @@ public class TeacherDaoMyBatisImpl implements ITeacherDao {
     }
 
     @Override
-    public void deleteTeacherById(String id) {
+    public void deleteTeacherById(Integer id) {
         teacherMapper.deleteTeacherById(id);
     }
 

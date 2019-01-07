@@ -31,7 +31,7 @@ public class Teacher implements Serializable {
     /**
      * 工号
      */
-    private String id;
+    private Integer id;
     /**
      * 密码
      */
@@ -64,7 +64,7 @@ public class Teacher implements Serializable {
     /*
      *添加教师信息
      */
-    public Teacher(String id, String name, Integer gender, String college, String office, String tel, String permission) {
+    public Teacher(Integer id, String name, Integer gender, String college, String office, String tel, String permission) {
         this.id = id;
         this.name = name;
         this.gender = gender;

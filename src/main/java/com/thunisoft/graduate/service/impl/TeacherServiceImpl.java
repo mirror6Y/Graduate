@@ -7,6 +7,7 @@ package com.thunisoft.graduate.service.impl;
 import com.thunisoft.graduate.common.model.Teacher;
 import com.thunisoft.graduate.dao.ITeacherDao;
 import com.thunisoft.graduate.service.ITeacherService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -17,18 +18,22 @@ import java.util.List;
  * <p> CreationTime: 2018-12-24 16:30:40
  * <br>Copyright: &copy;2018 <a href="http://www.thunisoft.com">Thunisoft</a>
  * <br>Email: <a href="mailto:liuye@thunisoft.com">liuye@thunisoft.com</a></p>
- * @version 1.0
+ *
  * @author 由stage工具自动生成
  * @author liuye
+ * @version 1.0
  */
 @Service
 public class TeacherServiceImpl implements ITeacherService {
     /**
      * 教师信息 数据访问对象
      */
+    @Autowired
     private ITeacherDao teacherDao;
+
     /**
      * 注入 教师信息 数据访问对象
+     *
      * @param teacherDao 教师信息 数据访问对象
      */
     public void setTeacherDao(ITeacherDao teacherDao) {
@@ -36,7 +41,7 @@ public class TeacherServiceImpl implements ITeacherService {
     }
 
     @Override
-    public Teacher getTeacherById(String id) {
+    public Teacher getTeacherById(Integer id) {
         return teacherDao.getTeacherById(id);
     }
 
@@ -51,7 +56,7 @@ public class TeacherServiceImpl implements ITeacherService {
     }
 
     @Override
-    public void deleteTeacherById(String id) {
+    public void deleteTeacherById(Integer id) {
         teacherDao.deleteTeacherById(id);
     }
 

@@ -39,7 +39,7 @@ public interface ITeacherDao {
      * @param id 教师信息 工号
      * @return 教师信息
      */
-    Teacher getTeacherById(String id);
+    Teacher getTeacherById(Integer id);
     
     /**
      * 添加教师信息
@@ -57,5 +57,5 @@ public interface ITeacherDao {
      * 删除教师信息
      * @param id 教师信息 工号
      */
-    void deleteTeacherById(String id);
+    void deleteTeacherById(Integer id);
 }

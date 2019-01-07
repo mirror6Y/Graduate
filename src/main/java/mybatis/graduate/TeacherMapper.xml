@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <!-- 由stage工具自动生成 -->
-<mapper namespace="mybatis.mybatis.graduate.TeacherMapper">
+<mapper namespace="mybatis.graduate.TeacherMapper">
     <!-- 教师信息 -->
     <resultMap id="teacher" type="com.thunisoft.graduate.common.model.Teacher">
         <!-- 工号 -->
-        <id property="id" column="N_ID" jdbcType="VARCHAR"/>
+        <id property="id" column="N_ID" jdbcType="INTEGER"/>
         <!-- 密码 -->
         <result property="password" column="C_PASSWORD" jdbcType="VARCHAR"/>
         <!-- 姓名 -->
@@ -28,7 +28,7 @@
     </delete>
     <insert id="addTeacher" parameterType="com.thunisoft.graduate.common.model.Teacher">
         insert into T_TEACHER (N_ID, C_PASSWORD, C_NAME, N_GENDER, C_COLLEGE, C_OFFICE, C_TEL, C_PERMISSION)
-        values (#{id, jdbcType=VARCHAR},
+        values (#{id, jdbcType=INTEGER},
                 #{password, jdbcType=VARCHAR},
                 #{name, jdbcType=VARCHAR},
                 #{gender, jdbcType=INTEGER},
@@ -48,7 +48,7 @@
             C_PERMISSION = #{permission, jdbcType=VARCHAR}
         where N_ID = #{id}
     </update>
-    <select id="getTeacherById" parameterType="java.lang.String" resultMap="teacher">
+    <select id="getTeacherById" parameterType="Integer" resultMap="teacher">
         select N_ID,
                C_PASSWORD,
                C_NAME,
