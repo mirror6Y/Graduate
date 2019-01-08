@@ -27,9 +27,8 @@
         where N_ID = #{id}
     </delete>
     <insert id="addTeacher" parameterType="com.thunisoft.graduate.common.model.Teacher">
-        insert into T_TEACHER (N_ID, C_PASSWORD, C_NAME, N_GENDER, C_COLLEGE, C_OFFICE, C_TEL, C_PERMISSION)
+        insert into T_TEACHER (N_ID, C_NAME, N_GENDER, C_COLLEGE, C_OFFICE, C_TEL, C_PERMISSION)
         values (#{id, jdbcType=INTEGER},
-                #{password, jdbcType=VARCHAR},
                 #{name, jdbcType=VARCHAR},
                 #{gender, jdbcType=INTEGER},
                 #{college, jdbcType=VARCHAR},

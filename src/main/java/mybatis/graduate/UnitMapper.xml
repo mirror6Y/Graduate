@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <!-- 由stage工具自动生成 -->
-<mapper namespace="mybatis.mybatis.graduate.UnitMapper">
+<mapper namespace="mybatis.graduate.UnitMapper">
     <!-- 单位信息 -->
     <resultMap id="unit" type="com.thunisoft.graduate.common.model.Unit">
         <!-- 组织机构代码 -->

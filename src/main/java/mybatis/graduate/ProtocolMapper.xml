@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <!-- 由stage工具自动生成 -->
-<mapper namespace="mybatis.mybatis.graduate.ProtocolMapper">
+<mapper namespace="mybatis.graduate.ProtocolMapper">
     <!-- 三方协议 -->
     <resultMap id="protocol" type="com.thunisoft.graduate.common.model.Protocol">
         <!-- 协议编号 -->
