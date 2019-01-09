@@ -28,17 +28,13 @@ public class TeacherServiceImpl implements ITeacherService {
     /**
      * 教师信息 数据访问对象
      */
-    @Autowired
-    private ITeacherDao teacherDao;
+    private final ITeacherDao teacherDao;
 
-    /**
-     * 注入 教师信息 数据访问对象
-     *
-     * @param teacherDao 教师信息 数据访问对象
-     */
-    public void setTeacherDao(ITeacherDao teacherDao) {
+    @Autowired
+    public TeacherServiceImpl(ITeacherDao teacherDao) {
         this.teacherDao = teacherDao;
     }
+
 
     @Override
     public Teacher getTeacherById(Integer id) {
@@ -63,7 +59,8 @@ public class TeacherServiceImpl implements ITeacherService {
     @Override
     public List<Teacher> getTeachers(int pageSize, int pageNo) {
         int firstResult = (pageNo - 1) * pageSize;
-        int maxResults = pageSize;
+        int maxResults;
+        maxResults = pageSize;
         return teacherDao.getTeachers(firstResult, maxResults);
     }
 

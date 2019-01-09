@@ -5,7 +5,6 @@
 package com.thunisoft.graduate.service;
 
 import com.thunisoft.graduate.common.model.Unit;
-import org.springframework.stereotype.Service;
 
 import java.util.List;
 
@@ -47,7 +46,7 @@ public interface IUnitService {
      * 添加单位信息
      * @param unit 单位信息
      */
-    void addUnit(Unit unit);
+    String addUnit(Unit unit);
     
     /**
      * 更新单位信息

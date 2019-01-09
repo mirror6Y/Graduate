@@ -4,9 +4,11 @@
  */
 package com.thunisoft.graduate.service.impl;
 
+import com.thunisoft.graduate.common.Constants;
 import com.thunisoft.graduate.common.model.Unit;
 import com.thunisoft.graduate.dao.IUnitDao;
 import com.thunisoft.graduate.service.IUnitService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -17,23 +19,23 @@ import java.util.List;
  * <p> CreationTime: 2018-12-24 16:30:40
  * <br>Copyright: &copy;2018 <a href="http://www.thunisoft.com">Thunisoft</a>
  * <br>Email: <a href="mailto:liuye@thunisoft.com">liuye@thunisoft.com</a></p>
- * @version 1.0
+ *
  * @author 由stage工具自动生成
  * @author liuye
+ * @version 1.0
  */
 @Service
 public class UnitServiceImpl implements IUnitService {
     /**
      * 单位信息 数据访问对象
      */
-    private IUnitDao unitDao;
-    /**
-     * 注入 单位信息 数据访问对象
-     * @param unitDao 单位信息 数据访问对象
-     */
-    public void setUnitDao(IUnitDao unitDao) {
+    private final IUnitDao unitDao;
+
+    @Autowired
+    public UnitServiceImpl(IUnitDao unitDao) {
         this.unitDao = unitDao;
     }
+
 
     @Override
     public Unit getUnitById(String id) {
@@ -41,8 +43,9 @@ public class UnitServiceImpl implements IUnitService {
     }
 
     @Override
-    public void addUnit(Unit unit) {
+    public String addUnit(Unit unit) {
         unitDao.addUnit(unit);
+        return Constants.C_UPDATE_SUCCESS;
     }
 
     @Override
@@ -58,7 +61,8 @@ public class UnitServiceImpl implements IUnitService {
     @Override
     public List<Unit> getUnits(int pageSize, int pageNo) {
         int firstResult = (pageNo - 1) * pageSize;
-        int maxResults = pageSize;
+        int maxResults;
+        maxResults = pageSize;
         return unitDao.getUnits(firstResult, maxResults);
     }
 

@@ -28,4 +28,9 @@ public interface Constants {
      */
     public static final String C_FAIL = "fail";
 
+    /**
+     * 更新数据成功时返回值为1
+     */
+    public static final String C_UPDATE_SUCCESS = "1";
+
 }

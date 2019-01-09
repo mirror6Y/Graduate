@@ -1,4 +1,6 @@
 #根据不同环境选用不同的配置
+server:
+  port: 8088
 spring:
   #数据源
   datasource:
@@ -27,6 +29,12 @@ mybatis:
   mapper-locations: classpath*:mybatis/graduate/*.xml
   type-aliases-package: com.thunisoft.graduate.common.model
   #config-location: classpath:mybatis/mybatis-config.xml
+
+# 打印sql
+logging:
+  level:
+    mybatis.graduate : debug
+
 
 
 
