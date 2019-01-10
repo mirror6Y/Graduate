@@ -29,8 +29,12 @@ public interface Constants {
     public static final String C_FAIL = "fail";
 
     /**
-     * 更新数据成功时返回值为1
+     * 对数据进行CURD成功时返回值为1
      */
-    public static final String C_UPDATE_SUCCESS = "1";
+    public static final String C_CURD_SUCCESS = "1";
+
+    /**
+     * 查询列表
+     */
 
 }

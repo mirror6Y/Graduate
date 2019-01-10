@@ -38,24 +38,27 @@ public class UnitServiceImpl implements IUnitService {
 
 
     @Override
-    public Unit getUnitById(String id) {
-        return unitDao.getUnitById(id);
+    public String getUnitById(String id) {
+        unitDao.getUnitById(id);
+        return Constants.C_CURD_SUCCESS;
     }
 
     @Override
     public String addUnit(Unit unit) {
         unitDao.addUnit(unit);
-        return Constants.C_UPDATE_SUCCESS;
+        return Constants.C_CURD_SUCCESS;
     }
 
     @Override
-    public void updateUnit(Unit unit) {
+    public String updateUnit(Unit unit) {
         unitDao.updateUnit(unit);
+        return Constants.C_CURD_SUCCESS;
     }
 
     @Override
-    public void deleteUnitById(String id) {
+    public String deleteUnitById(String id) {
         unitDao.deleteUnitById(id);
+        return Constants.C_CURD_SUCCESS;
     }
 
     @Override

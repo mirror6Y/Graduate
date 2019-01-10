@@ -5,7 +5,6 @@
 package com.thunisoft.graduate.service;
 
 import com.thunisoft.graduate.common.model.Teacher;
-import org.springframework.stereotype.Service;
 
 import java.util.List;
 
@@ -41,23 +40,23 @@ public interface ITeacherService {
      * @param id 教师信息 工号
      * @return 教师信息
      */
-    Teacher getTeacherById(Integer id);
+    String getTeacherById(Integer id);
     
     /**
      * 添加教师信息
      * @param teacher 教师信息
      */
-    void addTeacher(Teacher teacher);
+    String addTeacher(Teacher teacher);
     
     /**
      * 更新教师信息
      * @param teacher 教师信息
      */
-    void updateTeacher(Teacher teacher);
+    String updateTeacher(Teacher teacher);
     
     /**
      * 删除教师信息
      * @param id 教师信息 工号
      */
-    void deleteTeacherById(Integer id);
+    String deleteTeacherById(Integer id);
 }

@@ -40,7 +40,7 @@ public interface IUnitService {
      * @param id 单位信息 组织机构代码
      * @return 单位信息
      */
-    Unit getUnitById(String id);
+    String getUnitById(String id);
     
     /**
      * 添加单位信息
@@ -52,11 +52,11 @@ public interface IUnitService {
      * 更新单位信息
      * @param unit 单位信息
      */
-    void updateUnit(Unit unit);
+    String updateUnit(Unit unit);
     
     /**
      * 删除单位信息
      * @param id 单位信息 组织机构代码
      */
-    void deleteUnitById(String id);
+    String deleteUnitById(String id);
 }

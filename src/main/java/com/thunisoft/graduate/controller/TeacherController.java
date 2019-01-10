@@ -29,43 +29,39 @@ public class TeacherController {
     /**
      * 添加教师信息
      * url:"http://localhost:8080/teacher/addTeacher"
-     * 通过<form>表单模拟验证
      */
     // == @RequestMapping(value="/addTeacher",method=RequestMethod.POST)
     @ResponseBody
     @PostMapping("/addTeacher")
     public String addTeacher() {
-//        String id=request.getParameter("");
         Teacher teacher = new Teacher(201213, "蓝曦臣", 1, "计算机工程学院", "1918", "18341114205", "");
-        teacherService.addTeacher(teacher);
-        return Constants.C_SUCCESS;
+        String mark = teacherService.addTeacher(teacher);
+        return Constants.C_CURD_SUCCESS.equals(mark) ? Constants.C_SUCCESS : Constants.C_FAIL;
     }
 
     /**
      * 删除教师信息
      * url:"http://localhost:8080/teacher/deleteTeacher/{id}"
-     * 注意无法通过浏览器的链接来模拟检验,可以通过 jquery的 $.ajax方法，并type="delete"
      */
     // == @RequestMapping(value = "/deleteTeacher/{id}", method = RequestMethod.DELETE)
     @ResponseBody
     @DeleteMapping("/deleteTeacherById/{id}")
     public String deleteTeacherById(@PathVariable("id") Integer id) {
-        teacherService.deleteTeacherById(id);
-        return Constants.C_SUCCESS;
+        String mark = teacherService.deleteTeacherById(id);
+        return Constants.C_CURD_SUCCESS.equals(mark) ? Constants.C_SUCCESS : Constants.C_FAIL;
     }
 
     /**
      * 修改教师信息
      * url:"http://localhost:8080/teacher/updateTeacher"
-     * 验证：可以通过 jquery的 $.ajax方法，并type="put",同时注意data形式——A=a&B=b&C=c
      */
     // == @RequestMapping(value="/updateTeacher",method=RequestMethod.PUT)
     @ResponseBody
     @PutMapping("/updateTeacher")
     public String updateTeacher() {
         Teacher teacher = new Teacher(201213, "123456", "蓝忘机", 1, "计算机工程学院", "1918", "18341114205", "");
-        teacherService.updateTeacher(teacher);
-        return Constants.C_SUCCESS;
+        String mark = teacherService.updateTeacher(teacher);
+        return Constants.C_CURD_SUCCESS.equals(mark) ? Constants.C_SUCCESS : Constants.C_FAIL;
     }
 
     /**
@@ -77,8 +73,8 @@ public class TeacherController {
     // == @RequestMapping(value = "/getTeacherById/{id}", method = RequestMethod.GET)
     @GetMapping("/getTeacherById/{id}")
     public String getTeacherById(@PathVariable("id") Integer id) {
-        teacherService.getTeacherById(id);
-        return Constants.C_SUCCESS;
+        String mark = teacherService.getTeacherById(id);
+        return Constants.C_CURD_SUCCESS.equals(mark) ? Constants.C_SUCCESS : Constants.C_FAIL;
     }
 
 }

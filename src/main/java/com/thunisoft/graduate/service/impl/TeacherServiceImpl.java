@@ -4,6 +4,7 @@
  */
 package com.thunisoft.graduate.service.impl;
 
+import com.thunisoft.graduate.common.Constants;
 import com.thunisoft.graduate.common.model.Teacher;
 import com.thunisoft.graduate.dao.ITeacherDao;
 import com.thunisoft.graduate.service.ITeacherService;
@@ -37,23 +38,27 @@ public class TeacherServiceImpl implements ITeacherService {
 
 
     @Override
-    public Teacher getTeacherById(Integer id) {
-        return teacherDao.getTeacherById(id);
+    public String getTeacherById(Integer id) {
+        teacherDao.getTeacherById(id);
+        return Constants.C_CURD_SUCCESS;
     }
 
     @Override
-    public void addTeacher(Teacher teacher) {
+    public String addTeacher(Teacher teacher) {
         teacherDao.addTeacher(teacher);
+        return Constants.C_CURD_SUCCESS;
     }
 
     @Override
-    public void updateTeacher(Teacher teacher) {
+    public String updateTeacher(Teacher teacher) {
         teacherDao.updateTeacher(teacher);
+        return Constants.C_CURD_SUCCESS;
     }
 
     @Override
-    public void deleteTeacherById(Integer id) {
+    public String deleteTeacherById(Integer id) {
         teacherDao.deleteTeacherById(id);
+        return Constants.C_CURD_SUCCESS;
     }
 
     @Override

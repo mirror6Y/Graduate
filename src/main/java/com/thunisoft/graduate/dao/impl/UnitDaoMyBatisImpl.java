@@ -35,9 +35,9 @@ public class UnitDaoMyBatisImpl implements IUnitDao {
 
     @Override
     public void addUnit(Unit unit) {
-        if (unit.getId() == null) {
-            unit.setId(UUID.randomUUID().toString().replace("-", ""));
-        }
+//        if (unit.getId() == null) {
+//            unit.setId(UUID.randomUUID().toString().replace("-", ""));
+//        }
         unitMapper.addUnit(unit);
     }
 
