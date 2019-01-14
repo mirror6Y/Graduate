@@ -5,7 +5,6 @@
 package com.thunisoft.graduate.service;
 
 import com.thunisoft.graduate.common.model.Graduate;
-import org.springframework.stereotype.Service;
 
 import java.util.List;
 
@@ -41,23 +40,23 @@ public interface IGraduateService {
      * @param id 毕业生信息 编号
      * @return 毕业生信息
      */
-    Graduate getGraduateById(Integer id);
+    String getGraduateById(Integer id);
     
     /**
      * 添加毕业生信息
      * @param graduate 毕业生信息
      */
-    void addGraduate(Graduate graduate);
+    String addGraduate(Graduate graduate);
     
     /**
      * 更新毕业生信息
      * @param graduate 毕业生信息
      */
-    void updateGraduate(Graduate graduate);
+    String updateGraduate(Graduate graduate);
     
     /**
      * 删除毕业生信息
      * @param id 毕业生信息 编号
      */
-    void deleteGraduateById(Integer id);
+    String deleteGraduateById(Integer id);
 }

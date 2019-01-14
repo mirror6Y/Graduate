@@ -23,6 +23,7 @@
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-web</artifactId>
         </dependency>
+
         <dependency>
             <groupId>org.mybatis.spring.boot</groupId>
             <artifactId>mybatis-spring-boot-starter</artifactId>
@@ -35,28 +36,28 @@
             <version>8.0.13</version>
             <scope>runtime</scope>
         </dependency>
+
         <dependency>
             <groupId>org.projectlombok</groupId>
             <artifactId>lombok</artifactId>
             <optional>true</optional>
         </dependency>
+
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-test</artifactId>
             <scope>test</scope>
         </dependency>
 
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-jdbc</artifactId>
+        </dependency>
+
         <!--JPA-->
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-data-jpa</artifactId>
-        </dependency>
-
-        <!--mybatis-->
-        <dependency>
-            <groupId>org.mybatis</groupId>
-            <artifactId>mybatis</artifactId>
-            <version>3.4.6</version>
         </dependency>
 
         <!-- 分页插件 -->
@@ -84,6 +85,8 @@
     </dependencies>
 
     <build>
+
+        <!-- 这个插件，可以将应用打包成一个可执行的jar包；直接使用java -jar的命令进行执行-->
         <plugins>
             <plugin>
                 <groupId>org.springframework.boot</groupId>
@@ -91,6 +94,7 @@
             </plugin>
         </plugins>
 
+        <!--使IDEA下的mybatis XML可以被扫描到-->
         <finalName>mybatis-base</finalName>
         <resources>
             <resource>

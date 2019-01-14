@@ -4,7 +4,9 @@
  */
 package com.thunisoft.graduate.common.model;
 
+import lombok.AllArgsConstructor;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import java.io.Serializable;
@@ -24,6 +26,8 @@ import java.util.Date;
  */
 @Setter
 @Getter
+@AllArgsConstructor
+@NoArgsConstructor
 public class Graduate implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -32,10 +36,7 @@ public class Graduate implements Serializable {
      * 编号
      */
     private Integer id;
-    /**
-     * 协议编号
-     */
-    private String protocolId;
+
     /**
      * 姓名
      */
@@ -88,5 +89,6 @@ public class Graduate implements Serializable {
      * 家庭地址
      */
     private String address;
+
 
 }

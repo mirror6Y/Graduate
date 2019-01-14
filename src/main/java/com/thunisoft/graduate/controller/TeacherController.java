@@ -15,11 +15,12 @@ import org.springframework.web.bind.annotation.*;
 @RequestMapping("/teacher")
 public class TeacherController {
 
-    /**
-     * 注入teacher的服务层
-     */
+
     private final ITeacherService teacherService;
 
+    /**
+     * 构造器注入teacherService
+     */
     @Autowired
     public TeacherController(ITeacherService teacherService) {
         this.teacherService = teacherService;

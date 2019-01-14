@@ -4,10 +4,13 @@
  */
 package com.thunisoft.graduate.service.impl;
 
+import com.thunisoft.graduate.common.Constants;
 import com.thunisoft.graduate.common.model.Graduate;
 import com.thunisoft.graduate.dao.IGraduateDao;
 import com.thunisoft.graduate.service.IGraduateService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
@@ -17,42 +20,47 @@ import java.util.List;
  * <p> CreationTime: 2018-12-24 16:30:40
  * <br>Copyright: &copy;2018 <a href="http://www.thunisoft.com">Thunisoft</a>
  * <br>Email: <a href="mailto:liuye@thunisoft.com">liuye@thunisoft.com</a></p>
- * @version 1.0
+ *
  * @author 由stage工具自动生成
  * @author liuye
+ * @version 1.0
  */
 @Service
+@Transactional
 public class GraduateServiceImpl implements IGraduateService {
     /**
      * 毕业生信息 数据访问对象
      */
-    private IGraduateDao graduateDao;
-    /**
-     * 注入 毕业生信息 数据访问对象
-     * @param graduateDao 毕业生信息 数据访问对象
-     */
-    public void setGraduateDao(IGraduateDao graduateDao) {
+    private final IGraduateDao graduateDao;
+
+    @Autowired
+    public GraduateServiceImpl(IGraduateDao graduateDao) {
         this.graduateDao = graduateDao;
     }
 
+
     @Override
-    public Graduate getGraduateById(Integer id) {
-        return graduateDao.getGraduateById(id);
+    public String getGraduateById(Integer id) {
+        graduateDao.getGraduateById(id);
+        return Constants.C_CURD_SUCCESS;
     }
 
     @Override
-    public void addGraduate(Graduate graduate) {
+    public String addGraduate(Graduate graduate) {
         graduateDao.addGraduate(graduate);
+        return Constants.C_CURD_SUCCESS;
     }
 
     @Override
-    public void updateGraduate(Graduate graduate) {
+    public String updateGraduate(Graduate graduate) {
         graduateDao.updateGraduate(graduate);
+        return Constants.C_CURD_SUCCESS;
     }
 
     @Override
-    public void deleteGraduateById(Integer id) {
+    public String deleteGraduateById(Integer id) {
         graduateDao.deleteGraduateById(id);
+        return Constants.C_CURD_SUCCESS;
     }
 
     @Override

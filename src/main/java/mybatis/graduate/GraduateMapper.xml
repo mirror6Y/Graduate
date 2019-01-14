@@ -6,8 +6,6 @@
     <resultMap id="graduate" type="com.thunisoft.graduate.common.model.Graduate">
         <!-- 编号 -->
         <id property="id" column="N_ID" jdbcType="INTEGER"/>
-        <!-- 协议编号 -->
-        <result property="protocolId" column="C_PROTOCOLID" jdbcType="VARCHAR"/>
         <!-- 姓名 -->
         <result property="name" column="C_NAME" jdbcType="VARCHAR"/>
         <!-- 身份证号 -->
@@ -23,7 +21,7 @@
         <!-- 专业 -->
         <result property="profession" column="C_PROFESSION" jdbcType="VARCHAR"/>
         <!-- 班级 -->
-        <result property="gender" column="C_GENDER" jdbcType="VARCHAR"/>
+        <result property="grade" column="C_GRADE" jdbcType="VARCHAR"/>
         <!-- 联系方式 -->
         <result property="tel" column="C_TEL" jdbcType="VARCHAR"/>
         <!-- 毕业时间 -->
@@ -42,7 +40,6 @@
     </delete>
     <insert id="addGraduate" parameterType="com.thunisoft.graduate.common.model.Graduate">
         insert into T_GRADUATE (N_ID,
-                                C_PROTOCOLID,
                                 C_NAME,
                                 C_IDCARD,
                                 N_GENDER,
@@ -50,22 +47,21 @@
                                 C_POLITICALSTATUS,
                                 C_COLLEGE,
                                 C_PROFESSION,
-                                c_gender,
+                                C_GRADE,
                                 C_TEL,
                                 D_GRADUATETIME,
                                 C_EDUCATION,
                                 C_DEGREE,
                                 C_ADDRESS)
         values (#{id, jdbcType=INTEGER},
-                #{protocolId, jdbcType=VARCHAR},
                 #{name, jdbcType=VARCHAR},
                 #{idCard, jdbcType=VARCHAR},
                 #{gender, jdbcType=INTEGER},
                 #{people, jdbcType=VARCHAR},
                 #{politicalStatus, jdbcType=VARCHAR},
-                #{colleage, jdbcType=VARCHAR},
+                #{college, jdbcType=VARCHAR},
                 #{profession, jdbcType=VARCHAR},
-                #{class, jdbcType=VARCHAR},
+                #{grade, jdbcType=VARCHAR},
                 #{tel, jdbcType=VARCHAR},
                 #{graduateTime, jdbcType=DATE},
                 #{education, jdbcType=VARCHAR},
@@ -74,15 +70,14 @@
     </insert>
     <update id="updateGraduate" parameterType="com.thunisoft.graduate.common.model.Graduate">
         update T_GRADUATE
-        set C_PROTOCOLID      = #{protocolId, jdbcType=VARCHAR},
-            C_NAME            = #{name, jdbcType=VARCHAR},
+        set C_NAME            = #{name, jdbcType=VARCHAR},
             C_IDCARD          = #{idCard, jdbcType=VARCHAR},
             N_GENDER          = #{gender, jdbcType=INTEGER},
             C_PEOPLE          = #{people, jdbcType=VARCHAR},
             C_POLITICALSTATUS = #{politicalStatus, jdbcType=VARCHAR},
-            C_COLLEGE         = #{colleage, jdbcType=VARCHAR},
+            C_COLLEGE         = #{college, jdbcType=VARCHAR},
             C_PROFESSION      = #{profession, jdbcType=VARCHAR},
-            c_gender          = #{class, jdbcType=VARCHAR},
+            C_GRADE           = #{grade, jdbcType=VARCHAR},
             C_TEL             = #{tel, jdbcType=VARCHAR},
             D_GRADUATETIME    = #{graduateTime, jdbcType=DATE},
             C_EDUCATION       = #{education, jdbcType=VARCHAR},
@@ -90,9 +85,8 @@
             C_ADDRESS         = #{address, jdbcType=VARCHAR}
         where N_ID = #{id}
     </update>
-    <select id="getGraduateById" parameterType="java.lang.String" resultMap="graduate">
+    <select id="getGraduateById" parameterType="Integer" resultMap="graduate">
         select N_ID,
-               C_PROTOCOLID,
                C_NAME,
                C_IDCARD,
                N_GENDER,
@@ -100,7 +94,7 @@
                C_POLITICALSTATUS,
                C_COLLEGE,
                C_PROFESSION,
-               c_gender,
+               C_GRADE,
                C_TEL,
                D_GRADUATETIME,
                C_EDUCATION,
@@ -111,7 +105,6 @@
     </select>
     <select id="getGraduates" resultMap="graduate">
         select N_ID,
-               C_PROTOCOLID,
                C_NAME,
                C_IDCARD,
                N_GENDER,
@@ -119,7 +112,7 @@
                C_POLITICALSTATUS,
                C_COLLEGE,
                C_PROFESSION,
-               c_gender,
+               C_GRADE,
                C_TEL,
                D_GRADUATETIME,
                C_EDUCATION,

@@ -26,6 +26,7 @@ import java.util.UUID;
  */
 @Repository
 public class TeacherDaoMyBatisImpl implements ITeacherDao {
+
     @Autowired
     private TeacherMapper teacherMapper;
 

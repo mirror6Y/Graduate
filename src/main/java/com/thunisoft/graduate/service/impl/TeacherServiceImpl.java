@@ -10,6 +10,7 @@ import com.thunisoft.graduate.dao.ITeacherDao;
 import com.thunisoft.graduate.service.ITeacherService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
@@ -25,6 +26,7 @@ import java.util.List;
  * @version 1.0
  */
 @Service
+@Transactional
 public class TeacherServiceImpl implements ITeacherService {
     /**
      * 教师信息 数据访问对象
