@@ -61,8 +61,16 @@ public class Teacher implements Serializable {
      */
     private String permission;
 
-    /*
-     *添加教师信息
+    /**
+     * 添加教师信息
+     *
+     * @param id         工号
+     * @param name       姓名
+     * @param gender     性别
+     * @param college    院系
+     * @param office     办公室
+     * @param tel        联系方式
+     * @param permission 权限
      */
     public Teacher(Integer id, String name, Integer gender, String college, String office, String tel, String permission) {
         this.id = id;

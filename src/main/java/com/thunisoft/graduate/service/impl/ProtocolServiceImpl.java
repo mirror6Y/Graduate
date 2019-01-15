@@ -4,10 +4,13 @@
  */
 package com.thunisoft.graduate.service.impl;
 
+import com.thunisoft.graduate.common.Constants;
 import com.thunisoft.graduate.common.model.Protocol;
 import com.thunisoft.graduate.dao.IProtocolDao;
 import com.thunisoft.graduate.service.IProtocolService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
@@ -23,39 +26,42 @@ import java.util.List;
  * @version 1.0
  */
 @Service
+@Transactional
 public class ProtocolServiceImpl implements IProtocolService {
+
     /**
      * 三方协议 数据访问对象
      */
-    private IProtocolDao protocolDao;
+    private final IProtocolDao protocolDao;
 
-    /**
-     * 注入 三方协议 数据访问对象
-     *
-     * @param protocolDao 三方协议 数据访问对象
-     */
-    public void setProtocolDao(IProtocolDao protocolDao) {
+    @Autowired
+    public ProtocolServiceImpl(IProtocolDao protocolDao) {
         this.protocolDao = protocolDao;
     }
 
+
     @Override
-    public Protocol getProtocolById(String id) {
-        return protocolDao.getProtocolById(id);
+    public String getProtocolById(String id) {
+        protocolDao.getProtocolById(id);
+        return Constants.C_CURD_SUCCESS;
     }
 
     @Override
-    public void addProtocol(Protocol protocol) {
+    public String addProtocol(Protocol protocol) {
         protocolDao.addProtocol(protocol);
+        return Constants.C_CURD_SUCCESS;
     }
 
     @Override
-    public void updateProtocol(Protocol protocol) {
+    public String updateProtocol(Protocol protocol) {
         protocolDao.updateProtocol(protocol);
+        return Constants.C_CURD_SUCCESS;
     }
 
     @Override
-    public void deleteProtocolById(String id) {
+    public String deleteProtocolById(String id) {
         protocolDao.deleteProtocolById(id);
+        return Constants.C_CURD_SUCCESS;
     }
 
     @Override

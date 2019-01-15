@@ -5,7 +5,6 @@
 package com.thunisoft.graduate.service;
 
 import com.thunisoft.graduate.common.model.Protocol;
-import org.springframework.stereotype.Service;
 
 import java.util.List;
 
@@ -41,23 +40,23 @@ public interface IProtocolService {
      * @param id 三方协议 协议编号
      * @return 三方协议
      */
-    Protocol getProtocolById(String id);
+    String getProtocolById(String id);
     
     /**
      * 添加三方协议
      * @param protocol 三方协议
      */
-    void addProtocol(Protocol protocol);
+    String addProtocol(Protocol protocol);
     
     /**
      * 更新三方协议
      * @param protocol 三方协议
      */
-    void updateProtocol(Protocol protocol);
+    String updateProtocol(Protocol protocol);
     
     /**
      * 删除三方协议
      * @param id 三方协议 协议编号
      */
-    void deleteProtocolById(String id);
+    String deleteProtocolById(String id);
 }
