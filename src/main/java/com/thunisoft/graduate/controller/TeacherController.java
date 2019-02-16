@@ -32,12 +32,12 @@ public class TeacherController {
      * url:"http://localhost:8080/teacher/addTeacher"
      */
     // == @RequestMapping(value="/addTeacher",method=RequestMethod.POST)
-    @ResponseBody
     @PostMapping("/addTeacher")
     public String addTeacher() {
         Teacher teacher = new Teacher(201213, "蓝曦臣", 1, "计算机工程学院", "1918", "18341114205", "");
-        String mark = teacherService.addTeacher(teacher);
-        return Constants.C_CURD_SUCCESS.equals(mark) ? Constants.C_SUCCESS : Constants.C_FAIL;
+        teacherService.addTeacher(teacher);
+        return Constants.C_SUCCESS;
+//        return Constants.C_CURD_SUCCESS.equals(mark) ? Constants.C_SUCCESS : Constants.C_FAIL;
     }
 
     /**
@@ -45,11 +45,12 @@ public class TeacherController {
      * url:"http://localhost:8080/teacher/deleteTeacher/{id}"
      */
     // == @RequestMapping(value = "/deleteTeacher/{id}", method = RequestMethod.DELETE)
-    @ResponseBody
     @DeleteMapping("/deleteTeacherById/{id}")
     public String deleteTeacherById(@PathVariable("id") Integer id) {
-        String mark = teacherService.deleteTeacherById(id);
-        return Constants.C_CURD_SUCCESS.equals(mark) ? Constants.C_SUCCESS : Constants.C_FAIL;
+//        String mark =
+        teacherService.deleteTeacherById(id);
+        return Constants.C_SUCCESS;
+//        return Constants.C_CURD_SUCCESS.equals(mark) ? Constants.C_SUCCESS : Constants.C_FAIL;
     }
 
     /**
@@ -57,12 +58,13 @@ public class TeacherController {
      * url:"http://localhost:8080/teacher/updateTeacher"
      */
     // == @RequestMapping(value="/updateTeacher",method=RequestMethod.PUT)
-    @ResponseBody
     @PutMapping("/updateTeacher")
     public String updateTeacher() {
         Teacher teacher = new Teacher(201213, "123456", "蓝忘机", 1, "计算机工程学院", "1918", "18341114205", "");
-        String mark = teacherService.updateTeacher(teacher);
-        return Constants.C_CURD_SUCCESS.equals(mark) ? Constants.C_SUCCESS : Constants.C_FAIL;
+//        String mark =
+        teacherService.updateTeacher(teacher);
+        return Constants.C_SUCCESS;
+//        return Constants.C_CURD_SUCCESS.equals(mark) ? Constants.C_SUCCESS : Constants.C_FAIL;
     }
 
     /**
@@ -74,8 +76,10 @@ public class TeacherController {
     // == @RequestMapping(value = "/getTeacherById/{id}", method = RequestMethod.GET)
     @GetMapping("/getTeacherById/{id}")
     public String getTeacherById(@PathVariable("id") Integer id) {
-        String mark = teacherService.getTeacherById(id);
-        return Constants.C_CURD_SUCCESS.equals(mark) ? Constants.C_SUCCESS : Constants.C_FAIL;
+//        String mark =
+        teacherService.getTeacherById(id);
+        return Constants.C_SUCCESS;
+//        return Constants.C_CURD_SUCCESS.equals(mark) ? Constants.C_SUCCESS : Constants.C_FAIL;
     }
 
 }
