@@ -47,6 +47,14 @@ public interface ITeacherService {
     Teacher getTeacherById(Integer id);
 
     /**
+     * 根据 工号 获取教师信息的数量
+     *
+     * @param id 教师信息 工号
+     * @return 教师信息的数量
+     */
+    int getTeachersCountById(Integer id);
+
+    /**
      * 添加教师信息
      *
      * @param teacher 教师信息

@@ -71,4 +71,9 @@ public class TeacherServiceImpl implements ITeacherService {
         return teacherDao.getTeachersCount();
     }
 
+    @Override
+    public int getTeachersCountById(Integer id) {
+        return teacherDao.getTeachersCountById(id);
+    }
+
 }

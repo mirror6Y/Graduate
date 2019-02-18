@@ -1,6 +1,6 @@
 #根据不同环境选用不同的配置
 server:
-  port: 8080
+  port: 8088
 spring:
   #数据源
   datasource:

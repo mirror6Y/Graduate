@@ -74,4 +74,8 @@
         select count(*)
         from T_TEACHER
     </select>
+    <select id="getTeachersCountById" resultType="int">
+        select count(*)
+        from T_TEACHER where N_ID=#{id}
+    </select>
 </mapper>

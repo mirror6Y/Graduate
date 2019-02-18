@@ -35,6 +35,7 @@ public class TeacherDaoMyBatisImpl implements ITeacherDao {
         return teacherMapper.getTeacherById(id);
     }
 
+
     @Override
     public void addTeacher(Teacher teacher) {
         teacherMapper.addTeacher(teacher);
@@ -61,6 +62,11 @@ public class TeacherDaoMyBatisImpl implements ITeacherDao {
     @Override
     public int getTeachersCount() {
         return teacherMapper.getTeachersCount();
+    }
+
+    @Override
+    public int getTeachersCountById(Integer id) {
+        return teacherMapper.getTeachersCountById(id);
     }
 
 }
