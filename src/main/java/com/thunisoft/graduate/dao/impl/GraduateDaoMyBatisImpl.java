@@ -66,4 +66,9 @@ public class GraduateDaoMyBatisImpl implements IGraduateDao {
         return graduateMapper.getGraduatesCount();
     }
 
+    @Override
+    public int getGraduateCountById(Integer id) {
+        return graduateMapper.getGraduateCountById(id);
+    }
+
 }

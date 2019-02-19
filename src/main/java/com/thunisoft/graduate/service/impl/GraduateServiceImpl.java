@@ -40,27 +40,23 @@ public class GraduateServiceImpl implements IGraduateService {
 
 
     @Override
-    public String getGraduateById(Integer id) {
-        graduateDao.getGraduateById(id);
-        return Constants.C_CURD_SUCCESS;
+    public Graduate getGraduateById(Integer id) {
+        return graduateDao.getGraduateById(id);
     }
 
     @Override
-    public String addGraduate(Graduate graduate) {
+    public void addGraduate(Graduate graduate) {
         graduateDao.addGraduate(graduate);
-        return Constants.C_CURD_SUCCESS;
     }
 
     @Override
-    public String updateGraduate(Graduate graduate) {
+    public void updateGraduate(Graduate graduate) {
         graduateDao.updateGraduate(graduate);
-        return Constants.C_CURD_SUCCESS;
     }
 
     @Override
-    public String deleteGraduateById(Integer id) {
+    public void deleteGraduateById(Integer id) {
         graduateDao.deleteGraduateById(id);
-        return Constants.C_CURD_SUCCESS;
     }
 
     @Override
@@ -73,6 +69,11 @@ public class GraduateServiceImpl implements IGraduateService {
     @Override
     public int getGraduatesCount() {
         return graduateDao.getGraduatesCount();
+    }
+
+    @Override
+    public int getGraduateCountById(Integer id) {
+        return graduateDao.getGraduateCountById(id);
     }
 
 }

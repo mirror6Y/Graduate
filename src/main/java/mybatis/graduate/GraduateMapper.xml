@@ -124,4 +124,9 @@
         select count(*)
         from T_GRADUATE
     </select>
+    <select id="getGraduateCountById" resultType="int">
+        select count(*)
+        from T_GRADUATE
+        where n_id = #{id}
+    </select>
 </mapper>

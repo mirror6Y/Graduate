@@ -41,27 +41,23 @@ public class ProtocolServiceImpl implements IProtocolService {
 
 
     @Override
-    public String getProtocolById(String id) {
-        protocolDao.getProtocolById(id);
-        return Constants.C_CURD_SUCCESS;
+    public Protocol getProtocolById(String id) {
+        return protocolDao.getProtocolById(id);
     }
 
     @Override
-    public String addProtocol(Protocol protocol) {
+    public void addProtocol(Protocol protocol) {
         protocolDao.addProtocol(protocol);
-        return Constants.C_CURD_SUCCESS;
     }
 
     @Override
-    public String updateProtocol(Protocol protocol) {
+    public void updateProtocol(Protocol protocol) {
         protocolDao.updateProtocol(protocol);
-        return Constants.C_CURD_SUCCESS;
     }
 
     @Override
-    public String deleteProtocolById(String id) {
+    public void deleteProtocolById(String id) {
         protocolDao.deleteProtocolById(id);
-        return Constants.C_CURD_SUCCESS;
     }
 
     @Override
@@ -74,6 +70,11 @@ public class ProtocolServiceImpl implements IProtocolService {
     @Override
     public int getProtocolsCount() {
         return protocolDao.getProtocolsCount();
+    }
+
+    @Override
+    public int getProtocolCountById(String id) {
+        return protocolDao.getProtocolCountById(id);
     }
 
 }

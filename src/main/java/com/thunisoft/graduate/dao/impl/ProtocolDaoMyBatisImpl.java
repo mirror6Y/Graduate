@@ -66,4 +66,9 @@ public class ProtocolDaoMyBatisImpl implements IProtocolDao {
         return protocolMapper.getProtocolsCount();
     }
 
+    @Override
+    public int getProtocolCountById(String id) {
+        return protocolMapper.getProtocolCountById(id);
+    }
+
 }

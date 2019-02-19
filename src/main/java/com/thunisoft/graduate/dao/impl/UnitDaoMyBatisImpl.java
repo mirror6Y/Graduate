@@ -19,14 +19,20 @@ import java.util.UUID;
  * <p> CreationTime: 2018-12-24 16:30:40
  * <br>Copyright: &copy;2018 <a href="http://www.thunisoft.com">Thunisoft</a>
  * <br>Email: <a href="mailto:liuye@thunisoft.com">liuye@thunisoft.com</a></p>
- * @version 1.0
+ *
  * @author 由stage工具自动生成
  * @author liuye
+ * @version 1.0
  */
 @Repository
 public class UnitDaoMyBatisImpl implements IUnitDao {
+
+    private final UnitMapper unitMapper;
+
     @Autowired
-    private UnitMapper unitMapper;
+    public UnitDaoMyBatisImpl(UnitMapper unitMapper) {
+        this.unitMapper = unitMapper;
+    }
 
     @Override
     public Unit getUnitById(String id) {
@@ -55,7 +61,7 @@ public class UnitDaoMyBatisImpl implements IUnitDao {
     public List<Unit> getUnits(final int firstResult, final int maxResults) {
         int pageNo = firstResult / maxResults + 1;
 //        ArteryInterceptor.startPage(pageNo, maxResults, false); // 自动分页
-        
+
         return unitMapper.getUnits(firstResult, maxResults);
     }
 
@@ -63,5 +69,10 @@ public class UnitDaoMyBatisImpl implements IUnitDao {
     public int getUnitsCount() {
         return unitMapper.getUnitsCount();
     }
-    
+
+    @Override
+    public int getUnitsCountById(String id) {
+        return unitMapper.getUnitsCountById(id);
+    }
+
 }

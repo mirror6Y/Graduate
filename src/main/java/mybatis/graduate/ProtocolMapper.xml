@@ -89,4 +89,9 @@
         select count(*)
         from T_PROTOCOL
     </select>
+    <select id="getProtocolCountById" resultType="int">
+        select count(*)
+        from T_PROTOCOL
+        where C_ID = #{ID}
+    </select>
 </mapper>

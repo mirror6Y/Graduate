@@ -30,10 +30,9 @@ public class UtilController {
      */
     @ResponseBody
     @PostMapping("/addUnit")
-    public String addUnit() {
+    public void addUnit() {
         Unit unit = new Unit("91210200241765653R", "大连华信计算机技术股份有限公司", "辽宁省大连高新技术产业园区黄浦路977号", "116023", "大连", "", "");
-        String mark = unitService.addUnit(unit);
-        return Constants.C_CURD_SUCCESS.equals(mark) ? Constants.C_SUCCESS : Constants.C_FAIL;
+        unitService.addUnit(unit);
     }
 
     /**
@@ -42,9 +41,8 @@ public class UtilController {
      */
     @ResponseBody
     @DeleteMapping("/deleteUnitById/{id}")
-    public String deleteUnitById(@PathVariable("id") String id) {
-        String mark = unitService.deleteUnitById(id);
-        return Constants.C_CURD_SUCCESS.equals(mark) ? Constants.C_SUCCESS : Constants.C_FAIL;
+    public void deleteUnitById(@PathVariable("id") String id) {
+        unitService.deleteUnitById(id);
     }
 
     /**
@@ -53,10 +51,9 @@ public class UtilController {
      */
     @ResponseBody
     @PutMapping("/updateUnit")
-    public String updateUnit() {
+    public void updateUnit() {
         Unit unit = new Unit("91210200241765653R", "大连华信计算机技术股份有限公司", "辽宁省大连高新技术产业园区黄浦路977号", "116023", "大连", "张三", "");
-        String mark = unitService.updateUnit(unit);
-        return Constants.C_CURD_SUCCESS.equals(mark) ? Constants.C_SUCCESS : Constants.C_FAIL;
+        unitService.updateUnit(unit);
     }
 
     /**
@@ -67,8 +64,13 @@ public class UtilController {
      */
     @GetMapping("/getUnitById/{id}")
     public String getUnitById(@PathVariable("id") String id) {
-        String mark = unitService.getUnitById(id);
-        return Constants.C_CURD_SUCCESS.equals(mark) ? Constants.C_SUCCESS : Constants.C_FAIL;
+        Integer presence = unitService.getUnitsCountById(id);
+        if (presence > 0) {
+            unitService.getUnitById(id);
+            return Constants.C_CURD_SUCCESS;
+        } else {
+            return "您输入的组织机构代码错误，尚未查询到该单位的信息";
+        }
     }
 
 }

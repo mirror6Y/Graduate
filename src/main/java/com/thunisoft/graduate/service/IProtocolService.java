@@ -40,23 +40,31 @@ public interface IProtocolService {
      * @param id 三方协议 协议编号
      * @return 三方协议
      */
-    String getProtocolById(String id);
+    Protocol getProtocolById(String id);
+
+    /**
+     * 根据 协议编号 获取三方协议的数量
+     *
+     * @param id 三方协议 协议编号
+     * @return 三方协议的数量
+     */
+    int getProtocolCountById(String id);
     
     /**
      * 添加三方协议
      * @param protocol 三方协议
      */
-    String addProtocol(Protocol protocol);
+    void addProtocol(Protocol protocol);
     
     /**
      * 更新三方协议
      * @param protocol 三方协议
      */
-    String updateProtocol(Protocol protocol);
+    void updateProtocol(Protocol protocol);
     
     /**
      * 删除三方协议
      * @param id 三方协议 协议编号
      */
-    String deleteProtocolById(String id);
+    void deleteProtocolById(String id);
 }

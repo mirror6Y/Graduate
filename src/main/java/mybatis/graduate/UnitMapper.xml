@@ -57,4 +57,9 @@
         select count(*)
         from T_UNIT
     </select>
+    <select id="getUnitsCountById" resultType="int">
+        select count(*)
+        from T_UNIT
+        where C_ID = #{id}
+    </select>
 </mapper>

@@ -40,23 +40,31 @@ public interface IGraduateService {
      * @param id 毕业生信息 编号
      * @return 毕业生信息
      */
-    String getGraduateById(Integer id);
+    Graduate getGraduateById(Integer id);
+
+    /**
+     * 根据 编号 获取毕业生信息的数量
+     *
+     * @param id 毕业生信息 编号
+     * @return 毕业生信息的数量
+     */
+    int getGraduateCountById(Integer id);
     
     /**
      * 添加毕业生信息
      * @param graduate 毕业生信息
      */
-    String addGraduate(Graduate graduate);
+    void addGraduate(Graduate graduate);
     
     /**
      * 更新毕业生信息
      * @param graduate 毕业生信息
      */
-    String updateGraduate(Graduate graduate);
+    void updateGraduate(Graduate graduate);
     
     /**
      * 删除毕业生信息
      * @param id 毕业生信息 编号
      */
-    String deleteGraduateById(Integer id);
+    void deleteGraduateById(Integer id);
 }

@@ -26,36 +26,29 @@ public class ProtocolController {
      * 添加协议信息
      * url:"http://localhost:8088/protocol/addProtocol"
      */
-    @ResponseBody
     @PostMapping("/addProtocol")
-    public String addProtocol() {
+    public void addProtocol() {
         Protocol protocol = new Protocol(201512031, "91210200241765653R", "大连市高新园区人才交流中心", "", "人事代理部", "", "", "");
-        String mark = protocolService.addProtocol(protocol);
-        return Constants.C_CURD_SUCCESS.equals(mark) ? Constants.C_SUCCESS : Constants.C_FAIL;
+        protocolService.addProtocol(protocol);
     }
 
     /**
      * 删除协议信息
      * url:"http://localhost:8088/protocol/deleteProtocolById/{id}"
      */
-    @ResponseBody
     @DeleteMapping("/deleteProtocolById/{id}")
-    public String deleteProtocolById(@PathVariable("id") String id) {
-        String mark = protocolService.deleteProtocolById(id);
-        return Constants.C_CURD_SUCCESS.equals(mark) ? Constants.C_SUCCESS : Constants.C_FAIL;
+    public void deleteProtocolById(@PathVariable("id") String id) {
+        protocolService.deleteProtocolById(id);
     }
 
     /**
      * 修改协议信息
      * url:"http://localhost:8088/protocol/updateProtocol"
      */
-    @ResponseBody
     @PutMapping("/updateProtocol")
-    public String updateProtocol() {
-        Protocol protocol = new Protocol("ad11511762a14a248292be03e01f9c81",201512031, "91210200241765653R", "大连市高新园区人才交流中心", "", "人事代理部", "116023", "", "");
-        String mark = protocolService.updateProtocol(protocol);
-//                protocolService.updateProtocol(protocol);
-        return Constants.C_CURD_SUCCESS.equals(mark) ? Constants.C_SUCCESS : Constants.C_FAIL;
+    public void updateProtocol() {
+        Protocol protocol = new Protocol("ad11511762a14a248292be03e01f9c81", 201512031, "91210200241765653R", "大连市高新园区人才交流中心", "", "人事代理部", "116023", "", "");
+        protocolService.updateProtocol(protocol);
     }
 
     /**
@@ -66,7 +59,13 @@ public class ProtocolController {
      */
     @GetMapping("/getProtocolById/{id}")
     public String getProtocolById(@PathVariable("id") String id) {
-        String mark = protocolService.getProtocolById(id);
-        return Constants.C_CURD_SUCCESS.equals(mark) ? Constants.C_SUCCESS : Constants.C_FAIL;
+        Integer presence=protocolService.getProtocolCountById(id);
+        if(presence>0){
+            protocolService.getProtocolById(id);
+            return Constants.C_CURD_SUCCESS;
+        }else{
+            return "您输入的编号错误，尚未查询到该协议的信息";
+        }
     }
+
 }

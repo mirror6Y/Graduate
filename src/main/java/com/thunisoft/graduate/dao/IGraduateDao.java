@@ -40,6 +40,14 @@ public interface IGraduateDao {
      * @return 毕业生信息
      */
     Graduate getGraduateById(Integer id);
+
+    /**
+     * 根据 编号 获取毕业生信息的数量
+     *
+     * @param id 毕业生信息 编号
+     * @return 毕业生信息的数量
+     */
+    int getGraduateCountById(Integer id);
     
     /**
      * 添加毕业生信息

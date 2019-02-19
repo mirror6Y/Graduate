@@ -4,7 +4,6 @@
  */
 package com.thunisoft.graduate.service.impl;
 
-import com.thunisoft.graduate.common.Constants;
 import com.thunisoft.graduate.common.model.Unit;
 import com.thunisoft.graduate.dao.IUnitDao;
 import com.thunisoft.graduate.service.IUnitService;
@@ -40,27 +39,23 @@ public class UnitServiceImpl implements IUnitService {
 
 
     @Override
-    public String getUnitById(String id) {
-        unitDao.getUnitById(id);
-        return Constants.C_CURD_SUCCESS;
+    public Unit getUnitById(String id) {
+        return unitDao.getUnitById(id);
     }
 
     @Override
-    public String addUnit(Unit unit) {
+    public void addUnit(Unit unit) {
         unitDao.addUnit(unit);
-        return Constants.C_CURD_SUCCESS;
     }
 
     @Override
-    public String updateUnit(Unit unit) {
+    public void updateUnit(Unit unit) {
         unitDao.updateUnit(unit);
-        return Constants.C_CURD_SUCCESS;
     }
 
     @Override
-    public String deleteUnitById(String id) {
+    public void deleteUnitById(String id) {
         unitDao.deleteUnitById(id);
-        return Constants.C_CURD_SUCCESS;
     }
 
     @Override
@@ -76,4 +71,8 @@ public class UnitServiceImpl implements IUnitService {
         return unitDao.getUnitsCount();
     }
 
+    @Override
+    public int getUnitsCountById(String id) {
+        return unitDao.getUnitsCountById(id);
+    }
 }
