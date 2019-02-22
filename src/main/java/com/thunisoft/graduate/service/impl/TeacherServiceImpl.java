@@ -12,6 +12,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
+import java.util.Map;
 
 /**
  * <p> Description: 教师信息 服务实现</p>
@@ -74,6 +75,11 @@ public class TeacherServiceImpl implements ITeacherService {
     @Override
     public int getTeachersCountById(Integer id) {
         return teacherDao.getTeachersCountById(id);
+    }
+
+    @Override
+    public int getTeachersCountByMap(Map map) {
+        return teacherDao.getTeachersCountByMap(map);
     }
 
 }

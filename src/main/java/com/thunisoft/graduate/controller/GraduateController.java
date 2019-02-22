@@ -34,7 +34,7 @@ public class GraduateController {
      * url:"http://localhost:8088/graduate/addGraduate"
      */
     @PostMapping("/addGraduate")
-    public String addGraduate() {
+    public void addGraduate() {
         DateFormat format = new SimpleDateFormat("yyyy-MM-dd");
         Graduate graduate = null;
         try {
@@ -43,8 +43,7 @@ public class GraduateController {
         } catch (ParseException e) {
             e.printStackTrace();
         }
-        String mark = graduateService.addGraduate(graduate);
-        return Constants.C_CURD_SUCCESS.equals(mark) ? Constants.C_SUCCESS : Constants.C_FAIL;
+        graduateService.addGraduate(graduate);
     }
 
     /**
@@ -81,11 +80,11 @@ public class GraduateController {
      */
     @GetMapping("/getGraduateById/{id}")
     public String getGraduateById(@PathVariable("id") Integer id) {
-        Integer presence=graduateService.getGraduateCountById(id);
-        if(presence>0){
+        Integer presence = graduateService.getGraduateCountById(id);
+        if (presence > 0) {
             graduateService.getGraduateById(id);
             return Constants.C_CURD_SUCCESS;
-        }else{
+        } else {
             return "您输入的学号错误，尚未查询到该毕业生的信息";
         }
     }

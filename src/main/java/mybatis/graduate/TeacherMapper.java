@@ -8,6 +8,7 @@ import com.thunisoft.graduate.common.model.Teacher;
 import org.apache.ibatis.annotations.Param;
 
 import java.util.List;
+import java.util.Map;
 
 /**
  * <p> Description: 教师信息 Mybatis数据访问映射接口</p>
@@ -41,18 +42,26 @@ public interface TeacherMapper {
     /**
      * 根据 工号 获取教师信息
      *
-     * @param id 教师信息 工号
+     * @param id 工号
      * @return 教师信息
      */
     Teacher getTeacherById(Integer id);
 
     /**
-     * 根据 工号 获取教师信息的数量
+     * 根据 工号 获取教师信息的数量 (获取信息or注册信息)
      *
-     * @param id 教师信息 工号
+     * @param id 工号
      * @return 教师信息的数量
      */
     int getTeachersCountById(Integer id);
+
+    /**
+     * 登录校验 判断该账号密码是否匹配
+     *
+     * @param map 包含工号和密码
+     * @return 教师信息的数量
+     */
+    int getTeachersCountByMap(Map map);
 
     /**
      * 添加教师信息
@@ -71,7 +80,7 @@ public interface TeacherMapper {
     /**
      * 删除教师信息
      *
-     * @param id 教师信息 工号
+     * @param id 工号
      */
     void deleteTeacherById(Integer id);
 }

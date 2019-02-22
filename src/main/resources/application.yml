@@ -26,7 +26,9 @@ spring:
     testOnReturn: false
     poolPreparedStatements: true
     maxOpenPreparedStatements: 20
-
+  #thymeleaf模版前缀
+  thymeleaf:
+    prefix: classpath:/templates/
 #mybatis扫描设置
 mybatis:
   mapper-locations: classpath*:mybatis/graduate/*.xml

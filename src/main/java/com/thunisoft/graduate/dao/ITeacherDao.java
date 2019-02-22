@@ -7,6 +7,7 @@ package com.thunisoft.graduate.dao;
 import com.thunisoft.graduate.common.model.Teacher;
 
 import java.util.List;
+import java.util.Map;
 
 /**
  * <p> Description: 教师信息 数据访问接口</p>
@@ -52,6 +53,14 @@ public interface ITeacherDao {
      * @return 教师信息的数量
      */
     int getTeachersCountById(Integer id);
+
+    /**
+     * 登录校验 判断该账号密码是否匹配
+     *
+     * @param map 包含工号和密码
+     * @return 教师信息的数量
+     */
+    int getTeachersCountByMap(Map map);
 
     /**
      * 添加教师信息

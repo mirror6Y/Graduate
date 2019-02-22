@@ -78,4 +78,8 @@
         select count(*)
         from T_TEACHER where N_ID=#{id}
     </select>
+    <select id="getTeachersCountByMap" resultType="int">
+        select count(*)
+        from T_TEACHER where N_ID=#{id} and C_PASSWORD=#{password}
+    </select>
 </mapper>

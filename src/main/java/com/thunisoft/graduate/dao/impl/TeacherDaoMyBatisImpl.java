@@ -11,6 +11,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
+import java.util.Map;
 import java.util.UUID;
 
 /**
@@ -27,8 +28,13 @@ import java.util.UUID;
 @Repository
 public class TeacherDaoMyBatisImpl implements ITeacherDao {
 
+
+    private final TeacherMapper teacherMapper;
+
     @Autowired
-    private TeacherMapper teacherMapper;
+    public TeacherDaoMyBatisImpl(TeacherMapper teacherMapper) {
+        this.teacherMapper = teacherMapper;
+    }
 
     @Override
     public Teacher getTeacherById(Integer id) {
@@ -68,5 +74,11 @@ public class TeacherDaoMyBatisImpl implements ITeacherDao {
     public int getTeachersCountById(Integer id) {
         return teacherMapper.getTeachersCountById(id);
     }
+
+    @Override
+    public int getTeachersCountByMap(Map map) {
+        return teacherMapper.getTeachersCountByMap(map);
+    }
+
 
 }
