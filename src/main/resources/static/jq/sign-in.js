@@ -13,8 +13,8 @@ function jump() {
     }
 
     $.ajax({
-        "url": "/login/login",        //login是登录接口
-        type: 'POST',
+        url: "/login/login",        //login是登录接口
+        type: 'GET',
         dataType: 'json',
         contentType: 'application/json',
         data: {
@@ -29,14 +29,15 @@ function jump() {
             if (result == "index") {
                 alert("登录成功");
             } else {
-                layer.alert("账号或密码不正确");
+                alert("账号或密码不正确");
             }
         }
         ,
         error: function (XMLHttpRequest, textStatus, errorThrown) {
-            console.log('XMLHttpRequest:');
-            console.log(XMLHttpRequest);
-            layer.alert('网络异常！尝试刷新网页解决问题')
+            console.log('XMLHttpRequest:' + XMLHttpRequest);
+            console.log('errorThrown:' + errorThrown);
+            alert('网络异常！尝试刷新网页解决问题')
+            console.log(object);
         }
     })
     ;
