@@ -25,20 +25,24 @@ public class LoginController {
 
 
 //********************
-
+        response.setContentType("application/json,charset=UTF-8");
         String account = request.getParameter("account");
         String password = request.getParameter("password");
         Map<String, Object> map = new HashMap<>();
         map.put("id", account);
         map.put("password", password);
         int presence = teacherService.getTeachersCountByMap(map);
-        if (presence > 0) {
+        if (presence > 0)
+        {
             return "index";
-        } else if (null == map.get("id")) {
+        } else if (null == map.get("id"))
+        {
             return "id is null";
-        } else if (null == map.get("password")) {
+        } else if (null == map.get("password"))
+        {
             return "password is null";
-        } else {
+        } else
+        {
             return "id or password is error";
         }
 
