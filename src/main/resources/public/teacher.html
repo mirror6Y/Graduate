@@ -1,0 +1,519 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>毕业生就业信息管理系统</title>
+    <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="mirror6">
+
+    <link rel="stylesheet" type="text/css" href="lib/bootstrap/css/bootstrap.css">
+    <link rel="stylesheet" href="lib/font-awesome/css/font-awesome.css">
+    <link rel="stylesheet" type="text/css" href="stylesheets/theme.css">
+    <link rel="stylesheet" type="text/css" href="stylesheets/premium.css">
+    <link rel="stylesheet" type="text/css" href="stylesheets/theme.css">
+    <link rel="stylesheet" type="text/css" href="stylesheets/premium.css">
+
+    <script src="lib/jquery-1.11.1.min.js" type="text/javascript"></script>
+    <script src="jq/teacher.js"></script>
+
+</head>
+<body class=" theme-blue">
+
+<!-- Demo page code -->
+
+<script type="text/javascript">
+    $(function () {
+        var match = document.cookie.match(new RegExp('color=([^;]+)'));
+        if (match) var color = match[1];
+        if (color) {
+            $('body').removeClass(function (index, css) {
+                return (css.match(/\btheme-\S+/g) || []).join(' ')
+            })
+            $('body').addClass('theme-' + color);
+        }
+
+        $('[data-popover="true"]').popover({html: true});
+
+    });
+</script>
+<style type="text/css">
+    #line-chart {
+        height: 300px;
+        width: 800px;
+        margin: 0px auto;
+        margin-top: 1em;
+    }
+
+    .navbar-default .navbar-brand, .navbar-default .navbar-brand:hover {
+        color: #fff;
+    }
+</style>
+
+<script type="text/javascript">
+    $(function () {
+        var uls = $('.sidebar-nav > ul > *').clone();
+        uls.addClass('visible-xs');
+        $('#main-menu').append(uls.clone());
+    });
+</script>
+
+
+<!-- Le fav and touch icons -->
+<link rel="shortcut icon" href="../assets/ico/favicon.ico">
+<link rel="apple-touch-icon-precomposed" sizes="144x144" href="../assets/ico/apple-touch-icon-144-precomposed.png">
+<link rel="apple-touch-icon-precomposed" sizes="114x114" href="../assets/ico/apple-touch-icon-114-precomposed.png">
+<link rel="apple-touch-icon-precomposed" sizes="72x72" href="../assets/ico/apple-touch-icon-72-precomposed.png">
+<link rel="apple-touch-icon-precomposed" href="../assets/ico/apple-touch-icon-57-precomposed.png">
+
+
+<div class="navbar navbar-default" role="navigation">
+    <div class="navbar-header">
+        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target=".navbar-collapse">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+        </button>
+        <a class="" href="index.html"><span class="navbar-brand"><span class="fa fa-paper-plane"></span> Aircraft</span></a>
+    </div>
+
+    <div class="navbar-collapse collapse" style="height: 1px;">
+        <ul id="main-menu" class="nav navbar-nav navbar-right">
+            <li class="dropdown hidden-xs">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                    <span class="glyphicon glyphicon-user padding-right-small"
+                          style="position:relative;top: 3px;"></span> Jack Smith
+                    <i class="fa fa-caret-down"></i>
+                </a>
+
+                <ul class="dropdown-menu">
+                    <li><a href="./">My Account</a></li>
+                    <li class="divider"></li>
+                    <li class="dropdown-header">Admin Panel</li>
+                    <li><a href="./">Users</a></li>
+                    <li><a href="./">Security</a></li>
+                    <li><a tabindex="-1" href="./">Payments</a></li>
+                    <li class="divider"></li>
+                    <li><a tabindex="-1" href="sign-in.html">Logout</a></li>
+                </ul>
+            </li>
+        </ul>
+
+    </div>
+</div>
+</div>
+<div class="copyrights">Collect from <a href="http://www.cssmoban.com/" title="网站模板">网站模板</a></div>
+
+<div class="sidebar-nav">
+    <ul>
+
+        <!--主页-->
+        <li><a href="#" data-target=".dashboard-menu" class="nav-header collapsed" data-toggle="collapse"><i
+                class="fa fa-fw fa-dashboard"></i> 主页<i class="fa fa-collapse"></i></a></li>
+        <li>
+            <ul class="dashboard-menu nav nav-list collapse ">
+                <li><a href="index.html"><span class="fa fa-caret-right"></span> 添加招聘信息</a></li>
+                <li><a href="users.html"><span class="fa fa-caret-right"></span> 删除招聘信息</a></li>
+                <li><a href="user.html"><span class="fa fa-caret-right"></span> 修改招聘信息</a></li>
+                <li><a href="media.html"><span class="fa fa-caret-right"></span>就业信息统计</a></li>
+                <li><a href="calendar.html"><span class="fa fa-caret-right"></span> Calendar</a></li>
+            </ul>
+        </li>
+
+        <!--教师信息-->
+        <li><a href="#" data-target=".premium-menu" class="nav-header " data-toggle="collapse"><i
+                class="fa fa-fw fa-fighter-jet"></i> 教师信息<i class="fa fa-collapse"></i></a></li>
+        <li>
+            <ul class="premium-menu nav nav-list collapse in">
+                <li class="active"><a href="#"><span class="fa fa-caret-right"></span>信息列表</a></li>
+                <li><a href="premium-profile.html"><span class="fa fa-caret-right"></span>删除信息</a></li>
+                <li><a href="premium-blog.html"><span class="fa fa-caret-right"></span>修改信息</a></li>
+                <li><a href="premium-blog-item.html"><span class="fa fa-caret-right"></span>查看信息</a></li>
+            </ul>
+        </li>
+
+        <!--毕业生信息-->
+        <li><a href="#" data-target=".accounts-menu" class="nav-header collapsed" data-toggle="collapse"><i
+                class="fa fa-fw fa-briefcase"></i> 毕业生信息 <i class="fa fa-collapse"></i></a></li>
+        <li>
+            <ul class="accounts-menu nav nav-list collapse">
+                <li><a href="sign-in.html"><span class="fa fa-caret-right"></span> Sign In</a></li>
+                <li><a href="sign-up.html"><span class="fa fa-caret-right"></span> Sign Up</a></li>
+                <li><a href="reset-password.html"><span class="fa fa-caret-right"></span> Reset Password</a></li>
+            </ul>
+        </li>
+
+        <!--单位信息-->
+        <li><a href="#" data-target=".legal-menu" class="nav-header collapsed" data-toggle="collapse"><i
+                class="fa fa-fw fa-legal"></i> 单位信息<i class="fa fa-collapse"></i></a></li>
+        <li>
+            <ul class="legal-menu nav nav-list collapse">
+                <li><a href="privacy-policy.html"><span class="fa fa-caret-right"></span> Privacy Policy</a></li>
+                <li><a href="terms-and-conditions.html"><span class="fa fa-caret-right"></span> Terms and Conditions</a>
+                </li>
+            </ul>
+        </li>
+
+        <!--协议信息-->
+        <li><a href="help.html" class="nav-header"><i class="fa fa-fw fa-question-circle"></i> 协议信息</a></li>
+        <li><a href="faq.html" class="nav-header"><i class="fa fa-fw fa-comment"></i> Faq</a></li>
+        <li><a href="http://portnine.com/bootstrap-themes/aircraft" class="nav-header" target="blank"><i
+                class="fa fa-fw fa-heart"></i> Get Premium</a></li>
+    </ul>
+</div>
+
+<!--内容-->
+<div class="content">
+
+    <div class="header">
+
+        <h1 class="page-title">教师信息管理</h1>
+        <ul class="breadcrumb">
+            <li><a href="#">教师信息管理</a></li>
+            <li class="active">教师信息列表</li>
+        </ul>
+
+    </div>
+
+
+    <div class="main-content">
+
+        <div class="btn-toolbar list-toolbar">
+            <button class="btn btn-primary" data-toggle="modal" data-target="#myAddModal">录入信息</button>
+            <button class="btn btn-primary" data-toggle="modal" data-target="#myQueryModal">查找信息</button>
+            <button class="btn btn-primary" data-toggle="modal" data-target="#myUpdateModal">修改信息</button>
+            <button class="btn btn-danger" data-toggle="modal" data-target="#myDeleteModal">删除信息</button>
+        </div>
+
+        <br/>
+
+        <table class="table table-hover">
+
+            <thead>
+
+            <tr>
+                <th>#</th>
+                <th>教师工号</th>
+                <th>教师姓名</th>
+                <th>院系</th>
+                <th>办公室</th>
+                <th>联系方式</th>
+            </tr>
+
+            </thead>
+
+            <tbody>
+
+            <!-- iterator标签迭代遍历集合 -->
+            <s:iterator value="#page" var="company">
+
+                <tr>
+                    <td>
+                        <s:property value="#company.id"/>
+                    </th>
+                    <td>
+                        <s:property value="#company.name"/>
+                    </th>
+                    <td>
+                        <s:property value="#company.type"/>
+                    </th>
+                    <td>
+                        <s:property value="#company.birth"/>
+                    </th>
+                    <td>
+                        <s:property value="#company.register"/>
+                    </th>
+                    <td>
+                        <s:property value="#company.legal"/>
+                    </th>
+                </tr>
+
+            </s:iterator>
+            </tbody>
+
+        </table>
+
+        <ul class="pagination">
+            <li><a href="#">&laquo;</a></li>
+            <li><a href="#">1</a></li>
+            <li><a href="#">2</a></li>
+            <li><a href="#">3</a></li>
+            <li><a href="#">4</a></li>
+            <li><a href="#">5</a></li>
+            <li><a href="#">&raquo;</a></li>
+        </ul>
+
+        <footer>
+            <hr>
+            <p>© 2018 <a href="#" target="_blank">mirror6</a></p>
+        </footer>
+
+    </div>
+
+</div>
+
+<!--模态框-->
+<!--录入模态框-->
+<div class="modal fade" id="myAddModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+
+    <div class="modal-dialog" role="document" style="width: 400px;">
+
+        <div class="modal-content">
+
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span>
+                </button>
+                <h4 class="modal-title" id="myModalLabel">注册教师信息</h4>
+            </div>
+
+            <div class="modal-body">
+
+                <div class="row">
+
+                    <div class="col-md-10">
+
+                        <form id="addTeacher" >
+
+                            <div class="form-group">
+                                <label>教师工号</label>
+                                <input type="text" name="id" class="form-control">
+                            </div>
+
+                            <div class="form-group">
+                                <label>姓名</label>
+                                <input type="text" name="name" class="form-control">
+                            </div>
+
+                            <div class="form-group">
+                                <label>性别</label>
+                                <input type="text" name="gender" class="form-control">
+                            </div>
+
+                            <div class="form-group">
+                                <label>院系</label>
+                                <input type="text" name="college" class="form-control">
+                            </div>
+
+                            <div class="form-group">
+                                <label>办公室</label>
+                                <input type="text" name="office" class="form-control">
+                            </div>
+
+                            <div class="form-group">
+                                <label>联系方式</label>
+                                <input type="text" name="tel" class="form-control">
+                            </div>
+
+                            <div class="form-group">
+                                <label>权限</label>
+                                <input type="text" name="permission" class="form-control">
+                            </div>
+
+
+                            <hr/>
+
+                            <button type="button" class="btn btn-primary" onclick="addTeacher()">录入</button>
+                            <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+
+                        </form>
+                    </div>
+
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+<!--检索模态框-->
+<div class="modal fade" id="myQueryModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+
+    <div class="modal-dialog" role="document" style="width: 400px;">
+
+        <div class="modal-content">
+
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span>
+                </button>
+                <h4 class="modal-title" id="myModalLabel">查找教师信息</h4>
+            </div>
+
+            <div class="modal-body">
+
+                <div class="row">
+
+                    <div class="col-md-10">
+
+                        <form>
+
+                            <div class="form-group">
+                                <label>教师工号</label>
+                                <input type="text" name="id" class="form-control">
+                            </div>
+
+                            <hr/>
+
+                            <button type="button" class="btn btn-primary">查找</button>
+                            <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+
+                        </form>
+                    </div>
+
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+<!--修改模态框-->
+<div class="modal fade" id="myUpdateModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+
+    <div class="modal-dialog" role="document" style="width: 400px;">
+
+        <div class="modal-content">
+
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span>
+                </button>
+                <h4 class="modal-title" id="myModalLabel">修改教师信息</h4>
+            </div>
+
+            <div class="modal-body">
+
+                <div class="row">
+
+                    <div class="col-md-10">
+
+                        <form>
+
+                            <div class="form-group">
+                                <label>教师工号</label>
+                                <input type="text" name="id" class="form-control" disabled="1">
+                            </div>
+
+                            <div class="form-group">
+                                <label>姓名</label>
+                                <input type="text" name="name" class="form-control">
+                            </div>
+
+                            <div class="form-group">
+                                <label>密码</label>
+                                <input type="text" name="password" class="form-control">
+                            </div>
+
+                            <div class="form-group">
+                                <label>性别</label>
+                                <input type="text" name="gender" class="form-control">
+                            </div>
+
+                            <div class="form-group">
+                                <label>院系</label>
+                                <input type="text" name="college" class="form-control">
+                            </div>
+
+                            <div class="form-group">
+                                <label>办公室</label>
+                                <input type="text" name="office" class="form-control">
+                            </div>
+
+                            <div class="form-group">
+                                <label>联系方式</label>
+                                <input type="text" name="tel" class="form-control">
+                            </div>
+
+                            <div class="form-group">
+                                <label>权限</label>
+                                <input type="text" name="permission" class="form-control">
+                            </div>
+                            <hr/>
+
+                            <button type="button" class="btn btn-primary">修改</button>
+                            <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+
+                        </form>
+                    </div>
+
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+<!--删除模态框-->
+<div class="modal fade" id="myDeleteModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+
+    <div class="modal-dialog" role="document" style="width: 400px;">
+
+        <div class="modal-content">
+
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span>
+                </button>
+                <h4 class="modal-title" id="myModalLabel">删除教师信息</h4>
+            </div>
+
+            <div class="modal-body">
+
+                <div class="row">
+
+                    <div class="col-md-10">
+
+                        <form>
+
+                            <div class="form-group">
+                                <label>客户编码</label>
+                                <input type="text" name="id" class="form-control">
+                            </div>
+
+                            <div class="form-group">
+                                <label>联系方式</label>
+                                <input type="text" name="tel" class="form-control">
+                            </div>
+
+                            <div class="form-group">
+                                <label>公司名称</label>
+                                <input type="text" name="company" class="form-control">
+                            </div>
+
+                            <div class="form-group">
+                                <label>公司地址</label>
+                                <input type="text" name="address" class="form-control">
+                            </div>
+
+                            <div class="form-group">
+                                <label>合作周期</label>
+                                <input type="text" name="time" class="form-control">
+                            </div>
+
+
+                            <hr/>
+
+
+                            <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+                            <button type="button" class="btn btn-danger">删除</button>
+
+                        </form>
+                    </div>
+
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+<script src="lib/bootstrap/js/bootstrap.min.js"></script>
+</body>
+</html>

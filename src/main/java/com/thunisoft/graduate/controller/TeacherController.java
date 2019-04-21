@@ -3,6 +3,7 @@ package com.thunisoft.graduate.controller;
 import com.thunisoft.graduate.common.Constants;
 import com.thunisoft.graduate.common.model.Teacher;
 import com.thunisoft.graduate.service.ITeacherService;
+import org.apache.ibatis.annotations.Param;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -33,8 +34,8 @@ public class TeacherController {
      */
     // == @RequestMapping(value="/addTeacher",method=RequestMethod.POST)
     @PostMapping("/addTeacher")
-    public String addTeacher() {
-        Teacher teacher = new Teacher(201213, "蓝曦臣", 1, "计算机工程学院", "1918", "18341114205", "");
+    public String addTeacher(Teacher teacher) {
+//        Teacher teacher = new Teacher(201213, "蓝曦臣", 1, "计算机工程学院", "1918", "18341114205", "");
         teacherService.addTeacher(teacher);
         return Constants.C_SUCCESS;
 //        return Constants.C_CURD_SUCCESS.equals(mark) ? Constants.C_SUCCESS : Constants.C_FAIL;
