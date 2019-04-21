@@ -26,11 +26,9 @@ public interface TeacherMapper {
     /**
      * 获取教师信息列表
      *
-     * @param firstResult 首记录索引，从0开始
-     * @param maxResults  获取记录数量
      * @return 教师信息列表
      */
-    List<Teacher> getTeachers(@Param("firstResult") int firstResult, @Param("maxResults") int maxResults);
+    List<Teacher> getTeachers();
 
     /**
      * 获取教师信息的数量

@@ -4,6 +4,8 @@
  */
 package com.thunisoft.graduate.dao.impl;
 
+import com.github.pagehelper.PageHelper;
+import com.github.pagehelper.PageInfo;
 import com.thunisoft.graduate.common.model.Teacher;
 import com.thunisoft.graduate.dao.ITeacherDao;
 import mybatis.graduate.TeacherMapper;
@@ -58,11 +60,11 @@ public class TeacherDaoMyBatisImpl implements ITeacherDao {
     }
 
     @Override
-    public List<Teacher> getTeachers(final int firstResult, final int maxResults) {
+    public PageInfo<Teacher> getTeachers(final int firstResult, final int maxResults) {
         int pageNo = firstResult / maxResults + 1;
-//        ArteryInterceptor.startPage(pageNo, maxResults, false); // 自动分页
-
-        return teacherMapper.getTeachers(firstResult, maxResults);
+        PageHelper.startPage(pageNo, maxResults, "n_id desc"); //开始起始页
+        List<Teacher> teachers = teacherMapper.getTeachers(); // 获取数据
+        return new PageInfo<>(teachers);
     }
 
     @Override

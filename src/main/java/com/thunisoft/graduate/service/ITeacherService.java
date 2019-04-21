@@ -4,6 +4,7 @@
  */
 package com.thunisoft.graduate.service;
 
+import com.github.pagehelper.PageInfo;
 import com.thunisoft.graduate.common.model.Teacher;
 
 import java.util.List;
@@ -30,7 +31,7 @@ public interface ITeacherService {
      * @param pageNo   页码，从 1 开始
      * @return 教师信息列表
      */
-    List<Teacher> getTeachers(int pageSize, int pageNo);
+    PageInfo<Teacher> getTeachers(int pageSize, int pageNo);
 
     /**
      * 获取教师信息的数量

@@ -4,6 +4,7 @@
  */
 package com.thunisoft.graduate.service.impl;
 
+import com.github.pagehelper.PageInfo;
 import com.thunisoft.graduate.common.model.Teacher;
 import com.thunisoft.graduate.dao.ITeacherDao;
 import com.thunisoft.graduate.service.ITeacherService;
@@ -60,7 +61,7 @@ public class TeacherServiceImpl implements ITeacherService {
     }
 
     @Override
-    public List<Teacher> getTeachers(int pageSize, int pageNo) {
+    public PageInfo<Teacher> getTeachers(int pageSize, int pageNo) {
         int firstResult = (pageNo - 1) * pageSize;
         int maxResults;
         maxResults = pageSize;

@@ -4,6 +4,7 @@
  */
 package com.thunisoft.graduate.dao;
 
+import com.github.pagehelper.PageInfo;
 import com.thunisoft.graduate.common.model.Teacher;
 
 import java.util.List;
@@ -26,10 +27,10 @@ public interface ITeacherDao {
      * 获取教师信息列表
      *
      * @param firstResult 首记录索引，从0开始
-     * @param maxResults  获取记录数量
+     * @param maxResults  获取记录数量,即每页显示的数量
      * @return 教师信息列表
      */
-    List<Teacher> getTeachers(int firstResult, int maxResults);
+    PageInfo<Teacher> getTeachers(int firstResult, int maxResults);
 
     /**
      * 获取教师信息的数量

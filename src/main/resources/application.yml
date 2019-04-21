@@ -34,6 +34,12 @@ mybatis:
   mapper-locations: classpath*:mybatis/graduate/*.xml
   type-aliases-package: com.thunisoft.graduate.common.model
   #config-location: classpath:mybatis/mybatis-config.xml
+#pagehelper分页插件配置
+pagehelper:
+  helper-dialect: mysql
+  reasonable: true
+  supportMethodsArguments: true
+  params: count=countSql
 
 # 打印sql
 logging:

@@ -75,13 +75,28 @@ public class TeacherController {
     public String getTeacherById(@PathVariable("id") Integer id) {
         //判断是否存在工号为ID的教师信息
         Integer presence = teacherService.getTeachersCountById(id);
-        if (presence > 0) {
+        if (presence > 0)
+        {
             teacherService.getTeacherById(id);
             return Constants.C_SUCCESS;
-        } else {
+        } else
+        {
             return "您输入的工号错误，尚未查询到该教师的信息";
         }
+    }
 
+    /**
+     * 教师信息分页
+     * url:"http://localhost:8088/teacher/getTeachers/{pageSize}"
+     *
+     * @return Teachers
+     */
+    @GetMapping("/getTeachers/{pageSize}")
+    public String getTeachers(@PathVariable("pageSize") Integer pageSize) {
+        int pageNo = teacherService.getTeachersCount();
+        teacherService.getTeachers(pageSize, pageNo);
+        teacherService.getTeachers(pageSize, 1);
+        return Constants.C_SUCCESS;
     }
 
 }
