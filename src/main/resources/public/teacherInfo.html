@@ -128,7 +128,7 @@
         <li>
             <ul class="premium-menu nav nav-list collapse in">
                 <li class="active"><a href="/teacher/getTeachers"><span class="fa fa-caret-right"></span>信息列表</a></li>
-                <li><a href="#"><span class="fa fa-caret-right"></span>信息详情</a></li>
+                <li><a href="premium-blog-item.html"><span class="fa fa-caret-right"></span>信息详情</a></li>
             </ul>
         </li>
 
@@ -168,7 +168,7 @@
         <h1 class="page-title">教师信息管理</h1>
         <ul class="breadcrumb">
             <li><a href="#">教师信息管理</a></li>
-            <li class="active">教师信息列表</li>
+            <li class="active">教师信息</li>
         </ul>
 
     </div>
@@ -176,97 +176,63 @@
 
     <div class="main-content">
 
-        <div class="btn-toolbar list-toolbar">
-            <div class="form-group">
-                <label>教师工号：<input type="text" name="id" class="form-control"></label>
-                <label>教师姓名：<input type="text" name="name" class="form-control"></label>
-                <button class="btn btn-primary" data-toggle="modal" data-target="#myQueryModal">查找信息</button>
-                <button class="btn btn-primary" data-toggle="modal" data-target="#myAddModal">录入信息</button>
+        <div class="modal-body">
+
+            <div class="row">
+
+                <div class="col-md-10">
+
+                    <form>
+
+                        <div class="form-group">
+                            <label>教师工号</label>
+                            <input type="text" name="id" class="form-control">
+                        </div>
+
+                        <div class="form-group">
+                            <label>姓名</label>
+                            <input type="text" name="name" class="form-control">
+                        </div>
+
+                        <div class="form-group">
+                            <label>性别</label>
+                            <input type="text" name="gender" class="form-control">
+                        </div>
+
+                        <div class="form-group">
+                            <label>院系</label>
+                            <input type="text" name="college" class="form-control">
+                        </div>
+
+                        <div class="form-group">
+                            <label>办公室</label>
+                            <input type="text" name="office" class="form-control">
+                        </div>
+
+                        <div class="form-group">
+                            <label>联系方式</label>
+                            <input type="text" name="tel" class="form-control">
+                        </div>
+
+                        <div class="form-group">
+                            <label>权限</label>
+                            <input type="text" name="permission" class="form-control">
+                        </div>
+
+
+                        <hr/>
+
+<!--                        <button type="button" class="btn btn-primary" onclick="addTeacher()">录入</button>-->
+<!--                        <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>-->
+
+                    </form>
+                </div>
+
             </div>
         </div>
 
         <br/>
 
-        <table class="table table-hover">
-
-            <thead>
-
-            <tr>
-                <!--                <th>#</th>-->
-                <th>教师工号</th>
-                <th>教师姓名</th>
-                <th>院系</th>
-                <th>办公室</th>
-                <th>联系方式</th>
-                <th>操作</th>
-            </tr>
-
-            </thead>
-
-            <tbody>
-            <tr th:each="teacher:${pageInfo.list}">
-                <td th:text="${teacher.id}"></td>
-                <td th:text="${teacher.name}"></td>
-                <td th:text="${teacher.college}"></td>
-                <td th:text="${teacher.office}"></td>
-                <td th:text="${teacher.tel}"></td>
-                <td>
-                    <button class="btn btn-primary" onclick="getTeacherById()">详情</button>
-                    <button class="btn btn-primary" data-toggle="modal" data-target="#myUpdateModal">修改</button>
-                    <button class="btn btn-danger" data-toggle="modal" data-target="#myDeleteModal">删除</button>
-                </td>
-            </tr>
-
-            </tbody>
-
-        </table>
-
-        <!-- 页签-->
-        <!--        <nav>-->
-        <!--            <ul class="pagination">-->
-        <!--                <li>-->
-        <!--                    <a th:if="${not isFirstPage}" th:href="@{${'allUsers'}(pageNum=${pageNum-1},pageSize=${pageSize})}"-->
-        <!--                       aria-label="Previous">-->
-        <!--                        <span aria-hidden="true">&laquo;</span>-->
-        <!--                    </a>-->
-        <!--                    <a th:if="${isFirstPage}" href="javascript:void(0);" aria-label="Previous">-->
-        <!--                        <span aria-hidden="true">&laquo;</span>-->
-        <!--                    </a>-->
-        <!--                </li>-->
-
-        <!--                <li th:each="pageNo : ${#numbers.sequence(1, totalPages)}">-->
-        <!--                    <a th:if="${pageNum eq pageNo}" href="javascript:void(0);">-->
-        <!--                        <span th:text="${pageNo}"></span>-->
-        <!--                    </a>-->
-
-        <!--                    <a th:if="${not (pageNum eq pageNo)}"-->
-        <!--                       th:href="@{${'allUsers'}(pageNum=${pageNo},pageSize=${pageSize})}">-->
-        <!--                        <span th:text="${pageNo}"></span>-->
-        <!--                    </a>-->
-        <!--                </li>-->
-
-        <!--                <li>-->
-        <!--                    <a th:if="${not isLastPage}" th:href="@{${'allUsers'}(pageNum=${pageNum+1},pageSize=${pageSize})}"-->
-        <!--                       aria-label="Next">-->
-        <!--                        <span aria-hidden="true">&raquo;</span>-->
-        <!--                    </a>-->
-        <!--                    <a th:if="${isLastPage}" href="javascript:void(0);" aria-label="Next">-->
-        <!--                        <span aria-hidden="true">&raquo;</span>-->
-        <!--                    </a>-->
-        <!--                </li>-->
-        <!--            </ul>-->
-        <!--        </nav>-->
-
-
-        <!--        <ul class="pagination">-->
-        <!--            <li><a href="#">&laquo;</a></li>-->
-        <!--            <li><a href="#">1</a></li>-->
-        <!--            <li><a href="#">2</a></li>-->
-        <!--            <li><a href="#">3</a></li>-->
-        <!--            <li><a href="#">4</a></li>-->
-        <!--            <li><a href="#">5</a></li>-->
-        <!--            <li><a href="#">&raquo;</a></li>-->
-        <!--        </ul>-->
 
         <footer>
             <hr>
@@ -291,60 +257,7 @@
                 <h4 class="modal-title" id="myModalLabel">注册教师信息</h4>
             </div>
 
-            <div class="modal-body">
 
-                <div class="row">
-
-                    <div class="col-md-10">
-
-                        <form id="addTeacher">
-
-                            <div class="form-group">
-                                <label>教师工号</label>
-                                <input type="text" name="id" class="form-control">
-                            </div>
-
-                            <div class="form-group">
-                                <label>姓名</label>
-                                <input type="text" name="name" class="form-control">
-                            </div>
-
-                            <div class="form-group">
-                                <label>性别</label>
-                                <input type="text" name="gender" class="form-control">
-                            </div>
-
-                            <div class="form-group">
-                                <label>院系</label>
-                                <input type="text" name="college" class="form-control">
-                            </div>
-
-                            <div class="form-group">
-                                <label>办公室</label>
-                                <input type="text" name="office" class="form-control">
-                            </div>
-
-                            <div class="form-group">
-                                <label>联系方式</label>
-                                <input type="text" name="tel" class="form-control">
-                            </div>
-
-                            <div class="form-group">
-                                <label>权限</label>
-                                <input type="text" name="permission" class="form-control">
-                            </div>
-
-
-                            <hr/>
-
-                            <button type="button" class="btn btn-primary" onclick="addTeacher()">录入</button>
-                            <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
-
-                        </form>
-                    </div>
-
-                </div>
-            </div>
 
         </div>
 

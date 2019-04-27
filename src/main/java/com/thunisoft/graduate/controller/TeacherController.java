@@ -1,11 +1,15 @@
 package com.thunisoft.graduate.controller;
 
+import com.alibaba.fastjson.JSONObject;
+import com.github.pagehelper.PageInfo;
 import com.thunisoft.graduate.common.Constants;
 import com.thunisoft.graduate.common.model.Teacher;
 import com.thunisoft.graduate.service.ITeacherService;
 import org.apache.ibatis.annotations.Param;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.ModelAndView;
 
 /**
  * @Author: mirror6
@@ -72,31 +76,31 @@ public class TeacherController {
      */
     // == @RequestMapping(value = "/getTeacherById/{id}", method = RequestMethod.GET)
     @GetMapping("/getTeacherById/{id}")
-    public String getTeacherById(@PathVariable("id") Integer id) {
+    public ModelAndView getTeacherById(Model model, @PathVariable("id") Integer id) {
         //判断是否存在工号为ID的教师信息
         Integer presence = teacherService.getTeachersCountById(id);
         if (presence > 0)
         {
-            teacherService.getTeacherById(id);
-            return Constants.C_SUCCESS;
+            Teacher teacher = teacherService.getTeacherById(id);
+            model.addAttribute("teacher", teacher);
+            return new ModelAndView("teacher");
         } else
         {
-            return "您输入的工号错误，尚未查询到该教师的信息";
+            return new ModelAndView("error");
         }
     }
 
     /**
      * 教师信息分页
-     * url:"http://localhost:8088/teacher/getTeachers/{pageSize}"
+     * url:"http://localhost:8088/teacher/getTeachers"
      *
      * @return Teachers
      */
-    @GetMapping("/getTeachers/{pageSize}")
-    public String getTeachers(@PathVariable("pageSize") Integer pageSize) {
-        int pageNo = teacherService.getTeachersCount();
-        teacherService.getTeachers(pageSize, pageNo);
-        teacherService.getTeachers(pageSize, 1);
-        return Constants.C_SUCCESS;
+    @GetMapping("/getTeachers")
+    public ModelAndView getTeachers(Model model, @RequestParam(defaultValue = "10") Integer pageSize, @RequestParam(defaultValue = "1") Integer pageNo) {
+        PageInfo<Teacher> pageInfo = teacherService.getTeachers(pageSize, pageNo);
+        model.addAttribute("pageInfo", pageInfo);
+        return new ModelAndView("teacher");
     }
 
 }
