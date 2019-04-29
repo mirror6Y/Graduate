@@ -10,6 +10,7 @@ function addTeacher() {
         success: function (result) {
             if (result === "success") {
                 alert("添加成功");
+                location.href = "/teacher/getTeachers";
             } else {
                 alert("添加失败");
             }
@@ -27,9 +28,7 @@ function addTeacher() {
 
 //教师列表分页
 //信息详情
-function getTeacherById(){
-
-    var id= $('#teacherID').val();
+function getTeacherById(id){
 
     $.ajax({
         url: "/teacher/getTeacherById/"+id,        //教师信息接口 添加教师信息方法

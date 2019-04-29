@@ -211,7 +211,10 @@
                 <td th:text="${teacher.office}"></td>
                 <td th:text="${teacher.tel}"></td>
                 <td>
-                    <button class="btn btn-primary" onclick="getTeacherById()">详情</button>
+                    <!--<button class="btn btn-primary" th:onclick="'javascript:getTeacherById(\''+${teacher.id}+'\');'">详情</button>-->
+                    <!--<a href="/teacher/getTeacherById/" ${teacher.id} class="btn btn-primary">详情</a>-->
+                    <a class="btn btn-primary" th:href="@{'/teacher/getTeacherById/'+${teacher.id}}">详情</a>
+
                     <button class="btn btn-primary" data-toggle="modal" data-target="#myUpdateModal">修改</button>
                     <button class="btn btn-danger" data-toggle="modal" data-target="#myDeleteModal">删除</button>
                 </td>

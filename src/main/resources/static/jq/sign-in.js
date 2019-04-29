@@ -3,11 +3,11 @@ function jump() {
 
 
     //获取账号
-    var account = $('#account').val();
-    var password = $('#password').val();
+    let account = $('#account').val();
+    let password = $('#password').val();
 
     //json字符串
-    var object = {
+    let object = {
         'account': account,
         'password': password
     };

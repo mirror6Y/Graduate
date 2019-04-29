@@ -83,7 +83,7 @@ public class TeacherController {
         {
             Teacher teacher = teacherService.getTeacherById(id);
             model.addAttribute("teacher", teacher);
-            return new ModelAndView("teacher");
+            return new ModelAndView("teacherInfo");
         } else
         {
             return new ModelAndView("error");
