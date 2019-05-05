@@ -26,41 +26,40 @@ function addTeacher() {
     });
 }
 
-//信息详情
-function getTeacherById(id) {
-
-    $.ajax({
-        url: "/teacher/getTeacherById/" + id,        //教师信息接口 添加教师信息方法
-        type: 'GET',
-        dataType: 'json',
-        contentType: 'application/x-www-form-urlencoded; charset=UTF-8',
-        // data: $("#addTeacher").serialize(),//字符串
-        success: function (result) {
-            if (result === "success") {
-                alert("查看信息成功");
-            } else {
-                alert("查看信息失败");
-            }
-        }
-        ,
-        error: function (XMLHttpRequest, textStatus, errorThrown) {
-            console.log('XMLHttpRequest:' + XMLHttpRequest);
-            console.log('textStatus:' + textStatus);
-            console.log('errorThrown:' + errorThrown);
-            alert('网络异常！尝试刷新网页解决问题');
-            console.log($("#addTeacher").serializeArray());
-        }
-    });
-}
+// //信息详情
+// function getTeacherById(id) {
+//
+//     $.ajax({
+//         url: "/teacher/getTeacherById/" + id,        //教师信息接口 添加教师信息方法
+//         type: 'GET',
+//         dataType: 'json',
+//         contentType: 'application/x-www-form-urlencoded; charset=UTF-8',
+//         // data: $("#addTeacher").serialize(),//字符串
+//         success: function (result) {
+//             if (result === "success") {
+//                 alert("查看信息成功");
+//             } else {
+//                 alert("查看信息失败");
+//             }
+//         }
+//         ,
+//         error: function (XMLHttpRequest, textStatus, errorThrown) {
+//             console.log('XMLHttpRequest:' + XMLHttpRequest);
+//             console.log('textStatus:' + textStatus);
+//             console.log('errorThrown:' + errorThrown);
+//             alert('网络异常！尝试刷新网页解决问题');
+//             console.log($("#addTeacher").serializeArray());
+//         }
+//     });
+// }
 
 //删除教师信息
-$("#updateTeacher").click(function () {
-    $('#myModalLabel').modal('show');
-
-    let id = $('#deleteTeacherById').val();
+function deleteTeacher() {
+    debugger
+    let id = $('#deleteTeacherId').val();
 
     $.ajax({
-        url: "/teacher/deleteTeacher/"+ id ,        //教师信息接口 删除教师信息方法
+        url: "/teacher/deleteTeacherById/" + id,        //教师信息接口 删除教师信息方法
         type: 'DELETE',
         dataType: 'text',
         contentType: 'application/x-www-form-urlencoded; charset=UTF-8',
@@ -81,7 +80,35 @@ $("#updateTeacher").click(function () {
         }
     });
 
-    alert('模态框打开了');
-});
+};
+
+
+//编辑教师信息
+function updateTeacher() {
+
+    $.ajax({
+        url: "/teacher/updateTeacher",        //教师信息接口 编辑教师信息方法
+        type: 'PUT',
+        dataType: 'text',
+        contentType: 'application/x-www-form-urlencoded; charset=UTF-8',
+        data: $("#updateTeacher").serialize(),//字符串
+        success: function (result) {
+            if (result === "success") {
+                alert("修改成功");
+                location.href = "/teacher/getTeachers";
+            } else {
+                alert("修改失败");
+            }
+        }
+        ,
+        error: function (XMLHttpRequest, textStatus, errorThrown) {
+            console.log('XMLHttpRequest:' + XMLHttpRequest);
+            console.log('textStatus:' + textStatus);
+            console.log('errorThrown:' + errorThrown);
+            alert('网络异常！尝试刷新网页解决问题');
+            console.log($("#addTeacher").serializeArray());
+        }
+    });
+}
 
 

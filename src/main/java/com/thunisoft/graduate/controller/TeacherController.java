@@ -1,11 +1,9 @@
 package com.thunisoft.graduate.controller;
 
-import com.alibaba.fastjson.JSONObject;
 import com.github.pagehelper.PageInfo;
 import com.thunisoft.graduate.common.Constants;
 import com.thunisoft.graduate.common.model.Teacher;
 import com.thunisoft.graduate.service.ITeacherService;
-import org.apache.ibatis.annotations.Param;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -39,10 +37,8 @@ public class TeacherController {
     // == @RequestMapping(value="/addTeacher",method=RequestMethod.POST)
     @PostMapping("/addTeacher")
     public String addTeacher(Teacher teacher) {
-//        Teacher teacher = new Teacher(201213, "蓝曦臣", 1, "计算机工程学院", "1918", "18341114205", "");
         teacherService.addTeacher(teacher);
         return Constants.C_SUCCESS;
-//        return Constants.C_CURD_SUCCESS.equals(mark) ? Constants.C_SUCCESS : Constants.C_FAIL;
     }
 
     /**
@@ -62,8 +58,7 @@ public class TeacherController {
      */
     // == @RequestMapping(value="/updateTeacher",method=RequestMethod.PUT)
     @PutMapping("/updateTeacher")
-    public String updateTeacher() {
-        Teacher teacher = new Teacher(201213, "123456", "蓝忘机", 1, "计算机工程学院", "1918", "18341114205", "");
+    public String updateTeacher(Teacher teacher) {
         teacherService.updateTeacher(teacher);
         return Constants.C_SUCCESS;
     }
@@ -75,15 +70,26 @@ public class TeacherController {
      * @return Teacher
      */
     // == @RequestMapping(value = "/getTeacherById/{id}", method = RequestMethod.GET)
-    @GetMapping("/getTeacherById/{id}")
-    public ModelAndView getTeacherById(Model model, @PathVariable("id") Integer id) {
+    @GetMapping("/getTeacherById/{id}/{operation}")
+    public ModelAndView getTeacherById(Model model, @PathVariable("id") Integer id, @PathVariable("operation") String operation) {
         //判断是否存在工号为ID的教师信息
         Integer presence = teacherService.getTeachersCountById(id);
         if (presence > 0)
         {
             Teacher teacher = teacherService.getTeacherById(id);
-            model.addAttribute("teacher", teacher);
-            return new ModelAndView("teacherInfo");
+            if ("update".equals(operation))
+            {
+                model.addAttribute("teacherUpdate", teacher);
+                return new ModelAndView("teacher/teacherUpdate");
+            } else if ("delete".equals(operation))
+            {
+                model.addAttribute("teacherDelete", teacher);
+                return new ModelAndView("teacher/teacherDelete");
+            } else
+            {
+                model.addAttribute("teacherInfo", teacher);
+                return new ModelAndView("teacher/teacherInfo");
+            }
         } else
         {
             return new ModelAndView("error");
@@ -100,7 +106,7 @@ public class TeacherController {
     public ModelAndView getTeachers(Model model, @RequestParam(defaultValue = "10") Integer pageSize, @RequestParam(defaultValue = "1") Integer pageNo) {
         PageInfo<Teacher> pageInfo = teacherService.getTeachers(pageSize, pageNo);
         model.addAttribute("pageInfo", pageInfo);
-        return new ModelAndView("teacher");
+        return new ModelAndView("teacher/teacher");
     }
 
 }
