@@ -160,43 +160,45 @@
 
                     <form th:object="${teacherDelete}">
 
-                        <div class="form-group">
-                            <label>教师工号</label>
-                            <input id="deleteTeacherId" type="text" name="id" class="form-control" th:field="*{id}">
-                        </div>
+                        <fieldset disabled>
 
-                        <div class="form-group">
-                            <label>姓名</label>
-                            <input type="text" name="name" class="form-control" th:field="*{name}">
-                        </div>
+                            <div class="form-group">
+                                <label>教师工号</label>
+                                <input id="deleteTeacherId" type="text" name="id" class="form-control" th:field="*{id}">
+                            </div>
 
-                        <div class="form-group">
-                            <label>性别</label>
-                            <input type="radio" name="gender" value="1" th:field="*{gender}">男
-                            <input type="radio" name="gender" value="0" th:field="*{gender}">女
-                            <!--                            <input type="text" name="gender" class="form-control" th:field="*{gender}">-->
-                        </div>
+                            <div class="form-group">
+                                <label>姓名</label>
+                                <input type="text" name="name" class="form-control" th:field="*{name}">
+                            </div>
 
-                        <div class="form-group">
-                            <label>院系</label>
-                            <input type="text" name="college" class="form-control" th:field="*{college}">
-                        </div>
+                            <div class="form-group">
+                                <label>性别</label>
+                                <input type="radio" name="gender" value="1" th:field="*{gender}">男
+                                <input type="radio" name="gender" value="0" th:field="*{gender}">女
+                                <!--                            <input type="text" name="gender" class="form-control" th:field="*{gender}">-->
+                            </div>
 
-                        <div class="form-group">
-                            <label>办公室</label>
-                            <input type="text" name="office" class="form-control" th:field="*{office}">
-                        </div>
+                            <div class="form-group">
+                                <label>院系</label>
+                                <input type="text" name="college" class="form-control" th:field="*{college}">
+                            </div>
 
-                        <div class="form-group">
-                            <label>联系方式</label>
-                            <input type="text" name="tel" class="form-control" th:field="*{tel}">
-                        </div>
+                            <div class="form-group">
+                                <label>办公室</label>
+                                <input type="text" name="office" class="form-control" th:field="*{office}">
+                            </div>
 
-                        <div class="form-group">
-                            <label>权限</label>
-                            <input type="text" name="permission" class="form-control" th:field="*{permission}">
-                        </div>
+                            <div class="form-group">
+                                <label>联系方式</label>
+                                <input type="text" name="tel" class="form-control" th:field="*{tel}">
+                            </div>
 
+                            <div class="form-group">
+                                <label>权限</label>
+                                <input type="text" name="permission" class="form-control" th:field="*{permission}">
+                            </div>
+                        </fieldset>
 
                         <hr/>
 

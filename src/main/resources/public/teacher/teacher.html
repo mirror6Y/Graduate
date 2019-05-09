@@ -85,7 +85,7 @@
     <ul>
 
         <!--主页-->
-        <li><a href="#" data-target=".dashboard-menu" class="nav-header collapsed" data-toggle="collapse"><i
+        <li><a href="index.html" data-target=".dashboard-menu" class="nav-header collapsed" data-toggle="collapse"><i
                 class="fa fa-fw fa-dashboard"></i> 主页<i class="fa fa-collapse"></i></a></li>
         <li>
             <ul class="dashboard-menu nav nav-list collapse ">
@@ -98,14 +98,12 @@
         </li>
 
         <!--教师信息-->
-        <li><a href="/teacher/getTeachers" data-target=".premium-menu" class="nav-header " data-toggle="collapse"><i
+        <li><a href="#" data-target=".premium-menu" class="nav-header" data-toggle="collapse"><i
                 class="fa fa-fw fa-fighter-jet"></i> 教师信息<i class="fa fa-collapse"></i></a></li>
         <li>
             <ul class="premium-menu nav nav-list collapse in">
                 <li class="active"><a href="/teacher/getTeachers"><span class="fa fa-caret-right"></span>信息列表</a></li>
                 <li class="disabled"><a href="#"><span class="fa fa-caret-right"></span>信息详情</a></li>
-                <!--                <li ><a href="#"><span class="fa fa-caret-right"></span>信息编辑</a></li>-->
-                <!--                <li ><a href="#"><span class="fa fa-caret-right"></span>信息删除</a></li>-->
             </ul>
         </li>
 
@@ -154,12 +152,32 @@
     <div class="main-content">
 
         <div class="btn-toolbar list-toolbar">
-            <div class="form-group">
-                <label>教师工号：<input type="text" name="id" class="form-control"></label>
-                <label>教师姓名：<input type="text" name="name" class="form-control"></label>
-                <button class="btn btn-primary" data-toggle="modal" data-target="#myQueryModal">查找信息</button>
-                <button class="btn btn-primary" data-toggle="modal" data-target="#myAddModal">录入信息</button>
+
+            <div class="row">
+
+                <div class="col-md-6">
+
+                    <form action="/teacher/getTeachers" method="get">
+
+                        <div>
+                            <label><input type="text" name="college" class="form-control" placeholder="教师分院"></label>
+                            <label><input type="text" name="name" class="form-control" placeholder="教师姓名"></label>
+                            <button class="btn btn-primary">查找信息</button>
+                        </div>
+
+                    </form>
+                </div>
+
+                <div class="col-md-4">
+                    <div>
+                        <button class="btn btn-primary" data-toggle="modal" data-target="#myAddModal">录入信息
+                        </button>
+                    </div>
+                </div>
+
             </div>
+
+
         </div>
 
         <br/>
@@ -188,16 +206,9 @@
                 <td th:text="${teacher.office}"></td>
                 <td th:text="${teacher.tel}"></td>
                 <td>
-                    <!--<button class="btn btn-primary" th:onclick="'javascript:getTeacherById(\''+${teacher.id}+'\');'">详情</button>-->
-                    <!--<a href="/teacher/getTeacherById/" ${teacher.id} class="btn btn-primary">详情</a>-->
                     <a class="btn btn-primary" th:href="@{'/teacher/getTeacherById/' +${teacher.id}+'/'+detail}">详情</a>
                     <a class="btn btn-primary" th:href="@{'/teacher/getTeacherById/'+${teacher.id}+'/'+update}">编辑</a>
                     <a class="btn btn-danger" th:href="@{'/teacher/getTeacherById/'+${teacher.id}}+'/'+delete">删除</a>
-
-                    <!--                    <button id="updateTeacher" class="btn btn-primary" data-toggle="modal" data-target="#myUpdateModal">-->
-                    <!--                        修改-->
-                    <!--                    </button>-->
-                    <!--                    <button class="btn btn-danger" data-toggle="modal" data-target="#myDeleteModal">删除</button>-->
                 </td>
             </tr>
 
@@ -205,52 +216,33 @@
 
         </table>
 
-        <!-- 页签-->
-        <!--        <nav>-->
-        <!--            <ul class="pagination">-->
-        <!--                <li>-->
-        <!--                    <a th:if="${not isFirstPage}" th:href="@{${'allUsers'}(pageNum=${pageNum-1},pageSize=${pageSize})}"-->
-        <!--                       aria-label="Previous">-->
-        <!--                        <span aria-hidden="true">&laquo;</span>-->
-        <!--                    </a>-->
-        <!--                    <a th:if="${isFirstPage}" href="javascript:void(0);" aria-label="Previous">-->
-        <!--                        <span aria-hidden="true">&laquo;</span>-->
-        <!--                    </a>-->
-        <!--                </li>-->
+        <nav>
+            <ul class="pagination">
 
-        <!--                <li th:each="pageNo : ${#numbers.sequence(1, totalPages)}">-->
-        <!--                    <a th:if="${pageNum eq pageNo}" href="javascript:void(0);">-->
-        <!--                        <span th:text="${pageNo}"></span>-->
-        <!--                    </a>-->
+                <li>
+                    <a th:if="${not isFirstPage}"
+                       th:href="@{${'/teacher/getTeachers'}(pageNum=${pageNum-1},pageSize=${pageSize})}">&laquo;</a>
+                    <a th:if="${isFirstPage}" href="javascript:void(0);">&laquo;</a>
+                </li>
 
-        <!--                    <a th:if="${not (pageNum eq pageNo)}"-->
-        <!--                       th:href="@{${'allUsers'}(pageNum=${pageNo},pageSize=${pageSize})}">-->
-        <!--                        <span th:text="${pageNo}"></span>-->
-        <!--                    </a>-->
-        <!--                </li>-->
+                <li th:each="pageNo : ${#numbers.sequence(1, totalPages)}">
+                    <a th:if="${pageNum eq pageNo}" href="javascript:void(0);">
+                        <span th:text="${pageNo}"></span>
+                    </a>
 
-        <!--                <li>-->
-        <!--                    <a th:if="${not isLastPage}" th:href="@{${'allUsers'}(pageNum=${pageNum+1},pageSize=${pageSize})}"-->
-        <!--                       aria-label="Next">-->
-        <!--                        <span aria-hidden="true">&raquo;</span>-->
-        <!--                    </a>-->
-        <!--                    <a th:if="${isLastPage}" href="javascript:void(0);" aria-label="Next">-->
-        <!--                        <span aria-hidden="true">&raquo;</span>-->
-        <!--                    </a>-->
-        <!--                </li>-->
-        <!--            </ul>-->
-        <!--        </nav>-->
+                    <a th:if="${not (pageNum eq pageNo)}"
+                       th:href="@{${'/teacher/getTeachers'}(pageNum=${pageNo},size=${pageSize})}">
+                        <span th:text="${pageNo}"></span>
+                    </a>
+                </li>
+                <li>
+                    <a th:if="${not isLastPage}"
+                       th:href="@{${'/teacher/getTeachers'}(pageNum=${pageNum+1},size=${pageSize})}">&raquo;</a>
+                    <a th:if="${isLastPage}" href="javascript:void(0);">&raquo;</a>
+                </li>
 
-
-        <!--        <ul class="pagination">-->
-        <!--            <li><a href="#">&laquo;</a></li>-->
-        <!--            <li><a href="#">1</a></li>-->
-        <!--            <li><a href="#">2</a></li>-->
-        <!--            <li><a href="#">3</a></li>-->
-        <!--            <li><a href="#">4</a></li>-->
-        <!--            <li><a href="#">5</a></li>-->
-        <!--            <li><a href="#">&raquo;</a></li>-->
-        <!--        </ul>-->
+            </ul>
+        </nav>
 
         <footer>
             <hr>
@@ -380,161 +372,31 @@
 
 </div>
 
-<!--&lt;!&ndash;修改模态框&ndash;&gt;-->
-<!--<div class="modal fade" id="myUpdateModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">-->
+<script type="text/javascript">
+    $(function () {
+        pageNum = $("#first").val();
+        lastPage = $("#last").val();
+        if (lastPage == pageNum) {
 
-<!--    <div class="modal-dialog" role="document" style="width: 400px;">-->
+            $('.la').removeAttr('href');//去掉a标签中的href属性
+            $('.la').removeAttr('onclick');//去掉a标签中的onclick事件
+        } else {
+            if (pageNum == 1) {
+                $('.f').removeAttr('href');//去掉a标签中的href属性
+                $('.f').removeAttr('onclick');//去掉a标签中的onclick事件
 
-<!--        <div class="modal-content">-->
+            } else if (pageNum != 1) {
+                $('.f').attr('', 'href');//添加a标签中的href属性
+                $('.f').attr('', 'onclick');//添加a标签中的onclick事件)
+            }
+            $('.la').attr('', 'href');//添加a标签中的href属性
+            $('.la').attr('', 'onclick');//添加a标签中的onclick事件)
 
-<!--            <div class="modal-header">-->
-<!--                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span>-->
-<!--                </button>-->
-<!--                <h4 class="modal-title" id="myModalLabel">修改教师信息</h4>-->
-<!--            </div>-->
+        }
 
-<!--            <div class="modal-body">-->
+    });
+</script>
 
-<!--                <div class="row">-->
-
-<!--                    <div class="col-md-10">-->
-
-<!--                        <form>-->
-
-<!--                            <div class="form-group">-->
-<!--                                <label>教师工号</label>-->
-<!--                                <input type="text" name="id" class="form-control" disabled="1">-->
-<!--                            </div>-->
-
-<!--                            <div class="form-group">-->
-<!--                                <label>姓名</label>-->
-<!--                                <input type="text" name="name" class="form-control">-->
-<!--                            </div>-->
-
-<!--                            <div class="form-group">-->
-<!--                                <label>密码</label>-->
-<!--                                <input type="text" name="password" class="form-control">-->
-<!--                            </div>-->
-
-<!--                            <div class="form-group">-->
-<!--                                <label>性别</label>-->
-<!--                                <input type="text" name="gender" class="form-control">-->
-<!--                            </div>-->
-
-<!--                            <div class="form-group">-->
-<!--                                <label>院系</label>-->
-<!--                                <input type="text" name="college" class="form-control">-->
-<!--                            </div>-->
-
-<!--                            <div class="form-group">-->
-<!--                                <label>办公室</label>-->
-<!--                                <input type="text" name="office" class="form-control">-->
-<!--                            </div>-->
-
-<!--                            <div class="form-group">-->
-<!--                                <label>联系方式</label>-->
-<!--                                <input type="text" name="tel" class="form-control">-->
-<!--                            </div>-->
-
-<!--                            <div class="form-group">-->
-<!--                                <label>权限</label>-->
-<!--                                <input type="text" name="permission" class="form-control">-->
-<!--                            </div>-->
-<!--                            <hr/>-->
-
-<!--                            <button type="button" class="btn btn-primary">修改</button>-->
-<!--                            <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>-->
-
-<!--                        </form>-->
-<!--                    </div>-->
-
-<!--                </div>-->
-<!--            </div>-->
-
-<!--        </div>-->
-
-<!--    </div>-->
-
-<!--</div>-->
-
-<!--&lt;!&ndash;删除模态框&ndash;&gt;-->
-<!--<div class="modal fade" id="myDeleteModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">-->
-
-<!--    <div class="modal-dialog" role="document" style="width: 400px;">-->
-
-<!--        <div class="modal-content">-->
-
-<!--            <div class="modal-header">-->
-<!--                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span>-->
-<!--                </button>-->
-<!--                <h4 class="modal-title" id="myModalLabel">删除教师信息</h4>-->
-<!--            </div>-->
-
-<!--            <div class="modal-body">-->
-
-<!--                <div class="row">-->
-
-<!--                    <div class="col-md-10">-->
-
-<!--                        <form th:object="${teacher}">-->
-
-<!--                            <div class="form-group">-->
-<!--                                <label>教师工号</label>-->
-<!--                                <input id="deleteTeacherById" type="text" name="id" class="form-control"-->
-<!--                                       th:field="*{id}">-->
-<!--                            </div>-->
-
-<!--                            <div class="form-group">-->
-<!--                                <label>姓名</label>-->
-<!--                                <input type="text" name="name" class="form-control" th:field="*{name}">-->
-<!--                            </div>-->
-
-<!--                            <div class="form-group">-->
-<!--                                <label>密码</label>-->
-<!--                                <input type="text" name="password" class="form-control" th:field="*{password}">-->
-<!--                            </div>-->
-
-<!--                            <div class="form-group">-->
-<!--                                <label>性别</label>-->
-<!--                                <input type="text" name="gender" class="form-control">-->
-<!--                            </div>-->
-
-<!--                            <div class="form-group">-->
-<!--                                <label>院系</label>-->
-<!--                                <input type="text" name="college" class="form-control" th:field="*{college}">-->
-<!--                            </div>-->
-
-<!--                            <div class="form-group">-->
-<!--                                <label>办公室</label>-->
-<!--                                <input type="text" name="office" class="form-control" th:field="*{office}">-->
-<!--                            </div>-->
-
-<!--                            <div class="form-group">-->
-<!--                                <label>联系方式</label>-->
-<!--                                <input type="text" name="tel" class="form-control" th:field="*{tel}">-->
-<!--                            </div>-->
-
-<!--                            <div class="form-group">-->
-<!--                                <label>权限</label>-->
-<!--                                <input type="text" name="permission" class="form-control" th:field="*{permission}">-->
-<!--                            </div>-->
-<!--                            <hr/>-->
-
-
-<!--                            <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>-->
-<!--                            <button type="button" class="btn btn-danger" onclick="deleteTeacher()">删除</button>-->
-
-<!--                        </form>-->
-<!--                    </div>-->
-
-<!--                </div>-->
-<!--            </div>-->
-
-<!--        </div>-->
-
-<!--    </div>-->
-
-<!--</div>-->
 
 <script th:src="@{../../lib/bootstrap/js/bootstrap.min.js}"></script>
 </body>

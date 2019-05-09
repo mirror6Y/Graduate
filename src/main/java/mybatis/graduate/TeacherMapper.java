@@ -26,9 +26,10 @@ public interface TeacherMapper {
     /**
      * 获取教师信息列表
      *
+     * @param map 包含工号和教师姓名
      * @return 教师信息列表
      */
-    List<Teacher> getTeachers();
+    List<Teacher> getTeachers(Map map);
 
     /**
      * 获取教师信息的数量

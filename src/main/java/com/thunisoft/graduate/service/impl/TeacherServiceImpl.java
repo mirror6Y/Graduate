@@ -61,11 +61,11 @@ public class TeacherServiceImpl implements ITeacherService {
     }
 
     @Override
-    public PageInfo<Teacher> getTeachers(int pageSize, int pageNo) {
+    public PageInfo<Teacher> getTeachers(int pageSize, int pageNo, Map map) {
         int firstResult = (pageNo - 1) * pageSize;
         int maxResults;
         maxResults = pageSize;
-        return teacherDao.getTeachers(firstResult, maxResults);
+        return teacherDao.getTeachers(firstResult, maxResults, map);
     }
 
     @Override

@@ -9,6 +9,10 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
+import javax.servlet.http.HttpServletRequest;
+import java.util.HashMap;
+import java.util.Map;
+
 /**
  * @Author: mirror6
  * @Date: 2018/12/25 16:01
@@ -67,7 +71,7 @@ public class TeacherController {
      * 通过ID查找教师信息
      * url:"http://localhost:8080/teacher/getTeacherById/{id}"
      *
-     * @return Teacher
+     * @return ModelAndView
      */
     // == @RequestMapping(value = "/getTeacherById/{id}", method = RequestMethod.GET)
     @GetMapping("/getTeacherById/{id}/{operation}")
@@ -103,9 +107,24 @@ public class TeacherController {
      * @return Teachers
      */
     @GetMapping("/getTeachers")
-    public ModelAndView getTeachers(Model model, @RequestParam(defaultValue = "10") Integer pageSize, @RequestParam(defaultValue = "1") Integer pageNo) {
-        PageInfo<Teacher> pageInfo = teacherService.getTeachers(pageSize, pageNo);
+    public ModelAndView getTeachers(Model model, @RequestParam(defaultValue = "3") Integer pageSize, @RequestParam(defaultValue = "1") Integer pageNum, Teacher teacher) {
+        //列表过滤条件
+        Map map = new HashMap();
+        map.put("college", teacher.getCollege());
+        map.put("name", teacher.getName());
+        //教师列表
+        PageInfo<Teacher> pageInfo = teacherService.getTeachers(pageSize, pageNum, map);
         model.addAttribute("pageInfo", pageInfo);
+        //获得当前页
+        model.addAttribute("pageNum", pageInfo.getPageNum());
+        //获得一页显示的条数
+        model.addAttribute("pageSize", pageInfo.getPageSize());
+        //是否是第一页
+        model.addAttribute("isFirstPage", pageInfo.isIsFirstPage());
+        //获得总页数
+        model.addAttribute("totalPages", pageInfo.getPages());
+        //是否是最后一页
+        model.addAttribute("isLastPage", pageInfo.isIsLastPage());
         return new ModelAndView("teacher/teacher");
     }
 

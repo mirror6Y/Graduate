@@ -158,7 +158,8 @@
 
                 <div class="col-md-5">
 
-                    <form id="updateTeacher" th:object="${teacherUpdate}">
+                    <form id="updateTeacher" th:object="${teacherUpdate}" disabled="disabled">
+
 
                         <div class="form-group">
                             <label>教师工号</label>
@@ -167,7 +168,7 @@
 
                         <div class="form-group">
                             <label>密码</label>
-                            <input type="password" name="password" class="form-control" th:field="*{password}">
+                            <input type="text" name="password" class="form-control" th:field="*{password}">
                         </div>
 
                         <div class="form-group">
@@ -179,7 +180,6 @@
                             <label>性别</label>
                             <input type="radio" name="gender" value="1" th:field="*{gender}">男
                             <input type="radio" name="gender" value="0" th:field="*{gender}">女
-                            <!--                            <input type="text" name="gender" class="form-control" th:field="*{gender}">-->
                         </div>
 
                         <div class="form-group">

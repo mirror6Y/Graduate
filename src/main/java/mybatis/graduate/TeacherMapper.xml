@@ -61,14 +61,22 @@
     </select>
     <select id="getTeachers" resultMap="teacher">
         select N_ID,
-               C_PASSWORD,
-               C_NAME,
-               N_GENDER,
-               C_COLLEGE,
-               C_OFFICE,
-               C_TEL,
-               C_PERMISSION
+        C_PASSWORD,
+        C_NAME,
+        N_GENDER,
+        C_COLLEGE,
+        C_OFFICE,
+        C_TEL,
+        C_PERMISSION
         from T_TEACHER
+        <where>
+            <if test="college != null">
+                C_COLLEGE like "%"#{college}"%"
+            </if>
+            <if test="name != null">
+                AND C_NAME like "%"#{name}"%"
+            </if>
+        </where>
     </select>
     <select id="getTeachersCount" resultType="int">
         select count(*)
@@ -76,10 +84,13 @@
     </select>
     <select id="getTeachersCountById" resultType="int">
         select count(*)
-        from T_TEACHER where N_ID=#{id}
+        from T_TEACHER
+        where N_ID = #{id}
     </select>
     <select id="getTeachersCountByMap" resultType="int">
         select count(*)
-        from T_TEACHER where N_ID=#{id} and C_PASSWORD=#{password}
+        from T_TEACHER
+        where N_ID = #{id}
+          and C_PASSWORD = #{password}
     </select>
 </mapper>

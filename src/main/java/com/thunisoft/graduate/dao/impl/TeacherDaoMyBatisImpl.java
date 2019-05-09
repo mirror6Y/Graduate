@@ -60,10 +60,10 @@ public class TeacherDaoMyBatisImpl implements ITeacherDao {
     }
 
     @Override
-    public PageInfo<Teacher> getTeachers(final int firstResult, final int maxResults) {
+    public PageInfo<Teacher> getTeachers(final int firstResult, final int maxResults, Map map) {
         int pageNo = firstResult / maxResults + 1;
-        PageHelper.startPage(pageNo, maxResults, "n_id desc"); //开始起始页
-        List<Teacher> teachers = teacherMapper.getTeachers(); // 获取数据
+        PageHelper.startPage(pageNo, maxResults); //开始起始页
+        List<Teacher> teachers = teacherMapper.getTeachers(map); // 获取数据
         return new PageInfo<>(teachers);
     }
 

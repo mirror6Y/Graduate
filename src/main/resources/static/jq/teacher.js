@@ -110,5 +110,3 @@ function updateTeacher() {
         }
     });
 }
-
-

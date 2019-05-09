@@ -30,7 +30,7 @@ public interface ITeacherDao {
      * @param maxResults  获取记录数量,即每页显示的数量
      * @return 教师信息列表
      */
-    PageInfo<Teacher> getTeachers(int firstResult, int maxResults);
+    PageInfo<Teacher> getTeachers(int firstResult, int maxResults, Map map);
 
     /**
      * 获取教师信息的数量

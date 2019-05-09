@@ -31,7 +31,7 @@ public interface ITeacherService {
      * @param pageNo   页码，从 1 开始
      * @return 教师信息列表
      */
-    PageInfo<Teacher> getTeachers(int pageSize, int pageNo);
+    PageInfo<Teacher> getTeachers(int pageSize, int pageNo, Map map);
 
     /**
      * 获取教师信息的数量
