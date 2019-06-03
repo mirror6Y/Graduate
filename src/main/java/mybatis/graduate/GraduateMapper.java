@@ -5,9 +5,9 @@
 package mybatis.graduate;
 
 import com.thunisoft.graduate.common.model.Graduate;
-import org.apache.ibatis.annotations.Param;
 
 import java.util.List;
+import java.util.Map;
 
 /**
  * <p> Description: 毕业生信息 Mybatis数据访问映射接口</p>
@@ -25,11 +25,9 @@ public interface GraduateMapper {
     /**
      * 获取毕业生信息列表
      *
-     * @param firstResult 首记录索引，从0开始
-     * @param maxResults  获取记录数量
      * @return 毕业生信息列表
      */
-    List<Graduate> getGraduates(@Param("firstResult") int firstResult, @Param("maxResults") int maxResults);
+    List<Graduate> getGraduates(Map map);
 
     /**
      * 获取毕业生信息的数量

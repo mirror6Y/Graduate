@@ -26,33 +26,6 @@ function addTeacher() {
     });
 }
 
-// //信息详情
-// function getTeacherById(id) {
-//
-//     $.ajax({
-//         url: "/teacher/getTeacherById/" + id,        //教师信息接口 添加教师信息方法
-//         type: 'GET',
-//         dataType: 'json',
-//         contentType: 'application/x-www-form-urlencoded; charset=UTF-8',
-//         // data: $("#addTeacher").serialize(),//字符串
-//         success: function (result) {
-//             if (result === "success") {
-//                 alert("查看信息成功");
-//             } else {
-//                 alert("查看信息失败");
-//             }
-//         }
-//         ,
-//         error: function (XMLHttpRequest, textStatus, errorThrown) {
-//             console.log('XMLHttpRequest:' + XMLHttpRequest);
-//             console.log('textStatus:' + textStatus);
-//             console.log('errorThrown:' + errorThrown);
-//             alert('网络异常！尝试刷新网页解决问题');
-//             console.log($("#addTeacher").serializeArray());
-//         }
-//     });
-// }
-
 //删除教师信息
 function deleteTeacher() {
     debugger

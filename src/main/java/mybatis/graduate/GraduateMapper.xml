@@ -105,20 +105,28 @@
     </select>
     <select id="getGraduates" resultMap="graduate">
         select N_ID,
-               C_NAME,
-               C_IDCARD,
-               N_GENDER,
-               C_PEOPLE,
-               C_POLITICALSTATUS,
-               C_COLLEGE,
-               C_PROFESSION,
-               C_GRADE,
-               C_TEL,
-               D_GRADUATETIME,
-               C_EDUCATION,
-               C_DEGREE,
-               C_ADDRESS
+        C_NAME,
+        C_IDCARD,
+        N_GENDER,
+        C_PEOPLE,
+        C_POLITICALSTATUS,
+        C_COLLEGE,
+        C_PROFESSION,
+        C_GRADE,
+        C_TEL,
+        D_GRADUATETIME,
+        C_EDUCATION,
+        C_DEGREE,
+        C_ADDRESS
         from T_GRADUATE
+        <where>
+            <if test="college != null">
+                C_COLLEGE like "%"#{college}"%"
+            </if>
+            <if test="name != null">
+                AND C_NAME like "%"#{name}"%"
+            </if>
+        </where>
     </select>
     <select id="getGraduatesCount" resultType="int">
         select count(*)

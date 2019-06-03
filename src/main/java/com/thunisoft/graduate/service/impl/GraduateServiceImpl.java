@@ -4,6 +4,7 @@
  */
 package com.thunisoft.graduate.service.impl;
 
+import com.github.pagehelper.PageInfo;
 import com.thunisoft.graduate.common.Constants;
 import com.thunisoft.graduate.common.model.Graduate;
 import com.thunisoft.graduate.dao.IGraduateDao;
@@ -13,6 +14,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
+import java.util.Map;
 
 /**
  * <p> Description: 毕业生信息 服务实现</p>
@@ -60,10 +62,10 @@ public class GraduateServiceImpl implements IGraduateService {
     }
 
     @Override
-    public List<Graduate> getGraduates(int pageSize, int pageNo) {
+    public PageInfo<Graduate> getGraduates(int pageSize, int pageNo, Map map) {
         int firstResult = (pageNo - 1) * pageSize;
         int maxResults = pageSize;
-        return graduateDao.getGraduates(firstResult, maxResults);
+        return graduateDao.getGraduates(firstResult, maxResults, map);
     }
 
     @Override

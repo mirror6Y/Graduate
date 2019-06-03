@@ -23,8 +23,6 @@ public class LoginController {
     @GetMapping("login")
     public String loginCheck(HttpServletRequest request, HttpServletResponse response) {
 
-
-//********************
         response.setContentType("application/json,charset=UTF-8");
         String account = request.getParameter("account");
         String password = request.getParameter("password");

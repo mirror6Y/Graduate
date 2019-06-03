@@ -16,7 +16,7 @@
     <link rel="stylesheet" type="text/css" th:href="@{../../stylesheets/premium.css}">
 
     <script th:src="@{../../lib/jquery-1.11.1.min.js}" type="text/javascript"></script>
-    <script th:src="@{../../jq/teacher.js}"></script>
+    <script th:src="@{../../jq/graduate.js}"></script>
 
 </head>
 <body class=" theme-blue">
@@ -98,20 +98,20 @@
         </li>
 
         <!--教师信息-->
-        <li><a href="#" data-target=".premium-menu" class="nav-header" data-toggle="collapse"><i
+        <li><a href="#" data-target=".premium-menu" class="nav-header collapsed" data-toggle="collapse"><i
                 class="fa fa-fw fa-fighter-jet"></i> 教师信息<i class="fa fa-collapse"></i></a></li>
         <li>
-            <ul class="premium-menu nav nav-list collapse in">
+            <ul class="premium-menu nav nav-list collapse">
                 <li class="active"><a href="/teacher/getTeachers"><span class="fa fa-caret-right"></span>信息列表</a></li>
                 <li class="disabled"><a href="#"><span class="fa fa-caret-right"></span>信息详情</a></li>
             </ul>
         </li>
 
         <!--毕业生信息-->
-        <li><a href="#" data-target=".accounts-menu" class="nav-header collapsed" data-toggle="collapse"><i
+        <li><a href="#" data-target=".accounts-menu" class="nav-header" data-toggle="collapse"><i
                 class="fa fa-fw fa-briefcase"></i> 毕业生信息 <i class="fa fa-collapse"></i></a></li>
         <li>
-            <ul class="accounts-menu nav nav-list collapse">
+            <ul class="accounts-menu nav nav-list collapse in">
                 <li><a href="/graduate/getGraduates"><span class="fa fa-caret-right"></span>信息列表</a></li>
                 <li class="disabled"><a href="#"><span class="fa fa-caret-right"></span>信息详情</a></li>
             </ul>
@@ -140,10 +140,10 @@
 
     <div class="header">
 
-        <h1 class="page-title">教师信息管理</h1>
+        <h1 class="page-title">毕业生信息管理</h1>
         <ul class="breadcrumb">
-            <li><a href="#">教师信息管理</a></li>
-            <li class="active">教师信息列表</li>
+            <li><a href="#">毕业生信息管理</a></li>
+            <li class="active">毕业生信息列表</li>
         </ul>
 
     </div>
@@ -157,11 +157,11 @@
 
                 <div class="col-md-6">
 
-                    <form action="/teacher/getTeachers" method="get">
+                    <form action="/graduate/getGraduates" method="get">
 
                         <div>
-                            <label><input type="text" name="college" class="form-control" placeholder="教师分院"></label>
-                            <label><input type="text" name="name" class="form-control" placeholder="教师姓名"></label>
+                            <label><input type="text" name="college" class="form-control" placeholder="毕业生院系"></label>
+                            <label><input type="text" name="name" class="form-control" placeholder="毕业生姓名"></label>
                             <button class="btn btn-primary">查找信息</button>
                         </div>
 
@@ -188,27 +188,29 @@
 
             <tr>
                 <!--                <th>#</th>-->
-                <th>教师工号</th>
-                <th>教师姓名</th>
+                <th>毕业生学号</th>
+                <th>毕业生姓名</th>
                 <th>院系</th>
-                <th>办公室</th>
-                <th>联系方式</th>
+                <th>专业</th>
+                <th>班级</th>
                 <th>操作</th>
             </tr>
 
             </thead>
 
             <tbody>
-            <tr th:each="teacher:${pageInfo.list}">
-                <td th:text="${teacher.id}"></td>
-                <td th:text="${teacher.name}"></td>
-                <td th:text="${teacher.college}"></td>
-                <td th:text="${teacher.office}"></td>
-                <td th:text="${teacher.tel}"></td>
+            <tr th:each="graduate:${pageInfo.list}">
+                <td th:text="${graduate.id}"></td>
+                <td th:text="${graduate.name}"></td>
+                <td th:text="${graduate.college}"></td>
+                <td th:text="${graduate.profession}"></td>
+                <td th:text="${graduate.grade}"></td>
                 <td>
-                    <a class="btn btn-primary" th:href="@{'/teacher/getTeacherById/' +${teacher.id}+'/'+detail}">详情</a>
-                    <a class="btn btn-primary" th:href="@{'/teacher/getTeacherById/'+${teacher.id}+'/'+update}">编辑</a>
-                    <a class="btn btn-danger" th:href="@{'/teacher/getTeacherById/'+${teacher.id}}+'/'+delete">删除</a>
+                    <a class="btn btn-primary"
+                       th:href="@{'/graduate/getGraduateById/' +${graduate.id}+'/'+detail}">详情</a>
+                    <a class="btn btn-primary"
+                       th:href="@{'/graduate/getGraduateById/'+${graduate.id}+'/'+update}">编辑</a>
+                    <a class="btn btn-danger" th:href="@{'/graduate/getGraduateById/'+${graduate.id}}+'/'+delete">删除</a>
                 </td>
             </tr>
 
@@ -221,7 +223,7 @@
 
                 <li>
                     <a th:if="${not isFirstPage}"
-                       th:href="@{${'/teacher/getTeachers'}(pageNum=${pageNum-1},pageSize=${pageSize})}">&laquo;</a>
+                       th:href="@{${'/graduate/getGraduates'}(pageNum=${pageNum-1},pageSize=${pageSize})}">&laquo;</a>
                     <a th:if="${isFirstPage}" href="javascript:void(0);">&laquo;</a>
                 </li>
 
@@ -231,13 +233,13 @@
                     </a>
 
                     <a th:if="${not (pageNum eq pageNo)}"
-                       th:href="@{${'/teacher/getTeachers'}(pageNum=${pageNo},size=${pageSize})}">
+                       th:href="@{${'/graduate/getGraduates'}(pageNum=${pageNo},size=${pageSize})}">
                         <span th:text="${pageNo}"></span>
                     </a>
                 </li>
                 <li>
                     <a th:if="${not isLastPage}"
-                       th:href="@{${'/teacher/getTeachers'}(pageNum=${pageNum+1},size=${pageSize})}">&raquo;</a>
+                       th:href="@{${'/graduate/getGraduates'}(pageNum=${pageNum+1},size=${pageSize})}">&raquo;</a>
                     <a th:if="${isLastPage}" href="javascript:void(0);">&raquo;</a>
                 </li>
 
@@ -264,19 +266,20 @@
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span>
                 </button>
-                <h4 class="modal-title" id="myModalLabel">注册教师信息</h4>
+                <h4 class="modal-title" id="myModalLabel">添加毕业生信息</h4>
             </div>
 
             <div class="modal-body">
 
                 <div class="row">
 
-                    <div class="col-md-10">
+                    <form id="addGraduate">
 
-                        <form id="addTeacher">
+                        <div class="col-md-5">
+
 
                             <div class="form-group">
-                                <label>教师工号</label>
+                                <label>学号</label>
                                 <input type="text" name="id" class="form-control">
                             </div>
 
@@ -286,9 +289,24 @@
                             </div>
 
                             <div class="form-group">
-                                <label>性别</label>
+                                <label>性别</label><br>
                                 <input type="radio" name="gender" value="1">男
                                 <input type="radio" name="gender" value="0">女
+                            </div>
+
+                            <div class="form-group">
+                                <label>身份证号</label>
+                                <input type="text" name="idCard" class="form-control">
+                            </div>
+
+                            <div class="form-group">
+                                <label>民族</label>
+                                <input type="text" name="people" class="form-control">
+                            </div>
+
+                            <div class="form-group">
+                                <label>政治面貌</label>
+                                <input type="text" name="politicalStatus" class="form-control">
                             </div>
 
                             <div class="form-group">
@@ -296,9 +314,28 @@
                                 <input type="text" name="college" class="form-control">
                             </div>
 
+
+                            <hr/>
+
+                            <button type="button" class="btn btn-primary" onclick="addGraduate()">录入</button>
+
+                        </div>
+
+                        <div class="col-md-5">
+
                             <div class="form-group">
-                                <label>办公室</label>
-                                <input type="text" name="office" class="form-control">
+                                <label>专业</label>
+                                <input type="text" name="profession" class="form-control">
+                            </div>
+
+                            <div class="form-group">
+                                <label>班级</label>
+                                <input type="text" name="grade" class="form-control">
+                            </div>
+
+                            <div class="form-group">
+                                <label>家庭地址</label>
+                                <input type="text" name="address" class="form-control">
                             </div>
 
                             <div class="form-group">
@@ -307,62 +344,27 @@
                             </div>
 
                             <div class="form-group">
-                                <label>权限</label>
-                                <input type="text" name="permission" class="form-control">
+                                <label>毕业时间</label>
+                                <input type="text" name="graduateTime" class="form-control" placeholder="2019-07-01">
                             </div>
-
-
-                            <hr/>
-
-                            <button type="button" class="btn btn-primary" onclick="addTeacher()">录入</button>
-                            <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
-
-                        </form>
-                    </div>
-
-                </div>
-            </div>
-
-        </div>
-
-    </div>
-
-</div>
-
-<!--检索模态框-->
-<div class="modal fade" id="myQueryModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-
-    <div class="modal-dialog" role="document" style="width: 400px;">
-
-        <div class="modal-content">
-
-            <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span>
-                </button>
-                <h4 class="modal-title" id="myModalLabel">查找教师信息</h4>
-            </div>
-
-            <div class="modal-body">
-
-                <div class="row">
-
-                    <div class="col-md-10">
-
-                        <form>
 
                             <div class="form-group">
-                                <label>教师工号</label>
-                                <input type="text" name="id" class="form-control">
+                                <label>学历</label>
+                                <input type="text" name="education" class="form-control">
                             </div>
+
+                            <div class="form-group">
+                                <label>学位类型</label>
+                                <input type="text" name="degree" class="form-control">
+                            </div>
+
 
                             <hr/>
 
-                            <button type="button" class="btn btn-primary">查找</button>
                             <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
 
-                        </form>
-                    </div>
-
+                        </div>
+                    </form>
                 </div>
             </div>
 
@@ -371,32 +373,6 @@
     </div>
 
 </div>
-
-<script type="text/javascript">
-    $(function () {
-        pageNum = $("#first").val();
-        lastPage = $("#last").val();
-        if (lastPage == pageNum) {
-
-            $('.la').removeAttr('href');//去掉a标签中的href属性
-            $('.la').removeAttr('onclick');//去掉a标签中的onclick事件
-        } else {
-            if (pageNum == 1) {
-                $('.f').removeAttr('href');//去掉a标签中的href属性
-                $('.f').removeAttr('onclick');//去掉a标签中的onclick事件
-
-            } else if (pageNum != 1) {
-                $('.f').attr('', 'href');//添加a标签中的href属性
-                $('.f').attr('', 'onclick');//添加a标签中的onclick事件)
-            }
-            $('.la').attr('', 'href');//添加a标签中的href属性
-            $('.la').attr('', 'onclick');//添加a标签中的onclick事件)
-
-        }
-
-    });
-</script>
-
 
 <script th:src="@{../../lib/bootstrap/js/bootstrap.min.js}"></script>
 </body>
