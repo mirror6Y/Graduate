@@ -28,7 +28,7 @@ function addTeacher() {
 
 //删除教师信息
 function deleteTeacher() {
-    debugger
+
     let id = $('#deleteTeacherId').val();
 
     $.ajax({

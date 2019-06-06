@@ -5,10 +5,16 @@ import com.thunisoft.graduate.common.Constants;
 import com.thunisoft.graduate.common.model.Graduate;
 import com.thunisoft.graduate.service.IGraduateService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.propertyeditors.CustomDateEditor;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.ServletRequestDataBinder;
+import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.context.request.WebRequest;
 import org.springframework.web.servlet.ModelAndView;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.validation.Valid;
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -36,24 +42,23 @@ public class GraduateController {
     }
 
     /**
-     * 添加单位信息
+     * 添加信息
      * url:"http://localhost:8088/graduate/addGraduate"
      */
     @PostMapping("/addGraduate")
     public String addGraduate(Graduate graduate) {
-        DateFormat format = new SimpleDateFormat("yyyy-MM-dd");
-        System.out.println(graduate.getGraduateTime());
         graduateService.addGraduate(graduate);
         return Constants.C_SUCCESS;
     }
 
     /**
-     * 删除单位信息
+     * 删除信息
      * url:"http://localhost:8088/graduate/deleteGraduateById/{id}"
      */
     @DeleteMapping("/deleteGraduateById/{id}")
-    public void deleteGraduateById(@PathVariable("id") Integer id) {
+    public String deleteGraduateById(@PathVariable("id") Integer id) {
         graduateService.deleteGraduateById(id);
+        return Constants.C_SUCCESS;
     }
 
     /**
@@ -61,18 +66,9 @@ public class GraduateController {
      * url:"http://localhost:8088/graduate/updateGraduate"
      */
     @PutMapping("/updateGraduate")
-    public void updateGraduate() {
-        DateFormat format = new SimpleDateFormat("yyyy-MM-dd");
-        Graduate graduate = null;
-        try
-        {
-            graduate = new Graduate(201512031, "程宇浩", "", 1, "汉族", "共青团员", "计算机工程学院", "软件工程",
-                    "1502", "", format.parse("2019-07-01"), "本科", "学士", "安庆市");
-        } catch (ParseException e)
-        {
-            e.printStackTrace();
-        }
+    public String updateGraduate(Graduate graduate) {
         graduateService.updateGraduate(graduate);
+        return Constants.C_SUCCESS;
     }
 
     /**
@@ -128,5 +124,11 @@ public class GraduateController {
         return new ModelAndView("graduate/graduate");
     }
 
+    @InitBinder
+    public void initBinder(WebDataBinder binder) {
+        //转换日期
+        DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
+        binder.registerCustomEditor(Date.class, new CustomDateEditor(dateFormat, true));// CustomDateEditor为自定义日期编辑器
+    }
 
 }

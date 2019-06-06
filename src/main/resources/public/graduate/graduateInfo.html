@@ -142,7 +142,7 @@
 
         <h1 class="page-title">毕业生信息管理</h1>
         <ul class="breadcrumb">
-            <li><a href="#">毕业生信息管理</a></li>
+            <li><a href="/graduate/getGraduates">毕业生信息管理</a></li>
             <li class="active">毕业生信息</li>
         </ul>
 
@@ -153,11 +153,12 @@
 
         <div class="modal-body">
 
-            <div class="row">
+            <form th:object="${graduateInfo}">
 
-                <div class="col-md-4">
+                <div class="row">
 
-                    <form th:object="${graduateInfo}">
+                    <div class="col-md-4">
+
 
                         <fieldset disabled>
 
@@ -170,7 +171,6 @@
                                 <label>姓名</label>
                                 <input type="text" name="name" class="form-control" th:field="*{name}">
                             </div>
-
 
 
                             <div class="form-group">
@@ -201,15 +201,10 @@
 
                         </fieldset>
 
+                        <a href="/graduate/getGraduates" type="button" class="btn btn-default">返回列表</a>
+                    </div>
 
-                        <hr/>
-
-                    </form>
-                </div>
-
-                <div class="col-md-4">
-
-                    <form th:object="${graduateInfo}">
+                    <div class="col-md-4">
 
                         <fieldset disabled>
 
@@ -231,7 +226,8 @@
 
                             <div class="form-group">
                                 <label>毕业时间</label>
-                                <input type="text" name="graduateTime" class="form-control" th:field="*{graduateTime}">
+                                <input type="text" name="graduateTime" class="form-control"
+                                       th:field="*{graduateTime}">
                             </div>
 
                             <div class="form-group">
@@ -251,12 +247,10 @@
 
                         </fieldset>
 
-                        <hr/>
+                    </div>
 
-                    </form>
                 </div>
-            </div>
-
+            </form>
         </div>
     </div>
 </div>

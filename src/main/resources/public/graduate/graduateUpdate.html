@@ -142,8 +142,8 @@
 
         <h1 class="page-title">毕业生信息管理</h1>
         <ul class="breadcrumb">
-            <li><a href="#">毕业生信息管理</a></li>
-            <li class="active">毕业生信息</li>
+            <li><a href="/graduate/getGraduates">毕业生信息管理</a></li>
+            <li class="active">毕业生信息删除</li>
         </ul>
 
     </div>
@@ -155,99 +155,91 @@
 
             <div class="row">
 
-                <div class="col-md-4">
+                <form id="updateGraduate" th:object="${graduateUpdate}">
 
-                    <form th:object="${graduateInfo}">
+                    <div class="col-md-4">
 
-                        <fieldset disabled>
+                        <div class="form-group">
+                            <label>学号</label>
+                            <input type="text" name="id" id="deleteGraduateId" class="form-control" th:field="*{id}"
+                                   readOnly="true">
+                        </div>
 
-                            <div class="form-group">
-                                <label>学号</label>
-                                <input type="text" name="id" class="form-control" th:field="*{id}">
-                            </div>
+                        <div class="form-group">
+                            <label>姓名</label>
+                            <input type="text" name="name" class="form-control" th:field="*{name}">
+                        </div>
 
-                            <div class="form-group">
-                                <label>姓名</label>
-                                <input type="text" name="name" class="form-control" th:field="*{name}">
-                            </div>
+                        <div class="form-group">
+                            <label>院系</label>
+                            <input type="text" name="college" class="form-control" th:field="*{college}">
+                        </div>
 
-                            <div class="form-group">
-                                <label>性别</label>
-                                <input type="radio" name="gender" value="1" th:field="*{gender}">男
-                                <input type="radio" name="gender" value="0" th:field="*{gender}">女
-                            </div>
+                        <div class="form-group">
+                            <label>专业</label>
+                            <input type="text" name="profession" class="form-control" th:field="*{profession}">
+                        </div>
 
-                            <div class="form-group">
-                                <label>院系</label>
-                                <input type="text" name="college" class="form-control" th:field="*{college}">
-                            </div>
+                        <div class="form-group">
+                            <label>班级</label>
+                            <input type="text" name="grade" class="form-control" th:field="*{grade}">
+                        </div>
 
-                            <div class="form-group">
-                                <label>专业</label>
-                                <input type="text" name="profession" class="form-control" th:field="*{profession}">
-                            </div>
+                        <div class="form-group">
+                            <label>联系方式</label>
+                            <input type="text" name="tel" class="form-control" th:field="*{tel}">
+                        </div>
 
-                            <div class="form-group">
-                                <label>班级</label>
-                                <input type="text" name="grade" class="form-control" th:field="*{grade}">
-                            </div>
+                        <div class="form-group">
+                            <label>性别</label>
+                            <input type="radio" name="gender" value="1" th:field="*{gender}">男
+                            <input type="radio" name="gender" value="0" th:field="*{gender}">女
+                        </div>
 
-                            <div class="form-group">
-                                <label>联系方式</label>
-                                <input type="text" name="tel" class="form-control" th:field="*{tel}">
-                            </div>
+                        <button type="button" class="btn btn-danger" onclick="updateGraduate()">编辑</button>
+                        <a href="/graduate/getGraduates" type="button" class="btn btn-default">取消</a>
+                    </div>
 
-                        </fieldset>
+                    <div class="col-md-4">
 
-                    </form>
-                </div>
+                        <div class="form-group">
+                            <label>身份证号</label>
+                            <input type="text" name="idCard" class="form-control" th:field="*{idCard}">
+                        </div>
 
-                <div class="col-md-4">
+                        <div class="form-group">
+                            <label>民族</label>
+                            <input type="text" name="people" class="form-control" th:field="*{people}">
+                        </div>
 
-                    <form th:object="${graduateInfo}">
+                        <div class="form-group">
+                            <label>政治面貌</label>
+                            <input type="text" name="politicalStatus" class="form-control"
+                                   th:field="*{politicalStatus}">
+                        </div>
 
-                        <fieldset disabled>
+                        <div class="form-group">
+                            <label>毕业时间</label>
+                            <input type="text" name="graduateTime" class="form-control" th:field="*{graduateTime}">
+                        </div>
 
-                            <div class="form-group">
-                                <label>身份证号</label>
-                                <input type="text" name="idCard" class="form-control" th:field="*{idCard}">
-                            </div>
+                        <div class="form-group">
+                            <label>学历</label>
+                            <input type="text" name="education" class="form-control" th:field="*{education}">
+                        </div>
 
-                            <div class="form-group">
-                                <label>民族</label>
-                                <input type="text" name="people" class="form-control" th:field="*{people}">
-                            </div>
+                        <div class="form-group">
+                            <label>学位类别</label>
+                            <input type="text" name="degree" class="form-control" th:field="*{degree}">
+                        </div>
 
-                            <div class="form-group">
-                                <label>政治面貌</label>
-                                <input type="text" name="politicalStatus" class="form-control"
-                                       th:field="*{politicalStatus}">
-                            </div>
+                        <div class="form-group">
+                            <label>家庭地址</label>
+                            <input type="text" name="address" class="form-control" th:field="*{address}">
+                        </div>
 
-                            <div class="form-group">
-                                <label>毕业时间</label>
-                                <input type="text" name="graduateTime" class="form-control" th:field="*{graduateTime}">
-                            </div>
-
-                            <div class="form-group">
-                                <label>学历</label>
-                                <input type="text" name="education" class="form-control" th:field="*{education}">
-                            </div>
-
-                            <div class="form-group">
-                                <label>学位类别</label>
-                                <input type="text" name="degree" class="form-control" th:field="*{degree}">
-                            </div>
-
-                            <div class="form-group">
-                                <label>家庭地址</label>
-                                <input type="text" name="address" class="form-control" th:field="*{address}">
-                            </div>
-
-                        </fieldset>
-
-                    </form>
-                </div>
+                    </div>
+                </form>
             </div>
 
         </div>
