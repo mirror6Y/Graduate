@@ -4,6 +4,7 @@
  */
 package com.thunisoft.graduate.service.impl;
 
+import com.github.pagehelper.PageInfo;
 import com.thunisoft.graduate.common.model.Unit;
 import com.thunisoft.graduate.dao.IUnitDao;
 import com.thunisoft.graduate.service.IUnitService;
@@ -12,6 +13,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
+import java.util.Map;
 
 /**
  * <p> Description: 单位信息 服务实现</p>
@@ -59,11 +61,11 @@ public class UnitServiceImpl implements IUnitService {
     }
 
     @Override
-    public List<Unit> getUnits(int pageSize, int pageNo) {
+    public PageInfo<Unit> getUnits(int pageSize, int pageNo, Map map) {
         int firstResult = (pageNo - 1) * pageSize;
         int maxResults;
         maxResults = pageSize;
-        return unitDao.getUnits(firstResult, maxResults);
+        return unitDao.getUnits(firstResult, maxResults, map);
     }
 
     @Override

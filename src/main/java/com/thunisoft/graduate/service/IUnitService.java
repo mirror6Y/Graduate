@@ -4,9 +4,11 @@
  */
 package com.thunisoft.graduate.service;
 
+import com.github.pagehelper.PageInfo;
 import com.thunisoft.graduate.common.model.Unit;
 
 import java.util.List;
+import java.util.Map;
 
 /**
  * <p> Description: 单位信息 服务接口</p>
@@ -27,9 +29,10 @@ public interface IUnitService {
      *
      * @param pageSize 页大小，即每页有几条记录
      * @param pageNo   页码，从 1 开始
+     * @param map      过滤列表的参数
      * @return 单位信息列表
      */
-    List<Unit> getUnits(int pageSize, int pageNo);
+    PageInfo<Unit> getUnits(int pageSize, int pageNo, Map map);
 
     /**
      * 获取单位信息的数量

@@ -52,6 +52,14 @@
     <select id="getUnits" resultMap="unit">
         select C_ID, C_NAME, C_ADDRESS, C_ZIPCODE, C_LOCATION, C_CONTACT, C_CONTACTTEL
         from T_UNIT
+        <where>
+            <if test="address != null">
+                C_ADDRESS like "%"#{address}"%"
+            </if>
+            <if test="name != null">
+                AND C_NAME like "%"#{name}"%"
+            </if>
+        </where>
     </select>
     <select id="getUnitsCount" resultType="int">
         select count(*)

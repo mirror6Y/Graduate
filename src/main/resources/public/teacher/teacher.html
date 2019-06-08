@@ -122,8 +122,8 @@
                 class="fa fa-fw fa-legal"></i> 单位信息<i class="fa fa-collapse"></i></a></li>
         <li>
             <ul class="legal-menu nav nav-list collapse">
-                <li><a href="privacy-policy.html"><span class="fa fa-caret-right"></span>信息列表</a></li>
-                <li><a href="terms-and-conditions.html"><span class="fa fa-caret-right"></span>信息详情</a>
+                <li><a href="/unit/getUnits"><span class="fa fa-caret-right"></span>信息列表</a></li>
+                <li class="disabled"><a href="#"><span class="fa fa-caret-right"></span>信息详情</a>
                 </li>
             </ul>
         </li>
@@ -371,32 +371,6 @@
     </div>
 
 </div>
-
-<script type="text/javascript">
-    $(function () {
-        pageNum = $("#first").val();
-        lastPage = $("#last").val();
-        if (lastPage == pageNum) {
-
-            $('.la').removeAttr('href');//去掉a标签中的href属性
-            $('.la').removeAttr('onclick');//去掉a标签中的onclick事件
-        } else {
-            if (pageNum == 1) {
-                $('.f').removeAttr('href');//去掉a标签中的href属性
-                $('.f').removeAttr('onclick');//去掉a标签中的onclick事件
-
-            } else if (pageNum != 1) {
-                $('.f').attr('', 'href');//添加a标签中的href属性
-                $('.f').attr('', 'onclick');//添加a标签中的onclick事件)
-            }
-            $('.la').attr('', 'href');//添加a标签中的href属性
-            $('.la').attr('', 'onclick');//添加a标签中的onclick事件)
-
-        }
-
-    });
-</script>
-
 
 <script th:src="@{../../lib/bootstrap/js/bootstrap.min.js}"></script>
 </body>

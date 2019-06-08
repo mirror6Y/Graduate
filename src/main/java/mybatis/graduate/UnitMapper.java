@@ -8,6 +8,7 @@ import com.thunisoft.graduate.common.model.Unit;
 import org.apache.ibatis.annotations.Param;
 
 import java.util.List;
+import java.util.Map;
 
 /**
  * <p> Description: 单位信息 Mybatis数据访问映射接口</p>
@@ -25,11 +26,9 @@ public interface UnitMapper {
     /**
      * 获取单位信息列表
      *
-     * @param firstResult 首记录索引，从0开始
-     * @param maxResults  获取记录数量
      * @return 单位信息列表
      */
-    List<Unit> getUnits(@Param("firstResult") int firstResult, @Param("maxResults") int maxResults);
+    List<Unit> getUnits(Map map);
 
     /**
      * 获取单位信息的数量

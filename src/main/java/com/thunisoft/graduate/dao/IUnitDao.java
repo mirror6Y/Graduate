@@ -4,9 +4,11 @@
  */
 package com.thunisoft.graduate.dao;
 
+import com.github.pagehelper.PageInfo;
 import com.thunisoft.graduate.common.model.Unit;
 
 import java.util.List;
+import java.util.Map;
 
 /**
  * <p> Description: 单位信息 数据访问接口</p>
@@ -28,7 +30,7 @@ public interface IUnitDao {
      * @param maxResults  获取记录数量
      * @return 单位信息列表
      */
-    List<Unit> getUnits(int firstResult, int maxResults);
+    PageInfo<Unit> getUnits(int firstResult, int maxResults, Map map);
 
     /**
      * 获取单位信息的数量
