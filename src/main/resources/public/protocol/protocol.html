@@ -16,7 +16,7 @@
     <link rel="stylesheet" type="text/css" th:href="@{../../stylesheets/premium.css}">
 
     <script th:src="@{../../lib/jquery-1.11.1.min.js}" type="text/javascript"></script>
-    <script th:src="@{../../jq/teacher.js}"></script>
+    <script th:src="@{../../jq/protocol.js}"></script>
 
 </head>
 <body class=" theme-blue">
@@ -98,11 +98,11 @@
         </li>
 
         <!--教师信息-->
-        <li><a href="#" data-target=".premium-menu" class="nav-header" data-toggle="collapse"><i
+        <li><a href="#" data-target=".premium-menu" class="nav-header collapsed" data-toggle="collapse"><i
                 class="fa fa-fw fa-fighter-jet"></i> 教师信息<i class="fa fa-collapse"></i></a></li>
         <li>
-            <ul class="premium-menu nav nav-list collapse in">
-                <li class="active"><a href="/teacher/getTeachers"><span class="fa fa-caret-right"></span>信息列表</a></li>
+            <ul class="premium-menu nav nav-list collapse">
+                <li><a href="/teacher/getTeachers"><span class="fa fa-caret-right"></span>信息列表</a></li>
                 <li class="disabled"><a href="#"><span class="fa fa-caret-right"></span>信息详情</a></li>
             </ul>
         </li>
@@ -133,8 +133,8 @@
                 class="fa fa-fw fa-question-circle"></i>
             协议信息<i class="fa fa-collapse"></i></a></li>
         <li>
-            <ul class="protocol-menu nav nav-list collapse">
-                <li><a href="/protocol/getProtocols"><span class="fa fa-caret-right"></span>信息列表</a></li>
+            <ul class="protocol-menu nav nav-list collapse in">
+                <li class="active"><a href="/protocol/getProtocols"><span class="fa fa-caret-right"></span>信息列表</a></li>
                 <li class="disabled"><a href="#"><span class="fa fa-caret-right"></span>信息详情</a>
                 </li>
             </ul>
@@ -150,10 +150,10 @@
 
     <div class="header">
 
-        <h1 class="page-title">教师信息管理</h1>
+        <h1 class="page-title">协议信息管理</h1>
         <ul class="breadcrumb">
-            <li><a href="#">教师信息管理</a></li>
-            <li class="active">教师信息列表</li>
+            <li><a href="/protocol/getProtocols">协议信息管理</a></li>
+            <li class="active">协议信息列表</li>
         </ul>
 
     </div>
@@ -167,11 +167,12 @@
 
                 <div class="col-md-6">
 
-                    <form action="/teacher/getTeachers" method="get">
+                    <form action="/protocol/getProtocols" method="get">
 
                         <div>
-                            <label><input type="text" name="college" class="form-control" placeholder="教师分院"></label>
-                            <label><input type="text" name="name" class="form-control" placeholder="教师姓名"></label>
+                            <label><input type="text" name="graduateName" class="form-control"
+                                          placeholder="毕业生姓名"></label>
+                            <label><input type="text" name="unitName" class="form-control" placeholder="单位名称"></label>
                             <button class="btn btn-primary">查找信息</button>
                         </div>
 
@@ -187,7 +188,6 @@
 
             </div>
 
-
         </div>
 
         <br/>
@@ -197,28 +197,28 @@
             <thead>
 
             <tr>
-                <!--                <th>#</th>-->
-                <th>教师工号</th>
-                <th>教师姓名</th>
-                <th>院系</th>
-                <th>办公室</th>
-                <th>联系方式</th>
-                <th>操作</th>
+                <th>毕业生学号</th>
+                <th>毕业生姓名</th>
+                <th>单位名称</th>
+                <th>档案接收单位名称</th>
+                <th>档案接收单位地址</th>
             </tr>
 
             </thead>
 
             <tbody>
-            <tr th:each="teacher:${pageInfo.list}">
-                <td th:text="${teacher.id}"></td>
-                <td th:text="${teacher.name}"></td>
-                <td th:text="${teacher.college}"></td>
-                <td th:text="${teacher.office}"></td>
-                <td th:text="${teacher.tel}"></td>
+            <tr th:each="protocol:${pageInfo.list}">
+                <td th:text="${protocol.graduateId}"></td>
+                <td th:text="${protocol.graduateName}"></td>
+                <td th:text="${protocol.unitName}"></td>
+                <td th:text="${protocol.fileRecUnit}"></td>
+                <td th:text="${protocol.fileRecAdd}"></td>
                 <td>
-                    <a class="btn btn-primary" th:href="@{'/teacher/getTeacherById/' +${teacher.id}+'/'+detail}">详情</a>
-                    <a class="btn btn-primary" th:href="@{'/teacher/getTeacherById/'+${teacher.id}+'/'+update}">编辑</a>
-                    <a class="btn btn-danger" th:href="@{'/teacher/getTeacherById/'+${teacher.id}}+'/'+delete">删除</a>
+                    <a class="btn btn-primary"
+                       th:href="@{'/protocol/getProtocolById/' +${protocol.id}+'/'+detail}">详情</a>
+                    <a class="btn btn-primary"
+                       th:href="@{'/protocol/getProtocolById/'+${protocol.id}+'/'+update}">编辑</a>
+                    <a class="btn btn-danger" th:href="@{'/protocol/getProtocolById/'+${protocol.id}}+'/'+delete">删除</a>
                 </td>
             </tr>
 
@@ -231,7 +231,7 @@
 
                 <li>
                     <a th:if="${not isFirstPage}"
-                       th:href="@{${'/teacher/getTeachers'}(pageNum=${pageNum-1},pageSize=${pageSize})}">&laquo;</a>
+                       th:href="@{${'/protocol/getProtocols'}(pageNum=${pageNum-1},pageSize=${pageSize})}">&laquo;</a>
                     <a th:if="${isFirstPage}" href="javascript:void(0);">&laquo;</a>
                 </li>
 
@@ -241,13 +241,13 @@
                     </a>
 
                     <a th:if="${not (pageNum eq pageNo)}"
-                       th:href="@{${'/teacher/getTeachers'}(pageNum=${pageNo},size=${pageSize})}">
+                       th:href="@{${'/protocol/getProtocols'}(pageNum=${pageNo},size=${pageSize})}">
                         <span th:text="${pageNo}"></span>
                     </a>
                 </li>
                 <li>
                     <a th:if="${not isLastPage}"
-                       th:href="@{${'/teacher/getTeachers'}(pageNum=${pageNum+1},size=${pageSize})}">&raquo;</a>
+                       th:href="@{${'/protocol/getProtocols'}(pageNum=${pageNum+1},size=${pageSize})}">&raquo;</a>
                     <a th:if="${isLastPage}" href="javascript:void(0);">&raquo;</a>
                 </li>
 
@@ -274,105 +274,64 @@
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span>
                 </button>
-                <h4 class="modal-title" id="myModalLabel">注册教师信息</h4>
+                <h4 class="modal-title" id="myModalLabel">添加协议信息</h4>
             </div>
 
             <div class="modal-body">
 
                 <div class="row">
 
-                    <div class="col-md-10">
+                    <form id="addProtocol">
 
-                        <form id="addTeacher">
+                        <div class="col-md-10">
 
                             <div class="form-group">
-                                <label>教师工号</label>
-                                <input type="text" name="id" class="form-control">
+                                <label>毕业生学号</label>
+                                <input type="text" name="graduateId" class="form-control">
                             </div>
 
                             <div class="form-group">
-                                <label>姓名</label>
-                                <input type="text" name="name" class="form-control">
+                                <label>单位统一社会信用代码</label>
+                                <input type="text" name="unitId" class="form-control">
                             </div>
 
                             <div class="form-group">
-                                <label>性别</label>
-                                <input type="radio" name="gender" value="1">男
-                                <input type="radio" name="gender" value="0">女
+                                <label>档案接收单位名称</label>
+                                <input type="text" name="fileRecUnit" class="form-control">
                             </div>
 
                             <div class="form-group">
-                                <label>院系</label>
-                                <input type="text" name="college" class="form-control">
+                                <label>档案接收单位地址</label>
+                                <input type="text" name="fileRecAdd" class="form-control">
                             </div>
 
                             <div class="form-group">
-                                <label>办公室</label>
-                                <input type="text" name="office" class="form-control">
+                                <label>联系人</label>
+                                <input type="text" name="contact" class="form-control">
                             </div>
 
                             <div class="form-group">
-                                <label>联系方式</label>
-                                <input type="text" name="tel" class="form-control">
+                                <label>邮编</label>
+                                <input type="text" name="zipCode" class="form-control">
+                            </div>
+
+
+                            <div class="form-group">
+                                <label>户口接收单位</label><br>
+                                <input type="text" name="accRecUnit" class="form-control">
                             </div>
 
                             <div class="form-group">
-                                <label>权限</label>
-                                <input type="text" name="permission" class="form-control">
+                                <label>党、团组织关系接收单位</label><br>
+                                <input type="text" name="orgRecUnit" class="form-control">
                             </div>
 
-
-                            <hr/>
-
-                            <button type="button" class="btn btn-primary" onclick="addTeacher()">录入</button>
+                            <button type="button" class="btn btn-primary" onclick="addProtocol()">录入</button>
                             <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
 
-                        </form>
-                    </div>
+                        </div>
 
-                </div>
-            </div>
-
-        </div>
-
-    </div>
-
-</div>
-
-<!--检索模态框-->
-<div class="modal fade" id="myQueryModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-
-    <div class="modal-dialog" role="document" style="width: 400px;">
-
-        <div class="modal-content">
-
-            <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span>
-                </button>
-                <h4 class="modal-title" id="myModalLabel">查找教师信息</h4>
-            </div>
-
-            <div class="modal-body">
-
-                <div class="row">
-
-                    <div class="col-md-10">
-
-                        <form>
-
-                            <div class="form-group">
-                                <label>教师工号</label>
-                                <input type="text" name="id" class="form-control">
-                            </div>
-
-                            <hr/>
-
-                            <button type="button" class="btn btn-primary">查找</button>
-                            <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
-
-                        </form>
-                    </div>
-
+                    </form>
                 </div>
             </div>
 

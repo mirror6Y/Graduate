@@ -4,6 +4,8 @@
  */
 package com.thunisoft.graduate.dao.impl;
 
+import com.github.pagehelper.PageHelper;
+import com.github.pagehelper.PageInfo;
 import com.thunisoft.graduate.common.model.Protocol;
 import com.thunisoft.graduate.dao.IProtocolDao;
 import mybatis.graduate.ProtocolMapper;
@@ -11,6 +13,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
+import java.util.Map;
 import java.util.UUID;
 
 /**
@@ -37,7 +40,8 @@ public class ProtocolDaoMyBatisImpl implements IProtocolDao {
 
     @Override
     public void addProtocol(Protocol protocol) {
-        if (protocol.getId() == null) {
+        if (protocol.getId() == null)
+        {
             protocol.setId(UUID.randomUUID().toString().replace("-", ""));
         }
         protocolMapper.addProtocol(protocol);
@@ -54,11 +58,11 @@ public class ProtocolDaoMyBatisImpl implements IProtocolDao {
     }
 
     @Override
-    public List<Protocol> getProtocols(final int firstResult, final int maxResults) {
+    public PageInfo<Protocol> getProtocols(final int firstResult, final int maxResults, Map map) {
         int pageNo = firstResult / maxResults + 1;
-//        ArteryInterceptor.startPage(pageNo, maxResults, false); // 自动分页
-
-        return protocolMapper.getProtocols(firstResult, maxResults);
+        PageHelper.startPage(pageNo, maxResults); //开始起始页
+        List<Protocol> protocols = protocolMapper.getProtocols(map); // 获取数据
+        return new PageInfo<>(protocols);
     }
 
     @Override

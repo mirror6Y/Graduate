@@ -129,7 +129,17 @@
         </li>
 
         <!--协议信息-->
-        <li><a href="help.html" class="nav-header"><i class="fa fa-fw fa-question-circle"></i> 协议信息</a></li>
+        <li><a href="#" data-target=".protocol-menu" class="nav-header collapsed " data-toggle="collapse"><i
+                class="fa fa-fw fa-question-circle"></i>
+            协议信息<i class="fa fa-collapse"></i></a></li>
+        <li>
+            <ul class="protocol-menu nav nav-list collapse in">
+                <li><a href="/protocol/getProtocols"><span class="fa fa-caret-right"></span>信息列表</a></li>
+                <li class="disabled"><a href="#"><span class="fa fa-caret-right"></span>信息详情</a>
+                </li>
+            </ul>
+        </li>
+
         <li><a href="faq.html" class="nav-header"><i class="fa fa-fw fa-comment"></i> Faq</a></li>
         <li><a href="#" class="nav-header" target="blank"><i class="fa fa-fw fa-heart"></i> Get Premium</a></li>
     </ul>
@@ -198,7 +208,6 @@
                             </div>
 
                         </fieldset>
-
 
                         <a href="/graduate/getGraduates" type="button" class="btn btn-default">取消</a>
                         <button type="button" class="btn btn-danger" onclick="deleteGraduate()">删除</button>

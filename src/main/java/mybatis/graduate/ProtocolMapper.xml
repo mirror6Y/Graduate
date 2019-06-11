@@ -22,6 +22,11 @@
         <result property="accRecUnit" column="C_ACCRECUNIT" jdbcType="VARCHAR"/>
         <!-- 组织关系接收单位 -->
         <result property="orgRecUnit" column="C_ORGRECUNIT" jdbcType="VARCHAR"/>
+        <!--毕业生姓名-->
+        <result property="graduateName" column="C_GRADUATENAME" jdbcType="VARCHAR"/>
+        <!--单位名称-->
+        <result property="unitName" column="C_UNITNAME" jdbcType="VARCHAR"/>
+
     </resultMap>
     <delete id="deleteProtocolById">
         delete
@@ -61,29 +66,45 @@
         where C_ID = #{id}
     </update>
     <select id="getProtocolById" parameterType="java.lang.String" resultMap="protocol">
-        select C_ID,
-               N_GRADUATEID,
-               C_UNITID,
-               C_FILERECUNIT,
-               C_FILERECADD,
-               C_CONTACT,
-               C_ZIPCODE,
-               C_ACCRECUNIT,
-               C_ORGRECUNIT
-        from T_PROTOCOL
-        where C_ID = #{id}
+        SELECT p.C_ID,
+               p.N_GRADUATEID,
+               g.C_NAME AS C_GRADUATENAME,
+               p.C_UNITID,
+               u.C_NAME AS C_UNITNAME,
+               p.C_FILERECUNIT,
+               p.C_FILERECADD,
+               p.C_CONTACT,
+               p.C_ZIPCODE,
+               p.C_ACCRECUNIT,
+               p.C_ORGRECUNIT
+        FROM T_PROTOCOL p
+                 LEFT JOIN T_GRADUATE g ON p.N_GRADUATEID = g.N_ID
+                 LEFT JOIN T_UNIT u ON p.C_UNITID = u.C_ID
+        where p.C_ID = #{ID}
     </select>
     <select id="getProtocols" resultMap="protocol">
-        select C_ID,
-               N_GRADUATEID,
-               C_UNITID,
-               C_FILERECUNIT,
-               C_FILERECADD,
-               C_CONTACT,
-               C_ZIPCODE,
-               C_ACCRECUNIT,
-               C_ORGRECUNIT
-        from T_PROTOCOL
+        SELECT p.C_ID,
+        p.N_GRADUATEID,
+        g.C_NAME AS C_GRADUATENAME,
+        p.C_UNITID,
+        u.C_NAME AS C_UNITNAME,
+        p.C_FILERECUNIT,
+        p.C_FILERECADD,
+        p.C_CONTACT,
+        p.C_ZIPCODE,
+        p.C_ACCRECUNIT,
+        p.C_ORGRECUNIT
+        FROM T_PROTOCOL p
+        LEFT JOIN T_GRADUATE g ON p.N_GRADUATEID = g.N_ID
+        LEFT JOIN T_UNIT u ON p.C_UNITID = u.C_ID
+        <where>
+            <if test="graduateName != null">
+                C_GRADUATENAME like "%"#{graduateName}"%"
+            </if>
+            <if test="unitName != null">
+                AND C_UNITNAME like "%"#{unitName}"%"
+            </if>
+        </where>
     </select>
     <select id="getProtocolsCount" resultType="int">
         select count(*)

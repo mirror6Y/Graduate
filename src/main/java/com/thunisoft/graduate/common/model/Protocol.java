@@ -69,25 +69,14 @@ public class Protocol implements Serializable {
     private String orgRecUnit;
 
     /**
-     * 添加协议信息
-     *
-     * @param graduateId  毕业生学号
-     * @param unitId      单位统一社会信用代码
-     * @param fileRecUnit 档案接收单位名称
-     * @param fileRecAdd  档案接收单位地址
-     * @param contact     联系人
-     * @param zipCode     邮编
-     * @param accRecUnit  户口接收单位
-     * @param orgRecUnit  党、团组织关系接收单位
+     * 毕业生姓名
      */
-    public Protocol(Integer graduateId, String unitId, String fileRecUnit, String fileRecAdd, String contact, String zipCode, String accRecUnit, String orgRecUnit) {
-        this.graduateId = graduateId;
-        this.unitId = unitId;
-        this.fileRecUnit = fileRecUnit;
-        this.fileRecAdd = fileRecAdd;
-        this.contact = contact;
-        this.zipCode = zipCode;
-        this.accRecUnit = accRecUnit;
-        this.orgRecUnit = orgRecUnit;
-    }
+    private String graduateName;
+
+    /**
+     * 单位名称
+     */
+    private String unitName;
+
+
 }

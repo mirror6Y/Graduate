@@ -4,6 +4,7 @@
  */
 package com.thunisoft.graduate.service.impl;
 
+import com.github.pagehelper.PageInfo;
 import com.thunisoft.graduate.common.Constants;
 import com.thunisoft.graduate.common.model.Protocol;
 import com.thunisoft.graduate.dao.IProtocolDao;
@@ -13,6 +14,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
+import java.util.Map;
 
 /**
  * <p> Description: 三方协议 服务实现</p>
@@ -61,10 +63,10 @@ public class ProtocolServiceImpl implements IProtocolService {
     }
 
     @Override
-    public List<Protocol> getProtocols(int pageSize, int pageNo) {
+    public PageInfo<Protocol> getProtocols(int pageSize, int pageNo, Map map) {
         int firstResult = (pageNo - 1) * pageSize;
         int maxResults = pageSize;
-        return protocolDao.getProtocols(firstResult, maxResults);
+        return protocolDao.getProtocols(firstResult, maxResults, map);
     }
 
     @Override

@@ -9,7 +9,6 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
-import javax.servlet.http.HttpServletRequest;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -77,7 +76,7 @@ public class TeacherController {
     @GetMapping("/getTeacherById/{id}/{operation}")
     public ModelAndView getTeacherById(Model model, @PathVariable("id") Integer id, @PathVariable("operation") String operation) {
         //判断是否存在工号为ID的教师信息
-        Integer presence = teacherService.getTeachersCountById(id);
+        int presence = teacherService.getTeachersCountById(id);
         if (presence > 0)
         {
             Teacher teacher = teacherService.getTeacherById(id);
@@ -109,7 +108,7 @@ public class TeacherController {
     @GetMapping("/getTeachers")
     public ModelAndView getTeachers(Model model, @RequestParam(defaultValue = "3") Integer pageSize, @RequestParam(defaultValue = "1") Integer pageNum, Teacher teacher) {
         //列表过滤条件
-        Map map = new HashMap();
+        Map<String, Object> map = new HashMap<>();
         map.put("college", teacher.getCollege());
         map.put("name", teacher.getName());
         //教师列表

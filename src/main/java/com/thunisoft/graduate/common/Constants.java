@@ -33,8 +33,5 @@ public interface Constants {
      */
     public static final String C_CURD_SUCCESS = "1";
 
-    /**
-     * 查询列表
-     */
 
 }

@@ -4,9 +4,11 @@
  */
 package com.thunisoft.graduate.dao;
 
+import com.github.pagehelper.PageInfo;
 import com.thunisoft.graduate.common.model.Protocol;
 
 import java.util.List;
+import java.util.Map;
 
 /**
  * <p> Description: 三方协议 数据访问接口</p>
@@ -28,7 +30,7 @@ public interface IProtocolDao {
      * @param maxResults  获取记录数量
      * @return 三方协议列表
      */
-    List<Protocol> getProtocols(int firstResult, int maxResults);
+    PageInfo<Protocol> getProtocols(int firstResult, int maxResults, Map map);
 
     /**
      * 获取三方协议的数量

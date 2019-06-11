@@ -4,10 +4,12 @@
  */
 package mybatis.graduate;
 
+import com.github.pagehelper.PageInfo;
 import com.thunisoft.graduate.common.model.Protocol;
 import org.apache.ibatis.annotations.Param;
 
 import java.util.List;
+import java.util.Map;
 
 /**
  * <p> Description: 三方协议 Mybatis数据访问映射接口</p>
@@ -25,11 +27,9 @@ public interface ProtocolMapper {
     /**
      * 获取三方协议列表
      *
-     * @param firstResult 首记录索引，从0开始
-     * @param maxResults  获取记录数量
      * @return 三方协议列表
      */
-    List<Protocol> getProtocols(@Param("firstResult") int firstResult, @Param("maxResults") int maxResults);
+    List<Protocol> getProtocols(Map map);
 
     /**
      * 获取三方协议的数量
@@ -68,6 +68,7 @@ public interface ProtocolMapper {
      * @param protocol 三方协议
      */
     void updateProtocol(Protocol protocol);
+
 
     /**
      * 删除三方协议
