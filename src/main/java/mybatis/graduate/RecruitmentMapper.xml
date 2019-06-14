@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- 由stage工具自动生成 -->
+<mapper namespace="mybatis.graduate.RecruitmentMapper">
+    <!-- 招聘信息 -->
+    <resultMap id="recruitment" type="com.thunisoft.graduate.common.model.Recruitment">
+        <!-- 编号 -->
+        <id property="id" column="C_ID" jdbcType="VARCHAR"/>
+        <!-- 招聘标题 -->
+        <result property="title" column="C_TITLE" jdbcType="VARCHAR"/>
+        <!-- 招聘概述 -->
+        <result property="info" column="C_INFO" jdbcType="VARCHAR"/>
+        <!-- 招聘地点 -->
+        <result property="place" column="C_PLACE" jdbcType="VARCHAR"/>
+        <!-- 薪资 -->
+        <result property="salary" column="N_SALARY" jdbcType="INTEGER"/>
+
+    </resultMap>
+    <delete id="deleteRecruitmentById">
+        delete
+        from T_RECRUITMENT
+        where C_ID = #{id}
+    </delete>
+    <insert id="addRecruitment" parameterType="com.thunisoft.graduate.common.model.Recruitment">
+        insert into T_RECRUITMENT (C_ID,
+                                   C_TITLE,
+                                   C_INFO,
+                                   C_PLACE,
+                                   N_SALARY)
+        values (#{id, jdbcType=VARCHAR},
+                #{title, jdbcType=VARCHAR},
+                #{info, jdbcType=VARCHAR},
+                #{place, jdbcType=VARCHAR},
+                #{salary, jdbcType=INTEGER})
+    </insert>
+    <update id="updateRecruitment" parameterType="com.thunisoft.graduate.common.model.Recruitment">
+        update T_RECRUITMENT
+        set C_TITLE  = #{title, jdbcType=VARCHAR},
+            C_INFO   = #{info, jdbcType=VARCHAR},
+            C_PLACE  = #{place, jdbcType=VARCHAR},
+            N_SALARY = #{salary, jdbcType=INTEGER}
+        where C_ID = #{id}
+    </update>
+    <select id="getRecruitmentById" parameterType="String" resultMap="recruitment">
+        select *
+        from T_RECRUITMENT
+        where C_ID = #{id}
+    </select>
+    <select id="getRecruitments" resultMap="recruitment">
+        select *
+        from T_RECRUITMENT
+    </select>
+    <select id="getRecruitmentsCount" resultType="int">
+        select count(*)
+        from T_RECRUITMENT
+    </select>
+    <select id="getRecruitmentCountById" resultType="int">
+        select count(*)
+        from T_RECRUITMENT
+        where C_id = #{id}
+    </select>
+</mapper>

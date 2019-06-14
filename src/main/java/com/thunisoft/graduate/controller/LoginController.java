@@ -32,6 +32,7 @@ public class LoginController {
         int presence = teacherService.getTeachersCountByMap(map);
         if (presence > 0)
         {
+            request.setAttribute("loginName", account);
             return "index";
         } else if (null == map.get("id"))
         {

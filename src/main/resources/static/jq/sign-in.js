@@ -21,7 +21,7 @@ function jump() {
 //      JSON.stringify(object),
         success: function (result) {
             if (result === "index") {
-                location.href = "/index.html";
+                location.href = "/recruitment/getRecruitments";
             } else {
                 alert("账号或密码不正确");
             }
