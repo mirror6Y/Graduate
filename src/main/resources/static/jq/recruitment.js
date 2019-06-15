@@ -30,7 +30,7 @@ function deleteRecruitment() {
     let id = $('#deleteRecruitmentId').val();
 
     $.ajax({
-        url: "/recruitment/deleteRecruitmentId/" + id,        //教师信息接口 删除教师信息方法
+        url: "/recruitment/deleteRecruitmentById/" + id,        //教师信息接口 删除教师信息方法
         type: 'DELETE',
         dataType: 'text',
         contentType: 'application/x-www-form-urlencoded; charset=UTF-8',

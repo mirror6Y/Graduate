@@ -1,7 +1,6 @@
 //登录
 function jump() {
 
-
     //获取账号
     let account = $('#account').val();
     let password = $('#password').val();

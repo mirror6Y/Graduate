@@ -8,15 +8,13 @@
     <meta name="description" content="">
     <meta name="author" content="mirror6">
 
-    <link rel="stylesheet" type="text/css" href="../lib/bootstrap/css/bootstrap.css">
-    <link rel="stylesheet" href="../lib/font-awesome/css/font-awesome.css">
-    <link rel="stylesheet" type="text/css" href="../stylesheets/theme.css">
-    <link rel="stylesheet" type="text/css" href="../stylesheets/premium.css">
-    <link rel="stylesheet" type="text/css" href="../stylesheets/theme.css">
-    <link rel="stylesheet" type="text/css" href="../stylesheets/premium.css">
+    <link rel="stylesheet" type="text/css" th:href="@{../../../lib/bootstrap/css/bootstrap.css}">
+    <link rel="stylesheet" th:href="@{../../../lib/font-awesome/css/font-awesome.css}">
+    <link rel="stylesheet" type="text/css" th:href="@{../../../stylesheets/theme.css}">
+    <link rel="stylesheet" type="text/css" th:href="@{../../../stylesheets/premium.css}">
 
-    <script src="../lib/jquery-1.11.1.min.js" type="text/javascript"></script>
-    <script src="../jq/recruitment.js"></script>
+    <script th:src="@{../../../lib/jquery-1.11.1.min.js}" type="text/javascript"></script>
+    <script th:src="@{../../../jq/recruitment.js}"></script>
 
 
 </head>
@@ -34,14 +32,6 @@
         color: #fff;
     }
 </style>
-
-
-<!-- Le fav and touch icons -->
-<link rel="shortcut icon" href="../assets/ico/favicon.ico">
-<link rel="apple-touch-icon-precomposed" sizes="144x144" href="../assets/ico/apple-touch-icon-144-precomposed.png">
-<link rel="apple-touch-icon-precomposed" sizes="114x114" href="../assets/ico/apple-touch-icon-114-precomposed.png">
-<link rel="apple-touch-icon-precomposed" sizes="72x72" href="../assets/ico/apple-touch-icon-72-precomposed.png">
-<link rel="apple-touch-icon-precomposed" href="../assets/ico/apple-touch-icon-57-precomposed.png">
 
 
 <div class="navbar navbar-default" role="navigation">
@@ -85,11 +75,12 @@
     <ul>
 
         <!--主页-->
-        <li><a href="#" data-target=".dashboard-menu" class="nav-header collapsed " data-toggle="collapse"><i
+        <li><a href="index.html" data-target=".dashboard-menu" class="nav-header collapsed" data-toggle="collapse"><i
                 class="fa fa-fw fa-dashboard"></i> 主页<i class="fa fa-collapse"></i></a></li>
         <li>
-            <ul class="dashboard-menu nav nav-list collapse in">
-                <li class="active"><a href="#"><span class="fa fa-caret-right"></span> 添加招聘信息</a></li>
+            <ul class="dashboard-menu nav nav-list collapse in ">
+                <li><a href="/recruitment/addRecruitment.html"><span class="fa fa-caret-right"></span> 添加招聘信息</a></li>
+                <li class="active"><a href="#"><span class="fa fa-caret-right"></span> 招聘信息删除</a></li>
                 <li><a href="#"><span class="fa fa-caret-right"></span>就业信息统计</a></li>
             </ul>
         </li>
@@ -150,7 +141,7 @@
         <h1 class="page-title">招聘信息管理</h1>
         <ul class="breadcrumb">
             <li><a href="/recruitment/getRecruitments">主页</a></li>
-            <li class="active">招聘信息添加</li>
+            <li class="active">招聘信息删除</li>
         </ul>
 
     </div>
@@ -162,32 +153,36 @@
 
             <div class="row">
 
-                <form id="addRecruitment">
+                <form th:object="${recruitmentInfo}">
 
                     <div class="col-md-6">
 
+                        <input type="hidden" id="deleteRecruitmentId" name="id" th:field="*{id}">
+
                         <div class="form-group">
                             <label>招聘标题</label>
-                            <input type="text" name="title" class="form-control">
+                            <input type="text" name="title" class="form-control" th:field="*{title}">
                         </div>
 
                         <div class="form-group">
                             <label>招聘信息</label>
-                            <textarea rows="5" name="info" class="form-control"></textarea>
+                            <textarea rows="5" name="info" class="form-control" th:field="*{info}"></textarea>
                         </div>
 
                         <div class="form-group">
                             <label>工作地点</label>
-                            <input type="text" name="place" class="form-control">
+                            <input type="text" name="place" class="form-control" th:field="*{place}">
                         </div>
 
                         <div class="form-group">
                             <label>薪资</label>
-                            <input type="text" name="salary" class="form-control">
+                            <input type="text" name="salary" class="form-control" th:field="*{salary}">
                         </div>
 
-                        <button type="button" class="btn btn-primary" onclick="addRecruitment()">添加</button>
-                        <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+                        <hr>
+
+                        <a href="/recruitment/getRecruitments" type="button" class="btn btn-default">取消</a>
+                        <button type="button" class="btn btn-danger" onclick="deleteRecruitment()">删除</button>
 
                     </div>
 
@@ -198,7 +193,6 @@
         </div>
 
         <br/>
-
 
         <footer>
             <hr>

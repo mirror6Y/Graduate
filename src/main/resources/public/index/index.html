@@ -12,11 +12,9 @@
     <link rel="stylesheet" th:href="@{../../lib/font-awesome/css/font-awesome.css}">
     <link rel="stylesheet" type="text/css" th:href="@{../../stylesheets/theme.css}">
     <link rel="stylesheet" type="text/css" th:href="@{../../stylesheets/premium.css}">
-
     <script th:src="@{../../lib/jquery-1.11.1.min.js}" type="text/javascript"></script>
     <script th:src="@{../../jq/graduate.js}"></script>
-
-    <script th:src="@{../../lib/jQuery-Knob/js/jquery.knob.js}" type="text/javascript"></script>
+    <script src="../lib/jQuery-Knob/js/jquery.knob.js" type="text/javascript"></script>
 
 
 </head>
@@ -36,14 +34,6 @@
 </style>
 
 
-<!-- Le fav and touch icons -->
-<link rel="shortcut icon" href="../assets/ico/favicon.ico">
-<link rel="apple-touch-icon-precomposed" sizes="144x144" href="../assets/ico/apple-touch-icon-144-precomposed.png">
-<link rel="apple-touch-icon-precomposed" sizes="114x114" href="../assets/ico/apple-touch-icon-114-precomposed.png">
-<link rel="apple-touch-icon-precomposed" sizes="72x72" href="../assets/ico/apple-touch-icon-72-precomposed.png">
-<link rel="apple-touch-icon-precomposed" href="../assets/ico/apple-touch-icon-57-precomposed.png">
-
-
 <div class="navbar navbar-default" role="navigation">
     <div class="navbar-header">
         <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target=".navbar-collapse">
@@ -52,7 +42,8 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
         </button>
-        <a class="" href="index.html"><span class="navbar-brand"><span class="fa fa-paper-plane"></span> Aircraft</span></a>
+        <a class="" href="/recruitment/getRecruitments"><span class="navbar-brand"><span
+                class="fa fa-paper-plane"></span> Aircraft</span></a>
     </div>
 
     <div class="navbar-collapse collapse" style="height: 1px;">
@@ -68,10 +59,10 @@
                     <li><a href="./">我的账号</a></li>
                     <li class="divider"></li>
                     <li class="dropdown-header">管理</li>
-                    <li><a href="./">用户</a></li>
-                    <li><a href="./">安全</a></li>
+                    <li><a href="#">用户</a></li>
+                    <li><a href="#">安全</a></li>
                     <li class="divider"></li>
-                    <li><a tabindex="-1" href="LogoutServlet">退出</a></li>
+                    <li><a tabindex="-1" href="/login/logout">退出</a></li>
                 </ul>
             </li>
         </ul>
@@ -141,7 +132,7 @@
         </li>
 
         <li><a href="faq.html" class="nav-header"><i class="fa fa-fw fa-comment"></i> Faq</a></li>
-        <li><a href="http://portnine.com/bootstrap-themes/aircraft" class="nav-header" target="blank"><i
+        <li><a href="#" class="nav-header" target="blank"><i
                 class="fa fa-fw fa-heart"></i> Get Premium</a></li>
     </ul>
 </div>
@@ -149,11 +140,11 @@
 <div class="content">
     <div class="header">
 
-        <h1 class="page-title">Dashboard</h1>
-        <ul class="breadcrumb">
-            <li><a href="index.html">Home</a></li>
-            <li class="active">Dashboard</li>
-        </ul>
+        <h1 class="page-title">主页</h1>
+        <!--        <ul class="breadcrumb">-->
+        <!--            <li><a href="index.html">主页</a></li>-->
+        <!--            <li class="active">Dashboard</li>-->
+        <!--        </ul>-->
 
     </div>
     <div class="main-content">
@@ -206,7 +197,7 @@
                         <tr>
                             <th>招聘标题</th>
                             <th>招聘地点</th>
-                            <th>薪资</th>
+                            <th>月薪</th>
                         </tr>
                         </thead>
                         <tbody>

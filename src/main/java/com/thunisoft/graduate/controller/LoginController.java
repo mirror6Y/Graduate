@@ -1,11 +1,14 @@
 package com.thunisoft.graduate.controller;
 
+import com.thunisoft.graduate.common.model.Teacher;
 import com.thunisoft.graduate.service.ITeacherService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -32,7 +35,9 @@ public class LoginController {
         int presence = teacherService.getTeachersCountByMap(map);
         if (presence > 0)
         {
-            request.setAttribute("loginName", account);
+            String name = teacherService.getTeacherById(Integer.parseInt(account)).getName();
+            request.getSession().setAttribute("loginName", name);//将用户信息放到session中
+            request.getSession().setMaxInactiveInterval(3600);//设置session存储时间，以秒为单位，3600=60*60即为60分钟
             return "index";
         } else if (null == map.get("id"))
         {
@@ -46,6 +51,19 @@ public class LoginController {
         }
 
     }
+
+    @RequestMapping(value="logout")
+    public ModelAndView logout(HttpServletRequest request){
+        ModelAndView result = new ModelAndView("sign-in");
+        HttpSession session = request.getSession();//获取当前session
+        if(session!=null){
+//            Teacher teacher=(Teacher)session.getAttribute("loginName");
+            session.invalidate();//关闭session
+        }
+        return result;
+
+    }
+
 
 
 }

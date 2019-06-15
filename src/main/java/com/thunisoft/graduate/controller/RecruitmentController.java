@@ -72,7 +72,7 @@ public class RecruitmentController {
     }
 
     @GetMapping("/getRecruitments")
-    public ModelAndView getGraduates(Model model, @RequestParam(defaultValue = "6") Integer pageSize, @RequestParam(defaultValue = "1") Integer pageNum, Recruitment recruitment) {
+    public ModelAndView getGraduates(Model model, @RequestParam(defaultValue = "5") Integer pageSize, @RequestParam(defaultValue = "1") Integer pageNum, Recruitment recruitment) {
         PageInfo<Recruitment> pageInfo = recruitmentService.getRecruitments(pageSize, pageNum);
         model.addAttribute("pageInfo", pageInfo);
         //获得当前页

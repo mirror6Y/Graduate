@@ -55,14 +55,13 @@
                 </a>
 
                 <ul class="dropdown-menu">
-                    <li><a href="..">My Account</a></li>
+                    <li><a href="./">我的账号</a></li>
                     <li class="divider"></li>
-                    <li class="dropdown-header">Admin Panel</li>
-                    <li><a href="..">Users</a></li>
-                    <li><a href="..">Security</a></li>
-                    <li><a tabindex="-1" href="..">Payments</a></li>
+                    <li class="dropdown-header">管理</li>
+                    <li><a href="#">用户</a></li>
+                    <li><a href="#">安全</a></li>
                     <li class="divider"></li>
-                    <li><a tabindex="-1" href="../sign-in.html">Logout</a></li>
+                    <li><a tabindex="-1" href="/login/logout">退出</a></li>
                 </ul>
             </li>
         </ul>
@@ -101,7 +100,7 @@
                 class="fa fa-fw fa-briefcase"></i> 毕业生信息 <i class="fa fa-collapse"></i></a></li>
         <li>
             <ul class="accounts-menu nav nav-list collapse">
-                <li class="active"><a href="/graduate/getGraduates"><span class="fa fa-caret-right"></span>信息列表</a></li>
+                <li><a href="/graduate/getGraduates"><span class="fa fa-caret-right"></span>信息列表</a></li>
                 <li class="disabled"><a href="#"><span class="fa fa-caret-right"></span>信息详情</a></li>
             </ul>
         </li>
@@ -154,7 +153,7 @@
 
             <div class="row">
 
-                <form th:object="${recruitmentInfo}">
+                <form id="updateRecruitment" th:object="${recruitmentInfo}">
 
                     <div class="col-md-6">
 
@@ -180,7 +179,9 @@
                             <input type="text" name="salary" class="form-control" th:field="*{salary}">
                         </div>
 
-                        <button type="button" class="btn btn-danger" onclick="updateRecruitment()">编辑</button>
+                        <hr>
+
+                        <button type="button" class="btn btn-primary" onclick="updateRecruitment()">编辑</button>
                         <a href="/recruitment/getRecruitments" type="button" class="btn btn-default">取消</a>
 
                     </div>
