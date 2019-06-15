@@ -12,8 +12,6 @@
     <link rel="stylesheet" th:href="@{../../../lib/font-awesome/css/font-awesome.css}">
     <link rel="stylesheet" type="text/css" th:href="@{../../../stylesheets/theme.css}">
     <link rel="stylesheet" type="text/css" th:href="@{../../../stylesheets/premium.css}">
-    <link rel="stylesheet" type="text/css" th:href="@{../../../stylesheets/theme.css}">
-    <link rel="stylesheet" type="text/css" th:href="@{../../../stylesheets/premium.css}">
 
     <script th:src="@{../../../lib/jquery-1.11.1.min.js}" type="text/javascript"></script>
     <script th:src="@{../../../jq/unit.js}"></script>
@@ -64,20 +62,18 @@
                 </a>
 
                 <ul class="dropdown-menu">
-                    <li><a href="..">My Account</a></li>
+                    <li><a href="./">我的账号</a></li>
                     <li class="divider"></li>
-                    <li class="dropdown-header">Admin Panel</li>
-                    <li><a href="..">Users</a></li>
-                    <li><a href="..">Security</a></li>
-                    <li><a tabindex="-1" href="..">Payments</a></li>
+                    <li class="dropdown-header">管理</li>
+                    <li><a href="#">用户</a></li>
+                    <li><a href="#">安全</a></li>
                     <li class="divider"></li>
-                    <li><a tabindex="-1" href="../sign-in.html">Logout</a></li>
+                    <li><a tabindex="-1" href="/login/logout">退出</a></li>
                 </ul>
             </li>
         </ul>
 
     </div>
-</div>
 </div>
 <div class="copyrights">Collect from <a href="http://www.cssmoban.com/" title="网站模板">网站模板</a></div>
 
@@ -85,15 +81,13 @@
     <ul>
 
         <!--主页-->
-        <li><a href="index.html" data-target=".dashboard-menu" class="nav-header collapsed" data-toggle="collapse"><i
+        <li><a href="#" data-target=".dashboard-menu" class="nav-header collapsed" data-toggle="collapse"><i
                 class="fa fa-fw fa-dashboard"></i> 主页<i class="fa fa-collapse"></i></a></li>
         <li>
-            <ul class="dashboard-menu nav nav-list collapse ">
-                <li><a href="index.html"><span class="fa fa-caret-right"></span> 添加招聘信息</a></li>
-                <li><a href="users.html"><span class="fa fa-caret-right"></span> 删除招聘信息</a></li>
-                <li><a href="user.html"><span class="fa fa-caret-right"></span> 修改招聘信息</a></li>
-                <li><a href="media.html"><span class="fa fa-caret-right"></span>就业信息统计</a></li>
-                <li><a href="calendar.html"><span class="fa fa-caret-right"></span> Calendar</a></li>
+            <ul class="dashboard-menu nav nav-list collapse">
+                <li><a href="../recruitment/addRecruitment.html"><span class="fa fa-caret-right"></span>
+                    添加招聘信息</a></li>
+                <li><a href="#"><span class="fa fa-caret-right"></span>就业信息统计</a></li>
             </ul>
         </li>
 
