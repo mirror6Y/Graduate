@@ -57,7 +57,6 @@ public class LoginController {
         ModelAndView result = new ModelAndView("sign-in");
         HttpSession session = request.getSession();//获取当前session
         if(session!=null){
-//            Teacher teacher=(Teacher)session.getAttribute("loginName");
             session.invalidate();//关闭session
         }
         return result;

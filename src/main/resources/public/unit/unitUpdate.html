@@ -49,7 +49,7 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
         </button>
-        <a class="" href="index.html"><span class="navbar-brand"><span class="fa fa-paper-plane"></span> Graduate</span></a>
+        <a class="" href="#"><span class="navbar-brand"><span class="fa fa-paper-plane"></span> Graduate</span></a>
     </div>
 
     <div class="navbar-collapse collapse" style="height: 1px;">
@@ -57,7 +57,7 @@
             <li class="dropdown hidden-xs">
                 <a href="#" class="dropdown-toggle" data-toggle="dropdown">
                     <span class="glyphicon glyphicon-user padding-right-small"
-                          style="position:relative;top: 3px;"></span> Jack Smith
+                          style="position:relative;top: 3px;"></span>[[${session.loginName}]]
                     <i class="fa fa-caret-down"></i>
                 </a>
 
@@ -127,7 +127,7 @@
                 class="fa fa-fw fa-question-circle"></i>
             协议信息<i class="fa fa-collapse"></i></a></li>
         <li>
-            <ul class="protocol-menu nav nav-list collapse in">
+            <ul class="protocol-menu nav nav-list collapse">
                 <li><a href="/protocol/getProtocols"><span class="fa fa-caret-right"></span>信息列表</a></li>
                 <li class="disabled"><a href="#"><span class="fa fa-caret-right"></span>信息详情</a>
                 </li>
@@ -201,7 +201,7 @@
                         <hr>
 
                         <button type="button" class="btn btn-primary" onclick="updateUnit()">修改</button>
-                        <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+                        <a href="/unit/getUnits" type="button" class="btn btn-default">取消</a>
 
                     </form>
                 </div>

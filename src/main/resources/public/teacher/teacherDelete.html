@@ -50,7 +50,7 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
         </button>
-        <a class="" href="index.html"><span class="navbar-brand"><span class="fa fa-paper-plane"></span> Aircraft</span></a>
+        <a class="" href="#"><span class="navbar-brand"><span class="fa fa-paper-plane"></span> Aircraft</span></a>
     </div>
 
     <div class="navbar-collapse collapse" style="height: 1px;">
@@ -58,7 +58,7 @@
             <li class="dropdown hidden-xs">
                 <a href="#" class="dropdown-toggle" data-toggle="dropdown">
                     <span class="glyphicon glyphicon-user padding-right-small"
-                          style="position:relative;top: 3px;"></span> Jack Smith
+                          style="position:relative;top: 3px;"></span>[[${session.loginName}]]
                     <i class="fa fa-caret-down"></i>
                 </a>
 
@@ -75,7 +75,6 @@
         </ul>
 
     </div>
-</div>
 </div>
 <div class="copyrights">Collect from <a href="http://www.cssmoban.com/" title="网站模板">网站模板</a></div>
 
@@ -129,7 +128,7 @@
                 class="fa fa-fw fa-question-circle"></i>
             协议信息<i class="fa fa-collapse"></i></a></li>
         <li>
-            <ul class="protocol-menu nav nav-list collapse in">
+            <ul class="protocol-menu nav nav-list collapse">
                 <li><a href="/protocol/getProtocols"><span class="fa fa-caret-right"></span>信息列表</a></li>
                 <li class="disabled"><a href="#"><span class="fa fa-caret-right"></span>信息详情</a>
                 </li>
@@ -207,7 +206,7 @@
 
                         <hr/>
 
-                        <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+                        <a href="/teacher/getTeachers" type="button" class="btn btn-default">取消</a>
                         <button type="button" class="btn btn-danger" onclick="deleteTeacher()">删除</button>
 
                     </form>

@@ -49,6 +49,7 @@
     <select id="getRecruitments" resultMap="recruitment">
         select *
         from T_RECRUITMENT
+        order by N_SALARY
     </select>
     <select id="getRecruitmentsCount" resultType="int">
         select count(*)
